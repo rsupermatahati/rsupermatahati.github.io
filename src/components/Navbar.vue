@@ -23,7 +23,7 @@
 
             <!-- Dropdown untuk Desktop -->
             <div v-if="openMenu === index && menu.children"
-              class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg transition-all duration-300">
+              class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg transition-all duration-300">
               <ul class="py-2">
                 <li v-for="child in menu.children" :key="child.label" class="px-4 py-2">
                   <router-link :to="child.path"
