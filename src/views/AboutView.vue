@@ -40,7 +40,7 @@ import backgroundImage from '/src/assets/images/01.jpg';
 const articleData = {
   title: "Sejarah RSU Permata Hati",
   subtitle: "Sejarah berdirinya RSU Permata Hati",
-  image: "/src/assets/images/01.jpg",
+  image: backgroundImage,
   sections: [
     {
       type: "paragraph",
