@@ -1,7 +1,6 @@
 <template>
 
-    <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]"
-        style="background-image: url('/src/assets/images/01.jpg');">
+    <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]" :style="{ 'background-image': `url(${backgroundImage})` }">
         <div class="flex items-end justify-center w-full h-full bg-gray-900/75 pb-10">
             <div class="flex flex-col items-center justify-center text-center">
                 <img src="/src/assets/icons/logo01.png" alt="" class="h-30 mb-4">
@@ -30,6 +29,7 @@
 </template>
 
 <script setup>
+import backgroundImage from '/src/assets/images/01.jpg';
 const faqs = [
     {
         question: "Apakah di RSU Permata Hati bisa melakukan Medical Check Up (MCU)?",

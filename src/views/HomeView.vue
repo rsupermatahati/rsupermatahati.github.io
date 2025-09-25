@@ -1,6 +1,6 @@
 <template>
   <div class="w-full bg-top bg-cover h-[32rem] lg:h-[24rem]"
-    style="background-image: url('/src/assets/images/01.jpg');">
+    :style="{ 'background-image': `url(${backgroundImage})` }">
     <div class="flex items-end justify-center w-full h-full bg-gray-900/40 pb-10">
       <div class="text-center">
         <h1 class="text-3xl font-semibold text-white lg:text-4xl">Build your new <span class="text-blue-400">Saas</span>
@@ -58,6 +58,7 @@
 </template>
 
 <script setup>
+import backgroundImage from '/src/assets/images/01.jpg';
 import { ref, onMounted } from 'vue';
 
 const currentSlide = ref(0);
