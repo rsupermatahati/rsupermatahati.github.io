@@ -10,7 +10,7 @@
               class="h-24 mb-4"
             />
             <h2 class="text-xl font-semibold mb-2">RSU Permata Hati</h2>
-            <p class="text-sm text-gray-400 mb-4">"Care with Love"</p>
+            <p class="font-bold italic text-gray-400 mb-4">"Care with Love"</p>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
                     clip-rule="evenodd"
                   />
                 </svg>
-                0822-3666-8828 (Whatsapp)
+                (Whatsapp) 082236668828
               </a>
             </li>
             <li>
@@ -70,8 +70,7 @@
                     clip-rule="evenodd"
                   />
                 </svg>
-                Jalan Jendral Sudirman no 100, Semarapura Kelod, Kec. Klungkung,
-                Kabupaten Klungkung, Bali 80716
+                Jalan Kecubung No. 22, Semarapura, Klungkung, Bali
               </p>
             </li>
           </ul>
@@ -99,8 +98,8 @@
         <p>&copy; 2024 RSU Permata Hati. All Rights Reserved.</p>
         <p class="mt-1">
           Developed by
-          <a href="#" class="text-indigo-400 hover:text-indigo-300"
-            >Tim IT RSU Permata Hati</a
+          <a href="https://github.com/kuthayoga295" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300"
+            >Kuthayoga295</a
           >
         </p>
       </div>

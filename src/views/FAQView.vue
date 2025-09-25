@@ -3,7 +3,7 @@
     <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]" :style="{ 'background-image': `url(${backgroundImage})` }">
         <div class="flex items-end justify-center w-full h-full bg-gray-900/75 pb-10">
             <div class="flex flex-col items-center justify-center text-center">
-                <img src="/src/assets/icons/logo01.png" alt="" class="h-30 mb-4">
+                <img :src="logo" alt="" class="h-30 mb-4">
                 <h3 class="text-2xl font-medium text-white mb-2">RUMAH SAKIT UMUM</h3>
                 <h1 class="text-4xl font-semibold text-white lg:text-5xl mb-2">
                     RSU PERMATA HATI</h1>
@@ -16,7 +16,7 @@
         <div class="leading-8">
             <h1 class="text-3xl">Frequently Asked Questions</h1>
             <h2 class="mb-8">Pertanyaan yang sering ditanyakan.</h2>
-            <img src="https://picsum.photos/id/8/400/150" alt="" class="w-full border border-gray-200 rounded-lg mb-8">
+            <img :src="backgroundImage" alt="" class="w-full border border-gray-200 rounded-lg mb-8">
             <ul class="list-disc px-6">
                 <li v-for="(faq, index) in faqs" :key="index">
                     <p class="font-bold">{{ faq.question }}</p>
@@ -29,6 +29,7 @@
 </template>
 
 <script setup>
+import logo from '/src/assets/icons/logo01.png';
 import backgroundImage from '/src/assets/images/01.jpg';
 const faqs = [
     {

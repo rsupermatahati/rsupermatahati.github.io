@@ -1,4 +1,5 @@
 <template>
+  
   <div
     class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]"
     :style="{ 'background-image': `url(${backgroundImage})` }">
@@ -6,7 +7,7 @@
       class="flex items-end justify-center w-full h-full bg-gray-900/75 pb-10"
     >
       <div class="flex flex-col items-center justify-center text-center">
-        <img src="/src/assets/icons/logo01.png" alt="" class="h-30 mb-4" />
+        <img :src="logo" alt="" class="h-30 mb-4" />
         <h3 class="text-2xl font-medium text-white mb-2">RUMAH SAKIT UMUM</h3>
         <h1 class="text-4xl font-semibold text-white lg:text-5xl mb-2">
           RSU PERMATA HATI
@@ -36,6 +37,7 @@
 </template>
 
 <script setup>
+import logo from '/src/assets/icons/logo01.png';
 import backgroundImage from '/src/assets/images/01.jpg';
 const articleData = {
   title: "Sejarah RSU Permata Hati",

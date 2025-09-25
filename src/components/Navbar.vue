@@ -85,7 +85,7 @@ const menus = [
   {
     label: "Profil",
     children: [
-      { label: "Tentang Kami", path: '/about' },
+      { label: "Sejarah", path: '/about' },
       { label: "Visi Misi", path: '/vision-and-mission' },
       { label: "Nilai Dasar Layanan", path: '/core-values-of-service' },
       { label: "Janji Layanan", path: '/service-promise' },
