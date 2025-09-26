@@ -27,7 +27,7 @@ const menus = [
   {
     label: "Informasi",
     children: [
-      { label: "Hak & Kewajiban", path: '/rights-and-obligations' },
+      { label: "Hak & Kewajiban Pasien", path: '/rights-and-obligations' },
       { label: "Jadwal Dokter", path: '/doctor-schedule' },
       { label: "Antrian Poliklinik", path: '/outpatient-queue' },
       { label: "Ketersediaan Bed Rawat Inap", path: '/inpatient-bed-availability' },
@@ -77,7 +77,7 @@ onUnmounted(() => {
             <router-link
               v-if="!menu.children"
               :to="menu.path"
-              class="text-gray-700 hover:text-indigo-600 transition duration-300 ease-in-out font-medium"
+              class="text-gray-700 hover:text-emerald-600 transition duration-300 ease-in-out font-medium"
             >
               {{ menu.label }}
             </router-link>
@@ -86,7 +86,7 @@ onUnmounted(() => {
               v-else
               href="#"
               @click.prevent="toggleMenu(index)"
-              class="text-gray-700 hover:text-indigo-600 transition duration-300 ease-in-out font-medium"
+              class="text-gray-700 hover:text-emerald-600 transition duration-300 ease-in-out font-medium"
             >
               {{ menu.label }}
             </a>
@@ -104,7 +104,7 @@ onUnmounted(() => {
                 >
                   <router-link
                     :to="child.path"
-                    class="block text-gray-700 hover:text-indigo-600 transition duration-300"
+                    class="block text-gray-700 hover:text-emerald-600 transition duration-300"
                     @click="openMenu = null"
                   >
                     {{ child.label }}
@@ -119,7 +119,7 @@ onUnmounted(() => {
         <div class="flex items-center md:hidden">
           <button
             @click="isOpen = !isOpen"
-            class="p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            class="p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500"
           >
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -142,7 +142,7 @@ onUnmounted(() => {
             v-if="menu.children"
             href="#"
             @click.prevent="toggleMobileMenu(index)"
-            class="block py-2 font-medium text-gray-700 hover:text-indigo-600"
+            class="block py-2 font-medium text-gray-700 hover:text-emerald-600"
           >
             {{ menu.label }}
           </a>
@@ -150,7 +150,7 @@ onUnmounted(() => {
           <router-link
             v-else
             :to="menu.path"
-            class="block py-2 font-medium text-gray-700 hover:text-indigo-600"
+            class="block py-2 font-medium text-gray-700 hover:text-emerald-600"
             @click="isOpen = false"
           >
             {{ menu.label }}
@@ -166,7 +166,7 @@ onUnmounted(() => {
             v-for="child in menu.children"
             :key="child.label"
             :to="child.path"
-            class="block text-sm text-gray-600 hover:text-indigo-600"
+            class="block text-sm text-gray-600 hover:text-emerald-600"
             @click="isOpen = false"
           >
             {{ child.label }}

@@ -1,121 +1,169 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import Map from "../components/Map.vue";
 import logo from "/src/assets/icons/logo01.png";
-
-const currentSlide = ref(0);
-const totalSlides = 3; // Sesuaikan dengan jumlah slide Anda
-
-const nextSlide = () => {
-  currentSlide.value = (currentSlide.value + 1) % totalSlides;
-  updateCarousel();
-};
-
-const prevSlide = () => {
-  currentSlide.value = (currentSlide.value - 1 + totalSlides) % totalSlides;
-  updateCarousel();
-};
-
-const updateCarousel = () => {
-  const carousel = document.querySelector(".carousel-inner");
-  if (carousel) {
-    carousel.style.transform = `translateX(-${currentSlide.value * 100}%)`;
-  }
-};
-
-// Opsional: Otomatis ganti slide setiap beberapa detik
-let carouselInterval;
-onMounted(() => {
-  carouselInterval = setInterval(nextSlide, 5000); // Ganti slide setiap 5 detik
-});
-
-// Bersihkan interval saat komponen di-unmount
-import { onUnmounted } from "vue";
-onUnmounted(() => {
-  clearInterval(carouselInterval);
-});
+import rsuph from "/src/assets/images/01.jpg";
+import ambulance from "/src/assets/images/ambulance.jpg";
 </script>
 
 <template>
+
   <div class="container px-6 py-16 mx-auto text-center">
     <div class="max-w-lg mx-auto flex flex-col items-center">
       <img :src="logo" alt="" class="h-30 mb-4" />
       <h3 class="text-2xl font-medium mb-2">RUMAH SAKIT UMUM</h3>
       <h1 class="text-4xl font-semibold lg:text-5xl mb-2">RSU PERMATA HATI</h1>
       <h3 class="text-2xl italic">"Care with Love"</h3>
-      <button
-        class="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-indigo-600 rounded-lg hover:bg-indigo-500 lg:mx-0 lg:w-auto focus:outline-none"
-      >
+      <RouterLink to="/about"
+        class="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-emerald-600 rounded-lg hover:bg-emerald-500 lg:mx-0 lg:w-auto focus:outline-none">
         Learn more...
-      </button>
+      </RouterLink>
     </div>
+  </div>
 
-    <div class="w-full lg:max-w-7xl mx-auto mt-10">
-      <div class="relative overflow-hidden rounded-3xl">
-        <div
-          class="flex transition-transform duration-500 ease-in-out carousel-inner"
-        >
-          <div class="w-full flex-shrink-0">
-            <img
-              src="https://picsum.photos/id/1/600/300"
-              alt="Slide 1"
-              class="w-full"
-            />
+  <section class="py-12 bg-white ">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+      <!-- Gambar -->
+      <div class="aspect-[16/9]">
+        <img :src="rsuph" alt="Ambulance RSU Permata Hati"
+          class="w-full h-full object-cover object-center rounded-lg shadow-lg" />
+      </div>
+      <!-- Konten -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 mb-4">
+          "Care with Love"
+        </h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-8">
+          Semua elemen pelayanan RSU Permata Hati baik dari konsultan, dokter
+          spesialis, dokter umum, perawat dan bidan serta tim paramedis selalu
+          berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas
+          & kepuasan pelayanan yang anda peroleh.
+        </p>
+        <!-- Grid 2 kolom fitur -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Item 1 -->
+          <div class="flex items-start space-x-3">
+            <div class="text-emerald-600 text-2xl">
+              <i class="fas fa-notes-medical"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">REKAM MEDIS ELEKTRONIK</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Kami mencatat identitas pasien, pemeriksaan, pengobatan, tindakan dan pelayanan secara elektronik.
+              </p>
+            </div>
           </div>
-          <div class="w-full flex-shrink-0">
-            <img
-              src="https://picsum.photos/id/2/600/300"
-              alt="Slide 2"
-              class="w-full"
-            />
+          <!-- Item 2 -->
+          <div class="flex items-start space-x-3">
+            <div class="text-emerald-600 text-2xl">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">ASURANSI KESEHATAN</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                RSU Permata Hati melayani asuransi kesehatan dengan sistem reimbursement dan BPJS Kesehatan.
+              </p>
+            </div>
           </div>
-          <div class="w-full flex-shrink-0">
-            <img
-              src="https://picsum.photos/id/3/600/300"
-              alt="Slide 3"
-              class="w-full"
-            />
+          <!-- Item 3 -->
+          <div class="flex items-start space-x-3">
+            <div class="text-emerald-600 text-2xl">
+              <i class="fas fa-wallet"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">TERJANGKAU</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Kami memberikan pelayanan terbaik dengan harga yang terjangkau.
+              </p>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="flex items-start space-x-3">
+            <div class="text-emerald-600 text-2xl">
+              <i class="fas fa-user-md"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">KONSULTASI KESEHATAN BERSAMA DOKTER</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Konsultasi seputar kesehatan dengan dokter spesialis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Grid 2 kolom, di mobile jadi 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+        <!-- Kiri: Konten -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 mb-4">
+            Kenapa Memilih Kami?
+          </h2>
+          <p class="text-gray-600 mb-6">
+            RSU Permata Hati berkomitmen memberikan pelayanan terbaik dengan fasilitas modern, tenaga medis
+            berpengalaman, dan akses yang mudah.
+          </p>
+
+          <div class="space-y-6">
+            <!-- Item -->
+            <div class="flex items-start">
+              <i class="fas fa-user-md text-emerald-600 text-2xl mr-4"></i>
+              <div>
+                <h3 class="font-semibold text-emerald-700">Dokter Berkualitas</h3>
+                <p class="text-gray-600 text-sm">
+                  Dokter berkompeten dan terlatih siap melayani demi kesembuhan pasien.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <i class="fas fa-clock text-emerald-600 text-2xl mr-4"></i>
+              <div>
+                <h3 class="font-semibold text-emerald-700">Pelayanan 24 Jam</h3>
+                <p class="text-gray-600 text-sm">
+                  Siap melayani Anda setiap saat dengan semangat "Care with Love".
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <i class="fas fa-heartbeat text-emerald-600 text-2xl mr-4"></i>
+              <div>
+                <h3 class="font-semibold text-emerald-700">Unit Gawat Darurat</h3>
+                <p class="text-gray-600 text-sm">
+                  Menangani kasus darurat dengan cepat, tepat, dan profesional.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <i class="fas fa-briefcase-medical text-emerald-600 text-2xl mr-4"></i>
+              <div>
+                <h3 class="font-semibold text-emerald-700">Peralatan Medis</h3>
+                <p class="text-gray-600 text-sm">
+                  Fasilitas modern untuk mendukung diagnosis dan perawatan pasien.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <button
-          @click="prevSlide"
-          class="absolute top-1/2 left-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-50 hover:opacity-100"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            ></path>
-          </svg>
-        </button>
-        <button
-          @click="nextSlide"
-          class="absolute top-1/2 right-4 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-50 hover:opacity-100"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
-        </button>
+        <!-- Kanan: Gambar -->
+        <div class="aspect-[16/9]">
+          <img :src="ambulance" alt="Ambulance RSU Permata Hati"
+            class="w-full h-full object-cover object-center rounded-lg shadow-lg" />
+        </div>
+
       </div>
     </div>
+  </section>
+
+  <div class="mt-0">
+    <Map />
   </div>
+
 </template>

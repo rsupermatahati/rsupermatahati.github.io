@@ -52,39 +52,30 @@ const menus = [
         <div class="col-span-1 md:col-span-1">
           <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
           <ul class="space-y-2 text-gray-300">
-            <li>
-              <a href="tel:+6236624777" class="flex items-center hover:text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-400" viewBox="0 0 20 20"
-                  fill="currentColor">
-                  <path
-                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.096 11.096 0 006.107 6.107l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-                (0366) 24777
-              </a>
-            </li>
-            <li>
-              <a href="https://wa.me/6282236668828" target="_blank"
-                class="flex items-center hover:text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-400" viewBox="0 0 20 20"
-                  fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 2a8 8 0 100 16 8 8 0 000-16zM6.5 9a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM10 9a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM13.5 9a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"
-                    clip-rule="evenodd" />
-                </svg>
-                082236668828 (Whatsapp)
-              </a>
-            </li>
-            <li>
-              <p class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-1 text-indigo-400 flex-shrink-0"
-                  viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                    clip-rule="evenodd" />
-                </svg>
-                Jalan Kecubung No. 22, Semarapura, Klungkung, Bali
-              </p>
-            </li>
+            <ul class="space-y-2 text-sm text-gray-200">
+              <li>
+                <a href="tel:+6236624777" class="flex items-center hover:text-white transition">
+                  <i class="fa-solid fa-phone mr-2 text-emerald-600"></i>
+                  (0366) 24777
+                </a>
+              </li>
+
+              <li>
+                <a href="https://wa.me/6282236668828" target="_blank"
+                  class="flex items-center hover:text-white transition">
+                  <i class="fa-brands fa-whatsapp mr-2 text-emerald-600"></i>
+                  082236668828
+                </a>
+              </li>
+
+              <li>
+                <p class="flex items-start">
+                  <i class="fa-solid fa-location-dot mr-2 mt-1 text-emerald-600 flex-shrink-0"></i>
+                  Jalan Kecubung No. 22, Semarapura, Klungkung, Bali
+                </p>
+              </li>
+            </ul>
+
           </ul>
         </div>
 
@@ -105,7 +96,7 @@ const menus = [
         <p class="mt-1">
           Developed by
           <a href="https://github.com/kuthayoga295" target="_blank" rel="noopener noreferrer"
-            class="text-indigo-400 hover:text-indigo-300">Kuthayoga295</a>
+            class="text-emerald-600 hover:text-emerald-500">Kuthayoga295</a>
         </p>
       </div>
     </div>

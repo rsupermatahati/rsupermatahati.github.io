@@ -1,7 +1,7 @@
 <template>
-  <div class="p-8">
-    <h1 class="text-3xl font-bold mb-4">Ketersedian Bed</h1>
-    <p>Ini adalah halaman yang menjelaskan tentang rumah sakit kami.</p>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <h1 class="text-3xl font-bold mb-4">Ketersediaan Bed</h1>
+    <p>Tidak ada informasi.</p>
   </div>
 </template>
 
