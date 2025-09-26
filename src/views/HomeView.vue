@@ -1,3 +1,40 @@
+<script setup>
+import { ref, onMounted } from "vue";
+import logo from "/src/assets/icons/logo01.png";
+
+const currentSlide = ref(0);
+const totalSlides = 3; // Sesuaikan dengan jumlah slide Anda
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % totalSlides;
+  updateCarousel();
+};
+
+const prevSlide = () => {
+  currentSlide.value = (currentSlide.value - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+};
+
+const updateCarousel = () => {
+  const carousel = document.querySelector(".carousel-inner");
+  if (carousel) {
+    carousel.style.transform = `translateX(-${currentSlide.value * 100}%)`;
+  }
+};
+
+// Opsional: Otomatis ganti slide setiap beberapa detik
+let carouselInterval;
+onMounted(() => {
+  carouselInterval = setInterval(nextSlide, 5000); // Ganti slide setiap 5 detik
+});
+
+// Bersihkan interval saat komponen di-unmount
+import { onUnmounted } from "vue";
+onUnmounted(() => {
+  clearInterval(carouselInterval);
+});
+</script>
+
 <template>
   <div class="container px-6 py-16 mx-auto text-center">
     <div class="max-w-lg mx-auto flex flex-col items-center">
@@ -82,40 +119,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import logo from "/src/assets/icons/logo01.png";
-import { ref, onMounted } from "vue";
-
-const currentSlide = ref(0);
-const totalSlides = 3; // Sesuaikan dengan jumlah slide Anda
-
-const nextSlide = () => {
-  currentSlide.value = (currentSlide.value + 1) % totalSlides;
-  updateCarousel();
-};
-
-const prevSlide = () => {
-  currentSlide.value = (currentSlide.value - 1 + totalSlides) % totalSlides;
-  updateCarousel();
-};
-
-const updateCarousel = () => {
-  const carousel = document.querySelector(".carousel-inner");
-  if (carousel) {
-    carousel.style.transform = `translateX(-${currentSlide.value * 100}%)`;
-  }
-};
-
-// Opsional: Otomatis ganti slide setiap beberapa detik
-let carouselInterval;
-onMounted(() => {
-  carouselInterval = setInterval(nextSlide, 5000); // Ganti slide setiap 5 detik
-});
-
-// Bersihkan interval saat komponen di-unmount
-import { onUnmounted } from "vue";
-onUnmounted(() => {
-  clearInterval(carouselInterval);
-});
-</script>
