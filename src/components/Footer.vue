@@ -24,7 +24,7 @@ const menus = [
   {
     label: "Informasi",
     children: [
-      { label: "Hak & Kewajiban", path: "/rights-and-obligations" },
+      { label: "Hak & Kewajiban Pasien", path: "/rights-and-obligations" },
       { label: "Jadwal Dokter", path: "/doctor-schedule" },
       { label: "Antrian Poliklinik", path: "/outpatient-queue" },
       {

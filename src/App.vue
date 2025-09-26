@@ -9,7 +9,7 @@ import Footer from "./components/Footer.vue";
     <Topbar />
     <Navbar />
 
-    <main class="flex-grow bg-emerald-950/5">
+    <main class="flex-1 bg-gray-100">
       <router-view></router-view>
     </main>
 

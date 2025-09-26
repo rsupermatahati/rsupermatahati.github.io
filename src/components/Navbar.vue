@@ -64,7 +64,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="sticky top-0 z-50 bg-white shadow-md">
+  <nav class="sticky top-0 z-50 bg-white shadow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex items-center overflow-hidden">
@@ -74,39 +74,23 @@ onUnmounted(() => {
         <!-- Desktop -->
         <div class="hidden md:flex md:space-x-8 items-center">
           <div v-for="(menu, index) in menus" :key="menu.label" class="relative">
-            <router-link
-              v-if="!menu.children"
-              :to="menu.path"
-              class="text-gray-700 hover:text-emerald-600 transition duration-300 ease-in-out font-medium"
-            >
+            <router-link v-if="!menu.children" :to="menu.path"
+              class="text-gray-700 hover:text-emerald-600 transition duration-300 ease-in-out font-medium">
               {{ menu.label }}
             </router-link>
 
-            <a
-              v-else
-              href="#"
-              @click.prevent="toggleMenu(index)"
-              class="text-gray-700 hover:text-emerald-600 transition duration-300 ease-in-out font-medium"
-            >
+            <a v-else href="#" @click.prevent="toggleMenu(index)"
+              class="text-gray-700 hover:text-emerald-600 transition duration-300 ease-in-out font-medium">
               {{ menu.label }}
             </a>
 
             <!-- Dropdown desktop -->
-            <div
-              v-if="openMenu === index && menu.children"
-              class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg transition-all duration-300"
-            >
+            <div v-if="openMenu === index && menu.children"
+              class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg transition-all duration-300">
               <ul class="py-2">
-                <li
-                  v-for="child in menu.children"
-                  :key="child.label"
-                  class="px-4 py-2"
-                >
-                  <router-link
-                    :to="child.path"
-                    class="block text-gray-700 hover:text-emerald-600 transition duration-300"
-                    @click="openMenu = null"
-                  >
+                <li v-for="child in menu.children" :key="child.label" class="px-4 py-2">
+                  <router-link :to="child.path"
+                    class="block text-gray-700 hover:text-emerald-600 transition duration-300" @click="openMenu = null">
                     {{ child.label }}
                   </router-link>
                 </li>
@@ -117,17 +101,10 @@ onUnmounted(() => {
 
         <!-- Hamburger -->
         <div class="flex items-center md:hidden">
-          <button
-            @click="isOpen = !isOpen"
-            class="p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500"
-          >
+          <button @click="isOpen = !isOpen"
+            class="p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
@@ -138,37 +115,21 @@ onUnmounted(() => {
     <div v-if="isOpen" class="md:hidden px-6 py-4 space-y-3 bg-white">
       <div v-for="(menu, index) in menus" :key="menu.label">
         <div>
-          <a
-            v-if="menu.children"
-            href="#"
-            @click.prevent="toggleMobileMenu(index)"
-            class="block py-2 font-medium text-gray-700 hover:text-emerald-600"
-          >
+          <a v-if="menu.children" href="#" @click.prevent="toggleMobileMenu(index)"
+            class="block py-2 font-medium text-gray-700 hover:text-emerald-600">
             {{ menu.label }}
           </a>
 
-          <router-link
-            v-else
-            :to="menu.path"
-            class="block py-2 font-medium text-gray-700 hover:text-emerald-600"
-            @click="isOpen = false"
-          >
+          <router-link v-else :to="menu.path" class="block py-2 font-medium text-gray-700 hover:text-emerald-600"
+            @click="isOpen = false">
             {{ menu.label }}
           </router-link>
         </div>
 
         <!-- Submenu mobile -->
-        <div
-          v-if="openMobileMenu === index && menu.children"
-          class="pl-6 space-y-2 mt-2"
-        >
-          <router-link
-            v-for="child in menu.children"
-            :key="child.label"
-            :to="child.path"
-            class="block text-sm text-gray-600 hover:text-emerald-600"
-            @click="isOpen = false"
-          >
+        <div v-if="openMobileMenu === index && menu.children" class="pl-6 space-y-2 mt-2">
+          <router-link v-for="child in menu.children" :key="child.label" :to="child.path"
+            class="block text-sm text-gray-600 hover:text-emerald-600" @click="isOpen = false">
             {{ child.label }}
           </router-link>
         </div>

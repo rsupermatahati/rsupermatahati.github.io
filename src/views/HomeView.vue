@@ -3,33 +3,38 @@ import Map from "../components/Map.vue";
 import logo from "/src/assets/icons/logo01.png";
 import rsuph from "/src/assets/images/01.jpg";
 import ambulance from "/src/assets/images/ambulance.jpg";
+import backgroundImage from "/src/assets/images/01.jpg";
 </script>
 
 <template>
 
-  <div class="container px-6 py-16 mx-auto text-center">
-    <div class="max-w-lg mx-auto flex flex-col items-center">
+  <div class="w-full relative bg-white">
+    <div class="absolute inset-0.5 bg-top bg-cover eclips" :style="{ backgroundImage: `url(${backgroundImage})` }"></div>
+
+    <div class="absolute inset-0 bg-white/90 eclips"></div>
+
+    <div class="relative py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
       <img :src="logo" alt="" class="h-30 mb-4" />
       <h3 class="text-2xl font-medium mb-2">RUMAH SAKIT UMUM</h3>
-      <h1 class="text-4xl font-semibold lg:text-5xl mb-2">RSU PERMATA HATI</h1>
-      <h3 class="text-2xl italic">"Care with Love"</h3>
+      <h1 class="text-4xl font-semibold lg:text-6xl mb-2">PERMATA HATI</h1>
+      <h3 class="text-3xl italic">"Care with Love"</h3>
       <RouterLink to="/about"
-        class="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-emerald-600 rounded-lg hover:bg-emerald-500 lg:mx-0 lg:w-auto focus:outline-none">
+        class="px-5 py-2 mt-6 text-lg font-medium leading-6 text-center text-white capitalize bg-emerald-700 rounded-lg hover:bg-emerald-800 lg:mx-0 lg:w-auto focus:outline-none">
         Learn more...
       </RouterLink>
     </div>
   </div>
 
-  <section class="py-12 bg-white ">
+
+  <section class="pt-20 bg-white ">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
       <!-- Gambar -->
-      <div class="aspect-[16/9]">
-        <img :src="rsuph" alt="Ambulance RSU Permata Hati"
-          class="w-full h-full object-cover object-center rounded-lg shadow-lg" />
+      <div class="aspect-[4/3]">
+        <img :src="rsuph" alt="RSU Permata Hati" class="w-full h-full object-cover object-right rounded-lg shadow-lg" />
       </div>
       <!-- Konten -->
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-emerald-700 mb-4">
           "Care with Love"
         </h2>
         <p class="text-gray-700 dark:text-gray-300 mb-8">
@@ -46,7 +51,7 @@ import ambulance from "/src/assets/images/ambulance.jpg";
               <i class="fas fa-notes-medical"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900 dark:text-white">REKAM MEDIS ELEKTRONIK</h3>
+              <h3 class="font-semibold text-emerald-700 dark:text-white">REKAM MEDIS ELEKTRONIK</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 Kami mencatat identitas pasien, pemeriksaan, pengobatan, tindakan dan pelayanan secara elektronik.
               </p>
@@ -58,7 +63,7 @@ import ambulance from "/src/assets/images/ambulance.jpg";
               <i class="fas fa-shield-alt"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900 dark:text-white">ASURANSI KESEHATAN</h3>
+              <h3 class="font-semibold text-emerald-700 dark:text-white">ASURANSI KESEHATAN</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 RSU Permata Hati melayani asuransi kesehatan dengan sistem reimbursement dan BPJS Kesehatan.
               </p>
@@ -70,7 +75,7 @@ import ambulance from "/src/assets/images/ambulance.jpg";
               <i class="fas fa-wallet"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900 dark:text-white">TERJANGKAU</h3>
+              <h3 class="font-semibold text-emerald-700 dark:text-white">TERJANGKAU</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 Kami memberikan pelayanan terbaik dengan harga yang terjangkau.
               </p>
@@ -82,7 +87,7 @@ import ambulance from "/src/assets/images/ambulance.jpg";
               <i class="fas fa-user-md"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900 dark:text-white">KONSULTASI KESEHATAN BERSAMA DOKTER</h3>
+              <h3 class="font-semibold text-emerald-700 dark:text-white">KONSULTASI KESEHATAN BERSAMA DOKTER</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 Konsultasi seputar kesehatan dengan dokter spesialis.
               </p>
@@ -93,15 +98,23 @@ import ambulance from "/src/assets/images/ambulance.jpg";
     </div>
   </section>
 
-  <section class="py-12 bg-white">
+  <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Grid 2 kolom, di mobile jadi 1 -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
-        <!-- Kiri: Konten -->
-        <div>
+        <!-- Kanan di desktop, atas di mobile -->
+        <div class="order-1 md:order-2 w-full">
+          <div class="aspect-[4/3]">
+            <img :src="ambulance" alt="Ambulance RSU Permata Hati"
+              class="w-full h-full object-cover object-center rounded-lg shadow-lg" />
+          </div>
+        </div>
+
+        <!-- Kiri di desktop, bawah di mobile -->
+        <div class="order-2 md:order-1">
           <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 mb-4">
-            Kenapa Memilih Kami?
+            Kenapa Harus RSU Permata Hati?
           </h2>
           <p class="text-gray-600 mb-6">
             RSU Permata Hati berkomitmen memberikan pelayanan terbaik dengan fasilitas modern, tenaga medis
@@ -152,18 +165,39 @@ import ambulance from "/src/assets/images/ambulance.jpg";
           </div>
         </div>
 
-        <!-- Kanan: Gambar -->
-        <div class="aspect-[16/9]">
-          <img :src="ambulance" alt="Ambulance RSU Permata Hati"
-            class="w-full h-full object-cover object-center rounded-lg shadow-lg" />
-        </div>
-
       </div>
     </div>
   </section>
 
-  <div class="mt-0">
+  <section>
+    <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]"
+      :style="{ 'background-image': `url(${backgroundImage})` }">
+      <div class="flex items-center justify-center w-full h-full bg-gray-900/75">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+          <h2 class="text-xl font-bold text-white lg:text-4xl mb-4">
+            “Kesehatan adalah keadaan fisik, mental dan sosial yang lengkap, dan bukan hanya tidak adanya penyakit atau
+            kelemahan.”
+          </h2>
+          <h3 class="text-lg lg:text-2xl italic text-white">- Organisasi Kesehatan Dunia (WHO) -</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <Map />
-  </div>
+  </section>
 
 </template>
+
+<style scoped>
+.eclips {
+  clip-path: ellipse(100% 90% at 50% 10%);
+}
+
+@media (max-width: 768px) {
+  .eclips {
+    clip-path: ellipse(150% 90% at 50% 10%);
+  }
+}
+</style>

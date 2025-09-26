@@ -31,13 +31,8 @@ onMounted(() => {
 
 <template>
   <!-- Hero -->
-  <div
-    class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]"
-    :style="{ 'background-image': `url(${backgroundImage})` }"
-  >
-    <div
-      class="flex items-end justify-center w-full h-full bg-gray-900/75 pb-10"
-    >
+  <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]" :style="{ 'background-image': `url(${backgroundImage})` }">
+    <div class="flex items-end justify-center w-full h-full bg-gray-900/75 pb-10">
       <div class="flex flex-col items-center justify-center text-center">
         <img :src="logo" alt="" class="h-20 mb-4" />
         <h3 class="text-2xl font-medium text-white mb-2">RUMAH SAKIT UMUM</h3>
@@ -75,11 +70,9 @@ onMounted(() => {
       <!-- Konten About -->
       <div v-else>
         <div class="aspect-[21/9] w-full mb-8">
-        <img
-          :src="aboutData.image"
-          alt=""
-          class="w-full h-full object-cover object-center border border-gray-200 rounded-lg"
-        /></div>
+          <img :src="aboutData.image" alt=""
+            class="w-full h-full object-cover object-center border border-gray-200 rounded-lg" />
+        </div>
 
         <!-- Visi -->
         <h3 class="text-2xl font-semibold mb-2">Visi</h3>
@@ -98,7 +91,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.animate-pulse > div {
+.animate-pulse>div {
   transition: background 0.3s ease-in-out;
 }
 </style>

@@ -17,24 +17,24 @@ const socialLinks = {
 
 <template>
     <div
-        class="bg-gradient-to-r from-emerald-700 via-emerald-600 to-green-600 text-white text-sm overflow-x-auto whitespace-nowrap hide-scrollbar">
+        class="bg-gray-100 text-sm overflow-x-auto whitespace-nowrap hide-scrollbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center min-w-max py-2 space-x-6">
             <!-- Kontak -->
             <div class="flex space-x-6">
-                <span class="flex items-center space-x-1">
-                    <i class="fa-solid fa-phone text-white"></i>
+                <span class="flex items-center space-x-1 leading-4">
+                    <i class="fa-solid fa-phone"></i>
                     <a :href="`tel:${contacts.phone}`" class="hover:text-white">
                         {{ contacts.phoneTitle }}
                     </a>
                 </span>
-                <span class="flex items-center space-x-1">
-                    <i class="fa-solid fa-envelope text-white"></i>
+                <span class="flex items-center space-x-1 leading-4">
+                    <i class="fa-solid fa-envelope"></i>
                     <a :href="`mailto:${contacts.email}`" class="hover:text-white">
                         {{ contacts.email }}
                     </a>
                 </span>
-                <span class="flex items-center space-x-1">
-                    <i class="fa-brands fa-whatsapp text-white"></i>
+                <span class="flex items-center space-x-1 leading-4">
+                    <i class="fa-brands fa-whatsapp"></i>
                     <a :href="`https://wa.me/${contacts.whatsapp}`" target="_blank" class="hover:text-white">
                         {{ contacts.whatsappTitle }}
                     </a>

@@ -87,7 +87,10 @@ onMounted(() => {
 
       <!-- Konten Nilai Dasar -->
       <div v-else>
-        <img :src="valuesData.image" alt="" class="w-full border border-gray-200 rounded-lg mb-8" />
+        <div class="aspect-[21/9] w-full mb-8">
+          <img :src="valuesData.image" alt=""
+            class="w-full h-full object-cover object-center border border-gray-200 rounded-lg" />
+        </div>
 
         <ul class="space-y-6">
           <li v-for="(val, index) in valuesData.values" :key="index" class="border-b pb-4">
