@@ -33,7 +33,7 @@ const menus = [
       { label: "Ketersediaan Bed Rawat Inap", path: '/inpatient-bed-availability' },
     ],
   },
-  { label: "FAQ", path: '/faq' },
+  { label: "Faq", path: '/faq' },
 ];
 
 const isOpen = ref(false); // menu mobile
@@ -64,7 +64,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="sticky top-0 z-50 bg-white shadow">
+  <nav class="sticky top-0 z-50 bg-white border border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex items-center overflow-hidden">

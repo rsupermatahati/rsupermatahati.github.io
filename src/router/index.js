@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+
 import HomeView from '../views/HomeView.vue';
 import AboutView from '../views/AboutView.vue';
 import VisionMissionView from '../views/VisionMissionView.vue';
@@ -16,10 +17,9 @@ import DoctorScheduleView from '../views/DoctorScheduleView.vue';
 import OutpatientQueueView from '../views/OutpatientQueueView.vue';
 import InpatientBedAvailabilityView from '../views/InpatientBedAvailabilityView.vue';
 import FAQView from '../views/FAQView.vue';
+import NotFound from '../views/NotFound.vue';
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes: [
+const routes = [
     { path: '/', name: 'home', component: HomeView },
     { path: '/about', name: 'about', component: AboutView },
     { path: '/vision-and-mission', name: 'vision-and-mission', component: VisionMissionView },
@@ -37,7 +37,11 @@ const router = createRouter({
     { path: '/outpatient-queue', name: 'outpatient-queue', component: OutpatientQueueView },
     { path: '/inpatient-bed-availability', name: 'inpatient-bed-availability', component: InpatientBedAvailabilityView },
     { path: '/faq', name: 'faq', component: FAQView },
-  ],
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
+  ];
+
+const router = createRouter({
+  history: createWebHashHistory(),
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
@@ -45,6 +49,7 @@ const router = createRouter({
       return { top: 0 };
     }
   },
+  routes
 });
 
 export default router;

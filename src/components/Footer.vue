@@ -38,7 +38,7 @@ const menus = [
 </script>
 
 <template>
-  <footer class="bg-gray-800 text-white py-12 mt-auto">
+  <footer class="bg-emerald-950 text-white py-12 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8">
         <div class="col-span-1 md:col-span-1 text-center md:text-left">
@@ -91,7 +91,7 @@ const menus = [
         </div>
       </div>
 
-      <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm text-gray-500">
+      <div class="mt-8 border-t border-gray-400 pt-8 text-center text-sm text-gray-400">
         <p>&copy; 2024 RSU Permata Hati. All Rights Reserved.</p>
         <p class="mt-1">
           Developed by

@@ -62,7 +62,7 @@ onMounted(() => {
             <h2 class="mb-8">{{ articleData.subtitle }}</h2>
             <img :src="articleData.image" alt="" class="w-full border border-gray-200 rounded-lg mb-8" />
             <div v-for="(section, index) in articleData.sections" :key="index" class="mb-4">
-              <p v-if="section.type === 'paragraph'">{{ section.content }}</p>
+              <p v-if="section.type === 'paragraph'" class="text-justify">{{ section.content }}</p>
             </div>
           </div>
         </div>
