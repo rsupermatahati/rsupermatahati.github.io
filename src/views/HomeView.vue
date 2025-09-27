@@ -7,24 +7,23 @@ import backgroundImage from "/src/assets/images/01.jpg";
 </script>
 
 <template>
-
-  <div class="w-full relative bg-white">
-    <div class="absolute inset-0.5 bg-top bg-cover eclips" :style="{ backgroundImage: `url(${backgroundImage})` }"></div>
-
-    <div class="absolute inset-0 bg-white/90 eclips"></div>
-
-    <div class="relative py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-      <img :src="logo" alt="" class="h-30 mb-4" />
-      <h3 class="text-2xl font-medium mb-2">RUMAH SAKIT UMUM</h3>
-      <h1 class="text-4xl font-semibold lg:text-6xl mb-2">PERMATA HATI</h1>
-      <h3 class="text-3xl italic">"Care with Love"</h3>
-      <RouterLink to="/about"
-        class="px-5 py-2 mt-6 text-lg font-medium leading-6 text-center text-white capitalize bg-emerald-700 rounded-lg hover:bg-emerald-800 lg:mx-0 lg:w-auto focus:outline-none">
-        Learn more...
-      </RouterLink>
+  <div class="bg-white">
+    <div class="w-full bg-top bg-cover h-[28rem] lg:h-[32rem]"
+      :style="{ 'background-image': `url(${backgroundImage})` }">
+      <div class="flex items-center justify-center w-full h-full bg-white/80">
+        <div class="flex flex-col items-center justify-center text-center">
+          <img :src="logo" alt="" class="h-30 mb-4" />
+          <h3 class="text-2xl font-medium mb-2">RUMAH SAKIT UMUM</h3>
+          <h1 class="text-4xl font-semibold lg:text-6xl mb-2">PERMATA HATI</h1>
+          <h3 class="text-3xl italic">"Care with Love"</h3>
+          <RouterLink to="/about"
+            class="px-5 py-2 mt-6 text-lg font-medium leading-6 text-center text-white capitalize bg-emerald-700 rounded-lg hover:bg-emerald-800 lg:mx-0 lg:w-auto focus:outline-none">
+            Learn more...
+          </RouterLink>
+        </div>
+      </div>
     </div>
   </div>
-
 
   <section class="pt-20 bg-white ">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
@@ -172,7 +171,7 @@ import backgroundImage from "/src/assets/images/01.jpg";
   <section>
     <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]"
       :style="{ 'background-image': `url(${backgroundImage})` }">
-      <div class="flex items-center justify-center w-full h-full bg-gray-900/75">
+      <div class="flex items-center justify-center w-full h-full bg-gradient-to-r from-emerald-700/95 to-green-600/95">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
           <h2 class="text-xl font-bold text-white lg:text-4xl mb-4">
             “Kesehatan adalah keadaan fisik, mental dan sosial yang lengkap, dan bukan hanya tidak adanya penyakit atau
@@ -189,15 +188,3 @@ import backgroundImage from "/src/assets/images/01.jpg";
   </section>
 
 </template>
-
-<style scoped>
-.eclips {
-  clip-path: ellipse(100% 90% at 50% 10%);
-}
-
-@media (max-width: 768px) {
-  .eclips {
-    clip-path: ellipse(150% 90% at 50% 10%);
-  }
-}
-</style>

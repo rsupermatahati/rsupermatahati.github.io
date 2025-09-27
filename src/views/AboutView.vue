@@ -1,13 +1,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import logo from "/src/assets/icons/logo01.png";
 import backgroundImage from "/src/assets/images/01.jpg";
+import FbEmbed from "../components/FbEmbed.vue";
+import Hero2 from "../components/Hero2.vue";
 
 const articleData = ref(null);
 const isLoading = ref(true);
 
 onMounted(() => {
-  // Simulasi fetch data
   setTimeout(() => {
     articleData.value = {
       title: "Sejarah RSU Permata Hati",
@@ -42,41 +42,37 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Hero -->
-  <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]" :style="{ 'background-image': `url(${backgroundImage})` }">
-    <div class="flex items-end justify-center w-full h-full bg-gray-900/75 pb-10">
-      <div class="flex flex-col items-center justify-center text-center">
-        <img :src="logo" alt="" class="h-20 mb-4" />
-        <h3 class="text-2xl font-medium text-white mb-2">RUMAH SAKIT UMUM</h3>
-        <h1 class="text-4xl font-semibold text-white lg:text-5xl mb-2">
-          RSU PERMATA HATI
-        </h1>
-        <h3 class="text-2xl italic text-white">"Care with Love"</h3>
-      </div>
-    </div>
-  </div>
+  <Hero2 />
 
-  <!-- Konten -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="leading-8">
-      <!-- Skeleton -->
-      <div v-if="isLoading" class="animate-pulse space-y-4">
-        <div class="h-8 bg-gray-300 rounded w-1/3"></div>
-        <div class="h-6 bg-gray-300 rounded w-1/2"></div>
-        <div class="h-64 bg-gray-300 rounded-lg"></div>
-        <div class="h-4 bg-gray-300 rounded w-full"></div>
-        <div class="h-4 bg-gray-300 rounded w-5/6"></div>
-        <div class="h-4 bg-gray-300 rounded w-4/6"></div>
-        <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-12 gap-8">
+      <div class="col-span-12 md:col-span-8">
+        <div class="leading-8">
+          <div v-if="isLoading" class="animate-pulse space-y-4">
+            <div class="h-8 bg-gray-300 rounded w-1/2"></div>
+            <div class="h-6 bg-gray-300 rounded w-1/3"></div>
+            <div class="h-64 bg-gray-300 rounded-lg"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+          </div>
+          <div v-else>
+            <h1 class="text-3xl">{{ articleData.title }}</h1>
+            <h2 class="mb-8">{{ articleData.subtitle }}</h2>
+            <img :src="articleData.image" alt="" class="w-full border border-gray-200 rounded-lg mb-8" />
+            <div v-for="(section, index) in articleData.sections" :key="index" class="mb-4">
+              <p v-if="section.type === 'paragraph'">{{ section.content }}</p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Konten asli -->
-      <div v-else>
-        <h1 class="text-3xl">{{ articleData.title }}</h1>
-        <h2 class="mb-8">{{ articleData.subtitle }}</h2>
-        <img :src="articleData.image" alt="" class="w-full border border-gray-200 rounded-lg mb-8" />
-        <div v-for="(section, index) in articleData.sections" :key="index" class="mb-4">
-          <p v-if="section.type === 'paragraph'">{{ section.content }}</p>
+      <div class="col-span-12 md:col-span-4">
+        <div v-if="isLoading" class="animate-pulse space-y-4">
+          <div class="h-96 bg-gray-300 rounded w-full"></div>
+        </div>
+        <div v-else>
+          <FbEmbed />
         </div>
       </div>
     </div>

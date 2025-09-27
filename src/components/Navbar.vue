@@ -86,7 +86,8 @@ onUnmounted(() => {
 
             <!-- Dropdown desktop -->
             <div v-if="openMenu === index && menu.children"
-              class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg transition-all duration-300">
+              class="absolute mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg transition-all duration-300"
+              :class="index === menus.length - 2 ? '-left-full' : 'left-0'">
               <ul class="py-2">
                 <li v-for="child in menu.children" :key="child.label" class="px-4 py-2">
                   <router-link :to="child.path"

@@ -39,11 +39,9 @@ const router = createRouter({
     { path: '/faq', name: 'faq', component: FAQView },
   ],
   scrollBehavior(to, from, savedPosition) {
-    // kalau pakai tombol "back/forward", pakai posisi sebelumnya
     if (savedPosition) {
       return savedPosition;
     } else {
-      // kalau klik link biasa, selalu ke atas
       return { top: 0 };
     }
   },

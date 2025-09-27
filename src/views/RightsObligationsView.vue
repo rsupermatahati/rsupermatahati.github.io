@@ -1,8 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import logo from "/src/assets/icons/logo01.png";
-import backgroundImage from "/src/assets/images/01.jpg";
-import Fb from "../components/FbEmbed.vue";
+import FbEmbed from "../components/FbEmbed.vue";
+import Hero2 from "../components/Hero2.vue";
 
 // Simulasi loading data
 const loading = ref(true);
@@ -59,22 +58,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]" :style="{ 'background-image': `url(${backgroundImage})` }">
-    <div class="flex items-end justify-center w-full h-full bg-gray-900/75 pb-10">
-      <div class="flex flex-col items-center justify-center text-center">
-        <img :src="logo" alt="" class="h-20 mb-4" />
-        <h3 class="text-2xl font-medium text-white mb-2">RUMAH SAKIT UMUM</h3>
-        <h1 class="text-4xl font-semibold text-white lg:text-5xl mb-2">
-          RSU PERMATA HATI
-        </h1>
-        <h3 class="text-2xl italic text-white">"Care with Love"</h3>
-      </div>
-    </div>
-  </div>
+  <Hero2 />
 
   <div class="max-w-7xl mx-auto p-6">
     <!-- Sections -->
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-12 gap-8">
       <!-- Kolom 9 -->
       <div class="col-span-12 md:col-span-8">
         <!-- Title -->
@@ -112,7 +100,7 @@ onMounted(() => {
 
       <!-- Kolom 3 -->
       <div class="col-span-12 md:col-span-4">
-        <Fb />
+        <FbEmbed />
       </div>
     </div>
 
