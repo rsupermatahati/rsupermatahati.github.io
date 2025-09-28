@@ -31,14 +31,13 @@ const menus = [
         label: "Ketersediaan Bed Rawat Inap",
         path: "/inpatient-bed-availability",
       },
-      { label: "FAQ", path: "/faq" },
     ],
   },
 ];
 </script>
 
 <template>
-  <footer class="bg-emerald-950 dark:bg-black text-white py-12 mt-auto">
+  <footer class="bg-emerald-950 dark:bg-gray-950 text-white py-12 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8">
         <div class="col-span-1 md:col-span-1 text-center md:text-left">

@@ -88,14 +88,16 @@ const toggle = (index) => {
                 class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                 <!-- Question -->
                 <button @click="toggle(index)"
-                    class="flex justify-between items-center w-full px-4 py-3 text-left font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                    class="flex justify-between items-center gap-4 w-full px-4 py-3 text-left font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                     <span>{{ item.question }}</span>
-                    <svg :class="[
-                        'w-4 h-4 transform transition-transform',
-                        openIndex === index ? 'rotate-180' : 'rotate-0',
-                    ]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+                    <span>
+                        <svg :class="[
+                            'w-5 h-5 transform transition-transform',
+                            openIndex === index ? 'rotate-180' : 'rotate-0',
+                        ]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
                 </button>
 
                 <!-- Answer tanpa animasi -->

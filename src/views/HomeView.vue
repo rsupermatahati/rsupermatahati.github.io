@@ -208,7 +208,7 @@ import avatar from "/src/assets/icons/avatar.png"
         <div class="w-24 border-t-4 border-emerald-700"></div>
       </div>
       <!-- Scrollable Container -->
-      <div class="mt-8 overflow-x-auto rounded-lg px-1 pb-4 hide-scrollbar">
+      <div class="mt-8 overflow-x-auto px-1 pb-4 hide-scrollbar">
         <div class="flex flex-row justify-between items-center gap-4">
           <!-- Card 1 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-72">
@@ -274,7 +274,7 @@ import avatar from "/src/assets/icons/avatar.png"
         <div class="w-24 border-t-4 border-emerald-700"></div>
       </div>
       <!-- Scrollable Container -->
-      <div class="mt-8 overflow-x-auto rounded-lg px-1 pb-4 hide-scrollbar">
+      <div class="mt-8 overflow-x-auto px-1 pb-4 hide-scrollbar">
         <div class="flex flex-row justify-between items-center gap-4">
           <!-- Card 1 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-96">
