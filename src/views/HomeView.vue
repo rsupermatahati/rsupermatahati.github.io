@@ -9,7 +9,7 @@ import avatar from "/src/assets/icons/avatar.png"
 <template>
   <div class="flex justify-center items-center py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="order-1 md:order-2 w-full flex justify-center md:justify-start items-center">
+      <div class="order-1 md:order-2 w-full flex justify-center items-center">
         <div class="relative flex justify-center items-center">
           <div class="absolute top-0 right-0 bg-gradient-to-tr from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
           <div class="absolute bottom-0 left-0 bg-gradient-to-bl from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
