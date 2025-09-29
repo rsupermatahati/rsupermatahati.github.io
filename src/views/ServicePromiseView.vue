@@ -2,8 +2,8 @@
 import { ref, onMounted } from "vue";
 import thumbnail from "/src/assets/icons/janjilayanan.png";
 import Hero2 from "../components/Hero2.vue";
+import FbEmbed from "../components/FbEmbed.vue";
 
-// Data simulasi
 const servicePromise = ref(null);
 const isLoading = ref(true);
 
@@ -83,46 +83,49 @@ onMounted(() => {
 
 <template>
   <Hero2 />
-
-  <!-- Konten -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Skeleton Title + Subtitle -->
-    <div v-if="isLoading" class="animate-pulse mb-8 space-y-2">
-      <div class="h-8 bg-gray-300 rounded w-1/3"></div>
-      <div class="h-6 bg-gray-300 rounded w-2/3"></div>
-    </div>
-    <div v-else class="mb-8">
-      <h1 class="text-3xl font-bold">{{ servicePromise.title }}</h1>
-      <h2 class="text-lg text-gray-600">{{ servicePromise.subtitle }}</h2>
-    </div>
-
-    <!-- Skeleton konten -->
-    <div v-if="isLoading" class="space-y-4 animate-pulse">
-      <div class="h-64 bg-gray-300 rounded-lg"></div>
-      <div class="h-6 bg-gray-300 rounded w-1/2"></div>
-      <div class="h-4 bg-gray-300 rounded w-5/6"></div>
-      <div class="h-4 bg-gray-300 rounded w-4/6"></div>
-      <div class="h-4 bg-gray-300 rounded w-3/4"></div>
-      <div class="h-4 bg-gray-300 rounded w-2/3"></div>
-    </div>
-
-    <!-- Konten -->
-    <div v-else>
-      <div class="aspect-[21/9] w-full mb-8">
-        <img :src="servicePromise.image" alt=""
-          class="w-full h-full object-cover object-center border border-gray-200 rounded-lg" />
+    <div class="grid grid-cols-12 gap-8">
+      <div class="col-span-12 lg:col-span-8">
+        <div v-if="isLoading" class="animate-pulse mb-8 space-y-2">
+          <div class="h-8 bg-gray-300 rounded w-1/3"></div>
+          <div class="h-6 bg-gray-300 rounded w-2/3"></div>
+        </div>
+        <div v-else class="mb-8">
+          <h1 class="text-3xl font-bold">{{ servicePromise.title }}</h1>
+          <h2 class="text-lg">{{ servicePromise.subtitle }}</h2>
+        </div>
+        <div v-if="isLoading" class="space-y-4 animate-pulse">
+          <div class="h-64 bg-gray-300 rounded-lg"></div>
+          <div class="h-6 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+        </div>
+        <div v-else>
+          <div class="aspect-[21/9] w-full mb-8">
+            <img :src="servicePromise.image" alt=""
+              class="w-full h-full object-cover object-center border border-gray-200 dark:border-gray-700 rounded-lg" />
+          </div>
+          <div class="space-y-12">
+            <div v-for="(section, idx) in servicePromise.sections" :key="idx" class="space-y-6">
+              <h2 class="text-2xl font-semibold">{{ section.heading }}</h2>
+              <ul class="space-y-4">
+                <li v-for="(item, j) in section.items" :key="j">
+                  <h3 class="text-xl font-semibold">{{ item.name }}</h3>
+                  <p class="pb-2">{{ item.description }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-
-      <div class="space-y-12">
-        <div v-for="(section, idx) in servicePromise.sections" :key="idx" class="space-y-6">
-          <h2 class="text-2xl font-semibold">{{ section.heading }}</h2>
-          <ul class="space-y-4">
-            <li v-for="(item, j) in section.items" :key="j">
-              <h3 class="text-xl font-semibold">{{ item.name }}</h3>
-              <p class="text-gray-700">{{ item.description }}</p>
-            </li>
-          </ul>
+      <div class="col-span-12 lg:col-span-4">
+        <div v-if="isLoading" class="animate-pulse space-y-4">
+          <div class="h-96 bg-gray-300 rounded w-full"></div>
+        </div>
+        <div v-else>
+          <FbEmbed />
         </div>
       </div>
     </div>

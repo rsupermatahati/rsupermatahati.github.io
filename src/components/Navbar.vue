@@ -61,6 +61,29 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener("click", closeAllMenus);
 });
+
+// Theme state
+const isDark = ref(false);
+onMounted(() => {
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  if (savedTheme === "dark" || (savedTheme === null && prefersDark)) {
+    document.documentElement.classList.add("dark");
+    isDark.value = true;
+  }
+});
+function toggleTheme() {
+  if (document.documentElement.classList.contains("dark")) {
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+    isDark.value = false;
+  } else {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+    isDark.value = true;
+  }
+}
 </script>
 
 <template>
@@ -91,7 +114,7 @@ onUnmounted(() => {
 
             <!-- Dropdown desktop -->
             <div v-if="openMenu === index && menu.children"
-              class="absolute mt-2 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg transition-all duration-300 right-0">
+              class="absolute mt-2 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg transition-all duration-300 -right-1/2">
               <!-- :class="index === menus.length - 1 ? 'right-0' : 'left-0'" -->
               <ul class="py-2">
                 <li v-for="child in menu.children" :key="child.label" class="px-4 py-2">
@@ -104,10 +127,21 @@ onUnmounted(() => {
               </ul>
             </div>
           </div>
+
+          <button @click="toggleTheme"
+            class="border-s border-gray-400 ps-6 text-gray-900 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
+            <i v-if="isDark" class="fas fa-moon w-5 h-5"></i>
+            <i v-else class="fas fa-sun w-5 h-5"></i>
+          </button>
         </div>
 
         <!-- Hamburger -->
         <div class="flex items-center md:hidden">
+          <button @click="toggleTheme"
+            class="px-4 text-gray-900 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
+            <i v-if="isDark" class="fas fa-moon w-5 h-5"></i>
+            <i v-else class="fas fa-sun w-5 h-5"></i>
+          </button>
           <button @click="isOpen = !isOpen"
             class="p-2 rounded-md text-gray-600 dark:text-gray-200 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

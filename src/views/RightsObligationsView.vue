@@ -3,7 +3,6 @@ import { ref, onMounted } from "vue";
 import FbEmbed from "../components/FbEmbed.vue";
 import Hero2 from "../components/Hero2.vue";
 
-// Simulasi loading data
 const loading = ref(true);
 
 const articleData = ref({
@@ -59,33 +58,25 @@ onMounted(() => {
 
 <template>
   <Hero2 />
-
-  <div class="max-w-7xl mx-auto p-6">
-    <!-- Sections -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-12 gap-8">
-      <!-- Kolom 9 -->
-      <div class="col-span-12 md:col-span-8">
-        <!-- Title -->
+      <div class="col-span-12 lg:col-span-8">
         <div>
           <h1 v-if="!loading" class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             {{ articleData.title }}
           </h1>
           <div v-else class="h-8 w-64 bg-gray-200 dark:bg-gray-700 animate-pulse rounded mb-2"></div>
-
-          <!-- Subtitle -->
           <p v-if="!loading" class="text-lg text-gray-600 dark:text-gray-300 mb-6">
             {{ articleData.subtitle }}
           </p>
           <div v-else class="h-5 w-96 bg-gray-200 dark:bg-gray-700 animate-pulse rounded mb-6"></div>
         </div>
-
         <div v-if="loading" class="space-y-6">
           <div v-for="n in 2" :key="n" class="space-y-3">
             <div class="h-6 w-40 bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
             <div v-for="i in 5" :key="i" class="h-4 w-full bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
           </div>
         </div>
-
         <div v-else class="space-y-10">
           <div v-for="(section, idx) in articleData.sections" :key="idx" class="space-y-4">
             <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">
@@ -97,12 +88,9 @@ onMounted(() => {
           </div>
         </div>
       </div>
-
-      <!-- Kolom 3 -->
-      <div class="col-span-12 md:col-span-4">
+      <div class="col-span-12 lg:col-span-4">
         <FbEmbed />
       </div>
     </div>
-
   </div>
 </template>

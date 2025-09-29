@@ -44,7 +44,7 @@ const menus = [
           <div class="flex flex-col items-center">
             <img src="/src/assets/icons/logo01.png" alt="Logo RSU Permata Hati" class="h-24 mb-4" />
             <h2 class="text-xl font-semibold mb-2">RSU Permata Hati</h2>
-            <p class="font-bold italic text-gray-400 mb-4">"Care with Love"</p>
+            <p class="font-bold italic mb-4">"Care with Love"</p>
           </div>
         </div>
 

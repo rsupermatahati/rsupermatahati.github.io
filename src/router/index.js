@@ -16,7 +16,6 @@ import RightsObligationsView from '../views/RightsObligationsView.vue';
 import DoctorScheduleView from '../views/DoctorScheduleView.vue';
 import OutpatientQueueView from '../views/OutpatientQueueView.vue';
 import InpatientBedAvailabilityView from '../views/InpatientBedAvailabilityView.vue';
-import FAQView from '../views/FAQView.vue';
 import NotFound from '../views/NotFound.vue';
 
 const routes = [
@@ -36,7 +35,6 @@ const routes = [
     { path: '/doctor-schedule', name: 'doctor-schedule', component: DoctorScheduleView },
     { path: '/outpatient-queue', name: 'outpatient-queue', component: OutpatientQueueView },
     { path: '/inpatient-bed-availability', name: 'inpatient-bed-availability', component: InpatientBedAvailabilityView },
-    { path: '/faq', name: 'faq', component: FAQView },
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
   ];
 

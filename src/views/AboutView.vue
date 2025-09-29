@@ -43,10 +43,9 @@ onMounted(() => {
 
 <template>
   <Hero2 />
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-12 gap-8">
-      <div class="col-span-12 md:col-span-8">
+      <div class="col-span-12 lg:col-span-8">
         <div class="leading-8">
           <div v-if="isLoading" class="animate-pulse space-y-4">
             <div class="h-8 bg-gray-300 rounded w-1/2"></div>
@@ -60,14 +59,14 @@ onMounted(() => {
           <div v-else>
             <h1 class="text-3xl">{{ articleData.title }}</h1>
             <h2 class="mb-8">{{ articleData.subtitle }}</h2>
-            <img :src="articleData.image" alt="" class="w-full border border-gray-200 rounded-lg mb-8" />
+            <img :src="articleData.image" alt="" class="w-full border border-gray-200 dark:border-gray-700 rounded-lg mb-8" />
             <div v-for="(section, index) in articleData.sections" :key="index" class="mb-4">
               <p v-if="section.type === 'paragraph'" class="text-justify">{{ section.content }}</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-span-12 md:col-span-4">
+      <div class="col-span-12 lg:col-span-4">
         <div v-if="isLoading" class="animate-pulse space-y-4">
           <div class="h-96 bg-gray-300 rounded w-full"></div>
         </div>

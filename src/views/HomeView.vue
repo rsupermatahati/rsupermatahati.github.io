@@ -4,18 +4,21 @@ import Faq from "../components/Faq.vue";
 import ambulance from "/src/assets/images/ambulance.jpg";
 import ambulance01 from "/src/assets/images/ambulance01.jpg";
 import backgroundImage from "/src/assets/images/01.jpg";
-import avatar from "/src/assets/icons/avatar.png"
+import drmurya from "/src/assets/images/drmurya.jpg"
+import drindra from "/src/assets/images/drindra.jpg"
+import drarya from "/src/assets/images/drarya.jpg"
+import dryunita from "/src/assets/images/dryunita.jpg"
 </script>
 
 <template>
   <div class="flex justify-center items-center py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
       <div class="order-1 md:order-2 w-full flex justify-center items-center">
-        <div class="relative flex justify-center items-center">
+        <div class="relative flex justify-center items-center min-w-1/2">
           <div class="absolute top-0 right-0 bg-gradient-to-tr from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
           <div class="absolute bottom-0 left-0 bg-gradient-to-bl from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
           <div class="aspect-[4/3] relative p-2">
-            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded z-10">
+            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded z-10"></img>
           </div>
         </div>
       </div>
@@ -32,7 +35,7 @@ import avatar from "/src/assets/icons/avatar.png"
             & kepuasan pelayanan yang anda peroleh.
           </p>
           <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
-            class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-white font-semibold rounded-lg px-6 md:px-8 py-2 mt-4 transition-colors duration-200">
+            class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-2 mt-4 transition-colors duration-200">
             Appointment
           </a>
         </div>
@@ -44,7 +47,7 @@ import avatar from "/src/assets/icons/avatar.png"
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="w-full">
-          <div class="relative flex justify-center items-center">
+          <div class="relative flex justify-center items-center min-w-1/2">
             <div class="absolute top-0 left-0 bg-gradient-to-tl from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
             <div class="absolute bottom-0 right-0 bg-gradient-to-br from-emerald-700 to-green-600 w-32 h-32 rounded">
             </div>
@@ -119,7 +122,7 @@ import avatar from "/src/assets/icons/avatar.png"
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="order-1 xl:order-2 w-full">
-          <div class="relative flex justify-center items-center">
+          <div class="relative flex justify-center items-center min-w-1/2">
             <div class="absolute top-0 right-0 bg-gradient-to-tr from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
             <div class="absolute bottom-0 left-0 bg-gradient-to-bl from-emerald-700 to-green-600 w-32 h-32 rounded">
             </div>
@@ -200,58 +203,59 @@ import avatar from "/src/assets/icons/avatar.png"
 
   <section class="py-4 mt-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Title -->
       <div class="flex flex-col items-center">
         <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center text-emerald-700 dark:text-gray-100 mb-4">
           Dokter Spesialis RSU Permata Hati
         </h2>
         <div class="w-24 border-t-4 border-emerald-700"></div>
       </div>
-      <!-- Scrollable Container -->
-      <div class="mt-8 overflow-x-auto px-1 pb-4 hide-scrollbar">
-        <div class="flex flex-row justify-between items-center gap-4">
+      <div class="mt-8 overflow-x-auto pb-4 hide-scrollbar">
+        <div class="flex flex-row justify-between items-stretch gap-4">
           <!-- Card 1 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-72">
             <div class="aspect-square">
-              <img :src="avatar" alt="Rekam Medis Elektronik" class="w-full h-full object-cover" />
+              <img :src="drmurya" alt="Rekam Medis Elektronik" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. Nama Dokter Spesialis, Sp.???
+              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. I Wayan Murya, Sp.A
               </h3>
-              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis</p>
+              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis Anak</p>
             </div>
           </div>
           <!-- Card 2 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-72">
             <div class="aspect-square">
-              <img :src="avatar" alt="Asuransi Kesehatan" class="w-full h-full object-cover" />
+              <img :src="drindra" alt="Asuransi Kesehatan" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. Nama Dokter Spesialis, Sp.???
+              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. I Gede Indra Ari Utama Murya,
+                Sp.OG
               </h3>
-              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis</p>
+              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis Obgyn</p>
             </div>
           </div>
           <!-- Card 3 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-72">
             <div class="aspect-square">
-              <img :src="avatar" alt="Pelayanan Terjangkau" class="w-full h-full object-cover" />
+              <img :src="drarya" alt="Pelayanan Terjangkau" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. Nama Dokter Spesialis, Sp.???
+              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. I Gusti Ngurah Gde Dwi Aryanata,
+                Sp.B
               </h3>
-              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis</p>
+              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis Bedah</p>
             </div>
           </div>
           <!-- Card 4 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-72">
             <div class="aspect-square">
-              <img :src="avatar" alt="Konsultasi Kesehatan" class="w-full h-full object-cover" />
+              <img :src="dryunita" alt="Konsultasi Kesehatan" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. Nama Dokter Spesialis, Sp.???
+              <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">dr. Made Yunita Saraswati Murya,
+                M.Biomed, Sp.A
               </h3>
-              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis</p>
+              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Dokter Spesialis Anak</p>
             </div>
           </div>
         </div>
@@ -266,16 +270,14 @@ import avatar from "/src/assets/icons/avatar.png"
 
   <section class="py-4 mt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Title -->
       <div class="flex flex-col items-center">
         <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center text-emerald-700 dark:text-gray-100 mb-4">
           Kamar Rawat Inap RSU Permata Hati
         </h2>
         <div class="w-24 border-t-4 border-emerald-700"></div>
       </div>
-      <!-- Scrollable Container -->
       <div class="mt-8 overflow-x-auto px-1 pb-4 hide-scrollbar">
-        <div class="flex flex-row justify-between items-center gap-4">
+        <div class="flex flex-row justify-between items-stretch gap-4">
           <!-- Card 1 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-96">
             <div class="aspect-[4/3]">
@@ -335,6 +337,7 @@ import avatar from "/src/assets/icons/avatar.png"
   scrollbar-width: none;
   /* Firefox */
 }
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari, Opera */
