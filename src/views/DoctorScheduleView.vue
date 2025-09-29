@@ -3,8 +3,8 @@ import { ref, onMounted, watch, computed } from "vue";
 import Hero2 from "../components/Hero2.vue";
 import FbEmbed from "../components/FbEmbed.vue";
 
-const apiPoli = "https://online.rsupermatahati.id/api/rawatjalan/poliklinik/get";
-const apiJadwal = "https://online.rsupermatahati.id/api/dokter-jadwal/get-data?poliklinik_id=";
+const apiPoli = "/api/rawatjalan/poliklinik/get";
+const apiJadwal = "/api/dokter-jadwal/get-data?poliklinik_id=";
 
 const poliklinikList = ref([]);
 const selected = ref("");

@@ -2,5 +2,5 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-    font-size: 102%;
+    font-size: 1rem;
 }

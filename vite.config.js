@@ -10,14 +10,14 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: '/',
-  // server: {
-  //   proxy: {
-  //     "/api": {
-  //       target: "https://online.rsupermatahati.id",
-  //       changeOrigin: true,
-  //       secure: false,
-  //       rewrite: (path) => path.replace(/^\/api/, "/api"),
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://online.rsupermatahati.id",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, "/api"),
+      },
+    },
+  },
 })

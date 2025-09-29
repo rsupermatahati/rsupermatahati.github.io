@@ -51,30 +51,28 @@ const menus = [
         <div class="col-span-1 md:col-span-1">
           <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
           <ul class="space-y-2 text-gray-300">
-            <ul class="space-y-2 text-sm text-gray-200">
-              <li>
-                <a href="tel:+6236624777" class="flex items-center hover:text-white transition">
-                  <i class="fa-solid fa-phone mr-2"></i>
-                  (0366) 24777
-                </a>
-              </li>
+            <li>
+              <a href="tel:036624777" class="flex items-center hover:text-white transition">
+                <i class="fa-solid fa-phone mr-2"></i>
+                (0366) 24777
+              </a>
+            </li>
 
-              <li>
-                <a href="https://wa.me/6282236668828" target="_blank"
-                  class="flex items-center hover:text-white transition">
-                  <i class="fa-brands fa-whatsapp mr-2"></i>
-                  082236668828
-                </a>
-              </li>
+            <li>
+              <a href="https://wa.me/6282236668828" target="_blank"
+                class="flex items-center hover:text-white transition">
+                <i class="fa-brands fa-whatsapp mr-2"></i>
+                082236668828
+              </a>
+            </li>
 
-              <li>
-                <p class="flex items-start">
-                  <i class="fa-solid fa-location-dot mr-2 mt-1 flex-shrink-0"></i>
-                  Jalan Kecubung No. 22, Semarapura, Klungkung, Bali
-                </p>
-              </li>
-            </ul>
-
+            <li>
+              <a href="https://maps.app.goo.gl/6EXdXra2x6jk41yw9" target="_blank"
+                class="flex items-center hover:text-white transition">
+                <i class="fa-solid fa-location-dot mr-2 mt-1 flex-shrink-0"></i>
+                Jalan Kecubung No. 22, Semarapura, Klungkung, Bali
+              </a>
+            </li>
           </ul>
         </div>
 

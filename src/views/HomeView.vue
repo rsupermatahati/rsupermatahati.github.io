@@ -48,7 +48,7 @@ import emerald from "/src/assets/rooms/emerald.jpg";
 
   <section class="py-16 bg-white dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div class="w-full">
           <div class="relative flex justify-center items-center min-w-1/2">
             <div class="absolute top-0 left-0 bg-gradient-to-tl from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
@@ -123,8 +123,8 @@ import emerald from "/src/assets/rooms/emerald.jpg";
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="order-1 xl:order-2 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="order-1 lg:order-2 w-full">
           <div class="relative flex justify-center items-center min-w-1/2">
             <div class="absolute top-0 right-0 bg-gradient-to-tr from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
             <div class="absolute bottom-0 left-0 bg-gradient-to-bl from-emerald-700 to-green-600 w-32 h-32 rounded">

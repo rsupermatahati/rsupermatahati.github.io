@@ -88,14 +88,14 @@ function toggleTheme() {
 
 <template>
   <nav class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-b-gray-100 dark:border-b-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
       <div class="flex justify-between h-16">
         <div class="flex items-center overflow-hidden">
           <router-link to="/" class="flex items-center">
             <!-- Logo Light -->
-            <img :src="logolight" alt="Logo Light" class="h-10 block dark:hidden" />
+            <img :src="logolight" alt="Logo Light" class="h-12 block dark:hidden" />
             <!-- Logo Dark -->
-            <img :src="logodark" alt="Logo Dark" class="h-10 hidden dark:block" />
+            <img :src="logodark" alt="Logo Dark" class="h-12 hidden dark:block" />
           </router-link>
         </div>
 

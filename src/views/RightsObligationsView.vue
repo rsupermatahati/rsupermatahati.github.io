@@ -65,15 +65,15 @@ onMounted(() => {
           <h1 v-if="!loading" class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             {{ articleData.title }}
           </h1>
-          <div v-else class="h-8 w-64 bg-gray-200 dark:bg-gray-700 animate-pulse rounded mb-2"></div>
+          <div v-else class="h-8 w-3/4 bg-gray-200 dark:bg-gray-700 animate-pulse rounded mb-2"></div>
           <p v-if="!loading" class="text-lg text-gray-600 dark:text-gray-300 mb-6">
             {{ articleData.subtitle }}
           </p>
-          <div v-else class="h-5 w-96 bg-gray-200 dark:bg-gray-700 animate-pulse rounded mb-6"></div>
+          <div v-else class="h-5 w-1/2 bg-gray-200 dark:bg-gray-700 animate-pulse rounded mb-6"></div>
         </div>
         <div v-if="loading" class="space-y-6">
           <div v-for="n in 2" :key="n" class="space-y-3">
-            <div class="h-6 w-40 bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
+            <div class="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
             <div v-for="i in 5" :key="i" class="h-4 w-full bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
           </div>
         </div>
@@ -89,7 +89,12 @@ onMounted(() => {
         </div>
       </div>
       <div class="col-span-12 lg:col-span-4">
-        <FbEmbed />
+        <div v-if="!loading">
+          <FbEmbed />
+        </div>
+        <div v-else class="animate-pulse space-y-4">
+          <div class="h-96 bg-gray-200 dark:bg-gray-700 animate-pulse rounded w-full"></div>
+        </div>
       </div>
     </div>
   </div>
