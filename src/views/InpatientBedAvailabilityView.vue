@@ -10,7 +10,7 @@ const loading = ref(false);
 const getBeds = async () => {
   try {
     loading.value = true;
-    const res = await fetch("/api/rawatinap/ketersediaan-bed");
+    const res = await fetch("https://online.rsupermatahati.id/api/rawatinap/ketersediaan-bed");
     const data = await res.json();
     beds.value = Array.isArray(data) ? data : data?.data || [];
   } catch (err) {

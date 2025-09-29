@@ -13,7 +13,7 @@ const jam = ref("");
 
 const getPoliklinik = async () => {
   try {
-    const res = await fetch("/api/rawatjalan/poliklinik/get");
+    const res = await fetch("https://online.rsupermatahati.id/api/rawatjalan/poliklinik/get");
     const data = await res.json();
     poliklinikList.value = data?.data || [];
   } catch (err) {
@@ -25,7 +25,7 @@ const getAntrian = async (id) => {
   try {
     loading.value = true;
     antrian.value = null;
-    const res = await fetch(`/api/antrian/get-data?poliklinik_id=${id}`);
+    const res = await fetch(`https://online.rsupermatahati.id/api/antrian/get-data?poliklinik_id=${id}`);
     antrian.value = await res.json();
   } catch (err) {
     console.error("Gagal fetch antrian:", err);
