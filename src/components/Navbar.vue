@@ -129,7 +129,7 @@ function toggleTheme() {
           </div>
 
           <button @click="toggleTheme"
-            class="border-s border-gray-400 ps-6 text-gray-900 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
+            class="border-s border-gray-400 ps-6 text-gray-700 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
             <i v-if="isDark" class="fas fa-moon w-5 h-5"></i>
             <i v-else class="fas fa-sun w-5 h-5"></i>
           </button>
@@ -138,12 +138,12 @@ function toggleTheme() {
         <!-- Hamburger -->
         <div class="flex items-center md:hidden">
           <button @click="toggleTheme"
-            class="px-4 text-gray-900 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
+            class="px-4 text-gray-700 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
             <i v-if="isDark" class="fas fa-moon w-5 h-5"></i>
             <i v-else class="fas fa-sun w-5 h-5"></i>
           </button>
           <button @click="isOpen = !isOpen"
-            class="p-2 rounded-md text-gray-600 dark:text-gray-200 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
+            class="p-2 rounded text-gray-700 dark:text-gray-100 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-600">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -169,7 +169,7 @@ function toggleTheme() {
         </div>
 
         <!-- Submenu mobile -->
-        <div v-if="openMobileMenu === index && menu.children" class="pl-6 space-y-2 mt-2">
+        <div v-if="openMobileMenu === index && menu.children" class="pl-6 space-y-4 mt-2">
           <router-link v-for="child in menu.children" :key="child.label" :to="child.path"
             class="block text-sm text-gray-900 dark:text-gray-100 hover:text-emerald-600" @click="isOpen = false">
             {{ child.label }}
