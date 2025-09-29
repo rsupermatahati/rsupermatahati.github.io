@@ -1,5 +1,4 @@
 <script setup>
-import { ref, onMounted } from "vue";
 import Topbar from "./components/Topbar.vue";
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";

@@ -95,7 +95,7 @@ const selectedPoliklinik = computed(() => {
 
         <div v-else-if="antrian"
           class="p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 space-y-6">
-          <h2 class="text-lg font-semibold text-center text-gray-800 dark:text-gray-100 mb-3">
+          <h2 class="text-lg font-semibold text-center text-gray-800 dark:text-gray-100 mb-6">
             {{ selectedPoliklinik }}
           </h2>
 
@@ -147,7 +147,7 @@ const selectedPoliklinik = computed(() => {
         </div>
       </div>
 
-      <div class="col-span-12 lg:col-span-4">
+      <div class="col-span-12 lg:col-span-4 mt-16 lg:mt-0">
         <FbEmbed />
       </div>
     </div>

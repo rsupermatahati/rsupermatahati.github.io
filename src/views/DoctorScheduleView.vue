@@ -90,7 +90,7 @@ const selectedPoliklinik = computed(() => {
         <div v-if="selected"
           class="p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
 
-          <h2 class="text-lg text-center font-semibold text-gray-800 dark:text-gray-100 mb-3">
+          <h2 class="text-lg text-center font-semibold text-gray-800 dark:text-gray-100 mb-6">
             {{ selectedPoliklinik }}
           </h2>
 
@@ -134,7 +134,7 @@ const selectedPoliklinik = computed(() => {
         </div>
       </div>
 
-      <div class="col-span-12 lg:col-span-4">
+      <div class="col-span-12 lg:col-span-4 mt-16 lg:mt-0">
         <FbEmbed />
       </div>
     </div>

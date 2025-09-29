@@ -45,7 +45,7 @@ onMounted(() => {
 <template>
   <Hero2 />
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h1 class="text-3xl font-bold mb-6">Ketersediaan Bed Rawat Inap</h1>
+    <h1 class="text-3xl font-bold mb-2">Ketersediaan Bed Rawat Inap</h1>
     <h2 class="mb-8">{{ tanggal }}, {{ jam }}</h2>
 
     <div v-if="loading" class="text-center py-8">

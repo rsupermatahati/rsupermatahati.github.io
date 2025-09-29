@@ -37,7 +37,7 @@ const menus = [
 </script>
 
 <template>
-  <footer class="bg-emerald-950 dark:bg-gray-950 text-white py-12 mt-auto">
+  <footer class="bg-emerald-900 dark:bg-gray-950 text-white py-12 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8">
         <div class="col-span-1 md:col-span-1 text-center md:text-left">
@@ -54,7 +54,7 @@ const menus = [
             <ul class="space-y-2 text-sm text-gray-200">
               <li>
                 <a href="tel:+6236624777" class="flex items-center hover:text-white transition">
-                  <i class="fa-solid fa-phone mr-2 text-emerald-600"></i>
+                  <i class="fa-solid fa-phone mr-2"></i>
                   (0366) 24777
                 </a>
               </li>
@@ -62,14 +62,14 @@ const menus = [
               <li>
                 <a href="https://wa.me/6282236668828" target="_blank"
                   class="flex items-center hover:text-white transition">
-                  <i class="fa-brands fa-whatsapp mr-2 text-emerald-600"></i>
+                  <i class="fa-brands fa-whatsapp mr-2"></i>
                   082236668828
                 </a>
               </li>
 
               <li>
                 <p class="flex items-start">
-                  <i class="fa-solid fa-location-dot mr-2 mt-1 text-emerald-600 flex-shrink-0"></i>
+                  <i class="fa-solid fa-location-dot mr-2 mt-1 flex-shrink-0"></i>
                   Jalan Kecubung No. 22, Semarapura, Klungkung, Bali
                 </p>
               </li>

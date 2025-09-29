@@ -4,10 +4,13 @@ import Faq from "../components/Faq.vue";
 import ambulance from "/src/assets/images/ambulance.jpg";
 import ambulance01 from "/src/assets/images/ambulance01.jpg";
 import backgroundImage from "/src/assets/images/01.jpg";
-import drmurya from "/src/assets/images/drmurya.jpg"
-import drindra from "/src/assets/images/drindra.jpg"
-import drarya from "/src/assets/images/drarya.jpg"
-import dryunita from "/src/assets/images/dryunita.jpg"
+import drmurya from "/src/assets/doctors/drmurya.jpg"
+import drindra from "/src/assets/doctors/drindra.jpg"
+import drarya from "/src/assets/doctors/drarya.jpg"
+import dryunita from "/src/assets/doctors/dryunita.jpg"
+import psuit from "/src/assets/rooms/president-suite.jpg";
+import suit from "/src/assets/rooms/suite.jpg";
+import emerald from "/src/assets/rooms/emerald.jpg";
 </script>
 
 <template>
@@ -261,9 +264,9 @@ import dryunita from "/src/assets/images/dryunita.jpg"
         </div>
       </div>
       <div class="w-full flex justify-center items-center">
-        <button
+        <router-link to="/outpatient-care"
           class="bg-emerald-700 hover:bg-emerald-600 text-white font-bold leading-8 px-6 md:px-8 py-1 rounded mt-4">More
-        </button>
+        </router-link>
       </div>
     </div>
   </section>
@@ -281,7 +284,7 @@ import dryunita from "/src/assets/images/dryunita.jpg"
           <!-- Card 1 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-96">
             <div class="aspect-[4/3]">
-              <img :src="ambulance01" alt="Rekam Medis Elektronik" class="w-full h-full object-cover" />
+              <img :src="psuit" alt="Rekam Medis Elektronik" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
               <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">President Suite</h3>
@@ -291,7 +294,7 @@ import dryunita from "/src/assets/images/dryunita.jpg"
           <!-- Card 2 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-96">
             <div class="aspect-[4/3]">
-              <img :src="ambulance01" alt="Asuransi Kesehatan" class="w-full h-full object-cover" />
+              <img :src="suit" alt="Asuransi Kesehatan" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
               <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">Suite</h3>
@@ -301,20 +304,20 @@ import dryunita from "/src/assets/images/dryunita.jpg"
           <!-- Card 3 -->
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0 w-96">
             <div class="aspect-[4/3]">
-              <img :src="ambulance01" alt="Pelayanan Terjangkau" class="w-full h-full object-cover" />
+              <img :src="emerald" alt="Pelayanan Terjangkau" class="w-full h-full object-cover" />
             </div>
             <div class="p-6">
               <h3 class="text-lg font-semibold text-emerald-700 dark:text-gray-100">Emerald</h3>
-              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Kelas 1</p>
+              <p class="mt-2 text-gray-800 dark:text-gray-400 text-sm">Excecutive</p>
             </div>
           </div>
 
         </div>
       </div>
       <div class="w-full flex justify-center items-center">
-        <button
+        <router-link to="/inpatient-care"
           class="bg-emerald-700 hover:bg-emerald-600 text-white font-bold leading-8 px-6 md:px-8 py-1 rounded mt-4">More
-        </button>
+        </router-link>
       </div>
     </div>
   </section>

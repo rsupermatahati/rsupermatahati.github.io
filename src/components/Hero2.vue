@@ -8,8 +8,8 @@ import backgroundImage from "/src/assets/images/01.jpg";
     <div class="w-full bg-top bg-cover h-[20rem] lg:h-[18rem]"
         :style="{ 'background-image': `url(${backgroundImage})` }">
         <div class="flex items-center justify-center w-full h-full bg-white/80 dark:bg-gray-900/80">
-            <div class="flex flex-col items-center justify-center text-center">
-                <img :src="logo" alt="" class="h-20 mb-3" />
+            <div class="flex flex-col items-center justify-center text-center px-4">
+                <img :src="logo" alt="" class="h-16 mb-3" />
                 <h1 class="text-3xl font-bold lg:text-4xl mb-2">
                     RSU PERMATA HATI
                 </h1>
