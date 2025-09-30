@@ -101,10 +101,10 @@ const selectedPoliklinik = computed(() => {
 
           <div v-if="antrian.data?.length" class="space-y-6">
             <div v-for="(item, idx) in antrian.data" :key="idx" class="overflow-x-auto">
-              <h3 class="font-semibold mb-2">
+              <h3 class="font-semibold p-2">
                 {{ item.dokter_nama }}
               </h3>
-              <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700">
                 <thead class="bg-gray-100 dark:bg-gray-800">
                   <tr>
                     <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">

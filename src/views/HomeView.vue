@@ -14,14 +14,13 @@ import emerald from "/src/assets/rooms/emerald.jpg";
 </script>
 
 <template>
-  <div class="flex justify-center items-center py-12">
+  <div class="h-0 md:h-0.5 md:bg-gradient-to-r from-green-500 via-green-600 to-green-700 dark:from-emerald-700 dark:via-emerald-700 dark:to-emerald-700 text-sm text-gray-200"></div>
+  <div class="flex justify-center items-center py-16 bg-gradient-to-b md:bg-gradient-to-bl from-green-700 via-green-600/0 to-green-500/0">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
       <div class="order-1 md:order-2 w-full flex justify-center items-center">
-        <div class="relative flex justify-center items-center min-w-1/2">
-          <div class="absolute top-0 right-0 bg-gradient-to-tr from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
-          <div class="absolute bottom-0 left-0 bg-gradient-to-bl from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
-          <div class="aspect-[4/3] relative p-2">
-            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded z-10"></img>
+        <div class="flex justify-center items-center min-w-1/2">
+          <div class="aspect-[4/3] p-2">
+            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded-xl"></img>
           </div>
         </div>
       </div>
@@ -49,17 +48,12 @@ import emerald from "/src/assets/rooms/emerald.jpg";
   <section class="py-16 bg-white dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="w-full">
-          <div class="relative flex justify-center items-center min-w-1/2">
-            <div class="absolute top-0 left-0 bg-gradient-to-tl from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
-            <div class="absolute bottom-0 right-0 bg-gradient-to-br from-emerald-700 to-green-600 w-32 h-32 rounded">
+        <div class="w-full flex justify-center items-center">
+            <div class="aspect-[4/3] p-2">
+              <img :src="ambulance" alt="" class="w-full h-full object-cover object-right rounded-xl">
             </div>
-            <div class="aspect-[4/3] relative p-2">
-              <img :src="ambulance" alt="" class="w-full h-full object-cover object-right rounded z-10">
-            </div>
-          </div>
         </div>
-        <div class="w-full">
+        <div class="w-full flex flex-col justify-center text-start">
           <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 dark:text-gray-100 mb-4">
             Pelayanan Unggulan RSU Permata Hati
           </h2>
@@ -124,17 +118,12 @@ import emerald from "/src/assets/rooms/emerald.jpg";
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="order-1 lg:order-2 w-full">
-          <div class="relative flex justify-center items-center min-w-1/2">
-            <div class="absolute top-0 right-0 bg-gradient-to-tr from-emerald-700 to-green-600 w-32 h-32 rounded"></div>
-            <div class="absolute bottom-0 left-0 bg-gradient-to-bl from-emerald-700 to-green-600 w-32 h-32 rounded">
+        <div class="order-1 lg:order-2 w-full flex justify-center items-center">
+            <div class="aspect-[4/3] p-2">
+              <img :src="ambulance01" alt="" class="w-full h-full object-cover object-right rounded-xl">
             </div>
-            <div class="aspect-[4/3] relative p-2">
-              <img :src="ambulance01" alt="" class="w-full h-full object-cover object-right rounded z-10">
-            </div>
-          </div>
         </div>
-        <div class="order-2 md:order-1">
+        <div class="order-2 md:order-1 flex flex-col justify-center text-start">
           <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 dark:text-gray-100 mb-4">
             Kenapa Harus RSU Permata Hati?
           </h2>

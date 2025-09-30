@@ -106,11 +106,11 @@ const selectedPoliklinik = computed(() => {
 
           <div v-else-if="jadwal?.data?.length" class="space-y-6">
             <div v-for="dokter in jadwal.data" :key="dokter.id" class="overflow-hidden">
-              <div class="px-4 py-2 font-semibold">
+              <div class="p-2 font-semibold">
                 {{ dokter.nama }}
               </div>
               <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700">
                   <thead class="bg-gray-100 dark:bg-gray-800">
                     <tr>
                       <th class="px-4 py-2 text-start font-medium text-gray-700 dark:text-gray-200">Hari</th>

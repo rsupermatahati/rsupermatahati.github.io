@@ -60,7 +60,7 @@ onMounted(() => {
     </div>
 
     <div v-else-if="beds.length" class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700">
         <thead class="bg-gray-100 dark:bg-gray-800">
           <tr>
             <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">Bangsal</th>
