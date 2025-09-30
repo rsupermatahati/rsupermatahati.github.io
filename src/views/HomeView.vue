@@ -14,44 +14,50 @@ import emerald from "/src/assets/rooms/emerald.jpg";
 </script>
 
 <template>
-  <div class="h-0 md:h-0.5 md:bg-gradient-to-r from-green-500 via-green-600 to-green-700 dark:from-emerald-700 dark:via-emerald-700 dark:to-emerald-700 text-sm text-gray-200"></div>
-  <div class="flex justify-center items-center py-16 bg-gradient-to-b md:bg-gradient-to-bl from-green-700 via-green-600/0 to-green-500/0">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="order-1 md:order-2 w-full flex justify-center items-center">
-        <div class="flex justify-center items-center min-w-1/2">
-          <div class="aspect-[4/3] p-2">
-            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded-xl"></img>
+  <div class="bg-white dark:bg-gray-950">
+    <div
+      class="h-0 md:h-0.5 md:bg-gradient-to-r from-green-500 via-green-600 to-green-700 dark:from-emerald-700 dark:via-emerald-700 dark:to-emerald-700 text-sm text-gray-200">
+    </div>
+    <div
+      class="flex justify-center items-center py-16 bg-gradient-to-b md:bg-gradient-to-bl from-green-700 via-green-600/0 to-green-500/0">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="order-1 md:order-2 w-full flex justify-center items-center">
+          <div class="flex justify-center items-center min-w-1/2">
+            <div class="aspect-[4/3] p-2">
+              <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded-xl"></img>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="order-2 md:order-1 w-full flex justify-center md:justify-start items-center">
-        <div class="text-center md:text-start mt-8 md:mt-0">
-          <h3 class="text-2xl md:text-3xl lg:text-4xl font-medium text-green-700 dark:text-gray-100">RSU Permata Hati
-          </h3>
-          <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold italic text-emerald-800 dark:text-white mt-3">CARE WITH
-            LOVE</h1>
-          <p class="text-justify md:pe-4 lg:pe-12 mt-3">
-            Semua elemen pelayanan RSU Permata Hati baik dari konsultan, dokter
-            spesialis, dokter umum, perawat dan bidan serta tim paramedis selalu
-            berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas
-            & kepuasan pelayanan yang anda peroleh.
-          </p>
-          <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
-            class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-2 mt-4 transition-colors duration-200">
-            Appointment
-          </a>
+        <div class="order-2 md:order-1 w-full flex justify-center md:justify-start items-center">
+          <div class="text-center md:text-start mt-8 md:mt-0">
+            <h3 class="text-2xl md:text-3xl lg:text-4xl font-medium text-green-700 dark:text-gray-100">RSU Permata Hati
+            </h3>
+            <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold italic text-emerald-800 dark:text-white mt-3">CARE
+              WITH
+              LOVE</h1>
+            <p class="text-justify md:pe-4 lg:pe-12 mt-3">
+              Semua elemen pelayanan RSU Permata Hati baik dari konsultan, dokter
+              spesialis, dokter umum, perawat dan bidan serta tim paramedis selalu
+              berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas
+              & kepuasan pelayanan yang anda peroleh.
+            </p>
+            <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
+              class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-2 mt-4 transition-colors duration-200">
+              Appointment
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <section class="py-16 bg-white dark:bg-gray-800">
+  <section class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div class="w-full flex justify-center items-center">
-            <div class="aspect-[4/3] p-2">
-              <img :src="ambulance" alt="" class="w-full h-full object-cover object-right rounded-xl">
-            </div>
+          <div class="aspect-[4/3] p-2">
+            <img :src="ambulance" alt="" class="w-full h-full object-cover object-right rounded-xl">
+          </div>
         </div>
         <div class="w-full flex flex-col justify-center text-start">
           <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 dark:text-gray-100 mb-4">
@@ -119,9 +125,9 @@ import emerald from "/src/assets/rooms/emerald.jpg";
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div class="order-1 lg:order-2 w-full flex justify-center items-center">
-            <div class="aspect-[4/3] p-2">
-              <img :src="ambulance01" alt="" class="w-full h-full object-cover object-right rounded-xl">
-            </div>
+          <div class="aspect-[4/3] p-2">
+            <img :src="ambulance01" alt="" class="w-full h-full object-cover object-right rounded-xl">
+          </div>
         </div>
         <div class="order-2 md:order-1 flex flex-col justify-center text-start">
           <h2 class="text-2xl md:text-3xl font-bold text-emerald-700 dark:text-gray-100 mb-4">
