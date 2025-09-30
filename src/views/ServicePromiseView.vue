@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import thumbnail from "/src/assets/icons/janjilayanan.png";
 import Hero2 from "../components/Hero2.vue";
 import FbEmbed from "../components/FbEmbed.vue";
 
@@ -12,7 +11,6 @@ onMounted(() => {
     servicePromise.value = {
       title: "Janji Layanan",
       subtitle: "Janji Layanan RSU Permata Hati",
-      image: thumbnail,
       sections: [
         {
           heading: "5S PENAMPILANKU (Senyum, Salam, Sapa, Sopan, Santun)",
@@ -91,22 +89,21 @@ onMounted(() => {
           <div class="h-6 bg-gray-300 rounded w-2/3"></div>
         </div>
         <div v-else class="mb-8">
-          <h1 class="text-3xl font-bold">{{ servicePromise.title }}</h1>
+          <h1 class="text-3xl font-bold mb-2">{{ servicePromise.title }}</h1>
           <h2 class="text-lg">{{ servicePromise.subtitle }}</h2>
         </div>
         <div v-if="isLoading" class="space-y-4 animate-pulse">
-          <div class="h-64 bg-gray-300 rounded-lg"></div>
-          <div class="h-6 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 rounded w-full"></div>
           <div class="h-4 bg-gray-300 rounded w-full"></div>
           <div class="h-4 bg-gray-300 rounded w-full"></div>
           <div class="h-4 bg-gray-300 rounded w-full"></div>
           <div class="h-4 bg-gray-300 rounded w-3/4"></div>
         </div>
         <div v-else>
-          <div class="aspect-[21/9] w-full mb-8">
-            <img :src="servicePromise.image" alt=""
-              class="w-full h-full object-cover object-center border border-gray-200 dark:border-gray-700 rounded-lg" />
-          </div>
           <div class="space-y-12">
             <div v-for="(section, idx) in servicePromise.sections" :key="idx" class="space-y-6">
               <h2 class="text-2xl font-semibold">{{ section.heading }}</h2>

@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import thumbnail from "/src/assets/icons/nilaidasarlayanan.png";
 import Hero2 from "../components/Hero2.vue";
 import FbEmbed from "../components/FbEmbed.vue";
 
@@ -12,7 +11,6 @@ onMounted(() => {
     valuesData.value = {
       title: "Nilai Dasar Layanan",
       subtitle: "Nilai Dasar Layanan RSU Permata Hati",
-      image: thumbnail,
       values: [
         {
           name: "Integritas",
@@ -62,7 +60,10 @@ onMounted(() => {
             <h2 class="text-lg">{{ valuesData.subtitle }}</h2>
           </div>
           <div v-if="isLoading" class="space-y-4 animate-pulse">
-            <div class="h-64 bg-gray-300 rounded-lg"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
             <div class="h-4 bg-gray-300 rounded w-full"></div>
             <div class="h-4 bg-gray-300 rounded w-full"></div>
             <div class="h-4 bg-gray-300 rounded w-full"></div>
@@ -70,10 +71,6 @@ onMounted(() => {
             <div class="h-4 bg-gray-300 rounded w-3/4"></div>
           </div>
           <div v-else>
-            <div class="aspect-[21/9] w-full mb-8">
-              <img :src="valuesData.image" alt=""
-                class="w-full h-full object-cover object-center border border-gray-200 dark:border-gray-700 rounded-lg" />
-            </div>
             <ul class="space-y-6">
               <li v-for="(val, index) in valuesData.values" :key="index" class="pb-2">
                 <h3 class="text-2xl font-semibold">{{ val.name }}</h3>

@@ -1,8 +1,5 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import logo from "/src/assets/icons/logo01.png";
-import backgroundImage from "/src/assets/images/01.jpg";
-import thumbnail from "/src/assets/icons/visimisi.png";
 import Hero2 from "../components/Hero2.vue";
 import FbEmbed from "../components/FbEmbed.vue";
 
@@ -14,7 +11,6 @@ onMounted(() => {
     aboutData.value = {
       title: "Visi & Misi",
       subtitle: "Visi dan Misi dari RSU Permata Hati",
-      image: thumbnail,
       visi: "Menjadikan RSU Permata Hati sebagai Pusat Pelayanan Kesehatan yang Profesional dan Unggul di Wilayah Bali Timur",
       misi: [
         "Melakukan pengelolaan rumah sakit secara profesional agar tercapai efisiensi dan efektifitas yang tinggi",
@@ -47,8 +43,11 @@ onMounted(() => {
           </div>
 
           <div v-if="isLoading" class="space-y-4 animate-pulse">
-            <div class="h-64 bg-gray-300 rounded-lg"></div>
-            <div class="h-6 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
             <div class="h-4 bg-gray-300 rounded w-full"></div>
             <div class="h-4 bg-gray-300 rounded w-full"></div>
             <div class="h-4 bg-gray-300 rounded w-full"></div>
@@ -56,11 +55,6 @@ onMounted(() => {
           </div>
 
           <div v-else>
-            <div class="aspect-[21/9] w-full mb-8">
-              <img :src="aboutData.image" alt=""
-                class="w-full h-full object-cover object-center border border-gray-200 dark:border-gray-700 rounded-lg" />
-            </div>
-
             <h3 class="text-2xl font-semibold mb-2">Visi</h3>
             <p class="mb-6">{{ aboutData.visi }}</p>
 
