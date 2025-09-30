@@ -186,7 +186,7 @@ import emerald from "/src/assets/rooms/emerald.jpg";
     <div class="w-full bg-top bg-cover h-[20rem] lg:h-[24rem]"
       :style="{ 'background-image': `url(${backgroundImage})` }">
       <div
-        class="flex items-center justify-center w-full h-full bg-gradient-to-r from-emerald-800/95 to-green-600/95 dark:from-gray-950/95 dark:to-gray-900/95">
+        class="flex items-center justify-center w-full h-full bg-gradient-to-r from-emerald-800/95 to-green-600/95 dark:from-gray-800/95 dark:to-gray-700/95">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
           <i class="fa-solid fa-quote-right text-8xl text-white mb-2"></i>
           <h2 class="text-xl font-bold text-white lg:text-4xl mb-4">
