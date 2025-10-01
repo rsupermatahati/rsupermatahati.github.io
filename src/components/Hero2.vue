@@ -15,7 +15,7 @@ import backgroundImage from "/src/assets/images/01.jpg";
                 <p class="text-lg">Klik tombol dibawah untuk buat janji rawat jalan</p>
                 <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
                     class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-2 mt-3 transition-colors duration-200">
-                    Appointment
+                    Buat Janji
                 </a>
             </div>
         </div>
