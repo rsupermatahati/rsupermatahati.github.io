@@ -18,10 +18,10 @@ import appstore from "/src/assets/icons/appstore.png";
 
 <template>
 
-  <div class="flex justify-center items-center py-16">
+  <section class="flex justify-center items-center py-16 bg-green-50 dark:bg-gray-950">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
       <div class="order-1 md:order-2 w-full flex justify-center items-center">
-        <div class="flex justify-center items-center min-w-1/2">
+        <div class="flex justify-center items-center">
           <div class="aspect-[4/3] p-2">
             <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded-xl"></img>
           </div>
@@ -29,11 +29,9 @@ import appstore from "/src/assets/icons/appstore.png";
       </div>
       <div class="order-2 md:order-1 w-full flex justify-center md:justify-start items-center">
         <div class="text-center md:text-start mt-8 md:mt-0">
-          <h3 class="text-2xl md:text-3xl lg:text-4xl font-medium text-green-700 dark:text-gray-100">RSU Permata Hati
-          </h3>
-          <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold italic text-emerald-800 dark:text-white mt-3">CARE
-            WITH
-            LOVE</h1>
+          <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-emerald-800 dark:text-white">RSU PERMATA HATI</h1>
+          <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold italic text-green-700 dark:text-gray-100 mt-3">"Care
+            with Love"</h3>
           <p class="text-justify md:pe-4 lg:pe-12 mt-3">
             Semua elemen pelayanan RSU Permata Hati baik dari konsultan, dokter
             spesialis, dokter umum, perawat dan bidan serta tim paramedis selalu
@@ -47,7 +45,7 @@ import appstore from "/src/assets/icons/appstore.png";
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <section class="py-16 bg-white dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -93,9 +93,9 @@ function toggleTheme() {
         <div class="flex items-center overflow-hidden">
           <router-link to="/" class="flex items-center">
             <!-- Logo Light -->
-            <img :src="logolight" alt="Logo Light" class="h-11 block dark:hidden" />
+            <img :src="logolight" alt="Logo Light" class="h-10 block dark:hidden" />
             <!-- Logo Dark -->
-            <img :src="logodark" alt="Logo Dark" class="h-11 hidden dark:block" />
+            <img :src="logodark" alt="Logo Dark" class="h-10 hidden dark:block" />
           </router-link>
         </div>
 
