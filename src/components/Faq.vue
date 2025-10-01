@@ -101,7 +101,7 @@ const toggle = (index) => {
                 </button>
 
                 <!-- Answer tanpa animasi -->
-                <div v-show="openIndex === index" class="px-4 pb-4 font-light">
+                <div v-show="openIndex === index" class="p-4 font-light">
                     {{ item.answer }}
                 </div>
             </div>
