@@ -38,7 +38,7 @@ import appstore from "/src/assets/icons/appstore.png";
             berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas
             & kepuasan pelayanan yang anda peroleh.
           </p>
-          <div class="flex flex-wrap gap-3">
+          <div class="w-full flex justify-center md:justify-start gap-3">
             <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
               class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-3 mt-4 transition-colors duration-200">
               Buat Janji
