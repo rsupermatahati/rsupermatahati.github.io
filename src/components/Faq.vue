@@ -71,7 +71,7 @@ const toggle = (index) => {
 </script>
 
 <template>
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold">
@@ -88,7 +88,7 @@ const toggle = (index) => {
                 class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                 <!-- Question -->
                 <button @click="toggle(index)"
-                    class="flex justify-between items-center gap-4 w-full px-4 py-3 text-left font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                    class="flex justify-between items-center gap-4 w-full p-4 text-left font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                     <span>{{ item.question }}</span>
                     <span>
                         <svg :class="[
@@ -101,7 +101,7 @@ const toggle = (index) => {
                 </button>
 
                 <!-- Answer tanpa animasi -->
-                <div v-show="openIndex === index" class="p-4 font-light">
+                <div v-show="openIndex === index" class="p-4 font-light border-t border-t-gray-200 dark:border-t-gray-700">
                     {{ item.answer }}
                 </div>
             </div>

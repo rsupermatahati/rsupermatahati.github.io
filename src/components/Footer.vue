@@ -70,7 +70,7 @@ const menus = [
               <a href="https://maps.app.goo.gl/6EXdXra2x6jk41yw9" target="_blank"
                 class="flex items-center hover:text-white transition">
                 <i class="fa-solid fa-location-dot mr-2 mt-1 flex-shrink-0"></i>
-                Jalan Kecubung No. 22, Semarapura, Klungkung, Bali
+                Jl. Kecubung No. 22, Semarapura, Klungkung
               </a>
             </li>
           </ul>

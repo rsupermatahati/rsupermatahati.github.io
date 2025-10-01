@@ -18,12 +18,12 @@ import appstore from "/src/assets/icons/appstore.png";
 
 <template>
 
-  <section class="flex justify-center items-center py-16 bg-green-50 dark:bg-gray-950">
+  <section class="flex justify-center items-center py-16 bg-green-50 dark:bg-gray-900">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
       <div class="order-1 md:order-2 w-full flex justify-center items-center">
         <div class="flex justify-center items-center">
           <div class="aspect-[4/3] p-2">
-            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded-xl"></img>
+            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded-2xl"></img>
           </div>
         </div>
       </div>
@@ -38,11 +38,46 @@ import appstore from "/src/assets/icons/appstore.png";
             berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas
             & kepuasan pelayanan yang anda peroleh.
           </p>
-          <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
-            class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-2 mt-4 transition-colors duration-200">
-            Appointment
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
+              class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-3 mt-4 transition-colors duration-200">
+              Buat Janji
+            </a>
+            <router-link to="/about"
+              class="inline-block border border-emerald-700 hover:bg-emerald-600 focus:outline-none text-emerald-700 hover:text-white dark:text-white font-bold rounded px-6 md:px-8 py-3 mt-4 transition-colors duration-200">
+              Tentang Kami
+            </router-link>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-green-50 dark:bg-gray-900 pb-16">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-8">
+      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 text-center">
+        <h4 class="text-xl font-bold text-emerald-700 dark:text-emerald-400">Jam Operasional</h4>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Senin – Sabtu: 08.00 – 20.00<br>
+          UGD: 24 Jam
+        </p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 text-center">
+        <h4 class="text-xl font-bold text-emerald-700 dark:text-emerald-400">Kontak</h4>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Telp: (0366) 24777<br>
+          Whatsapp: 082236668828
+        </p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 text-center">
+        <h4 class="text-xl font-bold text-emerald-700 dark:text-emerald-400">Lokasi</h4>
+        <p class="mt-2 text-gray-700 dark:text-gray-300">
+          Jl. Kecubung No. 22, Semarapura, Klungkung<br>
+          <a href="https://maps.app.goo.gl/6EXdXra2x6jk41yw9" target="_blank"
+            class="text-emerald-600 dark:text-emerald-300 hover:underline">
+            Lihat Peta<i class="fa-solid fa-arrow-right ms-1"></i>
+          </a>
+        </p>
       </div>
     </div>
   </section>
@@ -52,7 +87,7 @@ import appstore from "/src/assets/icons/appstore.png";
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div class="w-full flex justify-center items-center">
           <div class="aspect-[4/3] p-2">
-            <img :src="ambulance" alt="" class="w-full h-full object-cover object-right rounded-xl">
+            <img :src="ambulance" alt="" class="w-full h-full object-cover object-right rounded-2xl">
           </div>
         </div>
         <div class="w-full flex flex-col justify-center text-start">
@@ -122,7 +157,7 @@ import appstore from "/src/assets/icons/appstore.png";
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div class="order-1 lg:order-2 w-full flex justify-center items-center">
           <div class="aspect-[4/3] p-2">
-            <img :src="ambulance01" alt="" class="w-full h-full object-cover object-right rounded-xl">
+            <img :src="ambulance01" alt="" class="w-full h-full object-cover object-right rounded-2xl">
           </div>
         </div>
         <div class="order-2 md:order-1 flex flex-col justify-center text-start">
@@ -352,7 +387,7 @@ import appstore from "/src/assets/icons/appstore.png";
     <Faq />
   </section>
 
-  <section class="mt-20">
+  <section id="gmaps" class="mt-20">
     <Map />
   </section>
 
