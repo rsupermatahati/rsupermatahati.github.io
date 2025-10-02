@@ -83,11 +83,11 @@ import appstore from "/src/assets/icons/appstore.png";
 
   <section class="bg-green-50 dark:bg-gray-900 pt-2 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-8">
+      <h3 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-8">
         RSU Permata Hati bekerjasama dengan:
       </h3>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-1 sm:px-2 md:px-3 lg:px-4 xl:px-5">
       <Sponsors />
     </div>
   </section>

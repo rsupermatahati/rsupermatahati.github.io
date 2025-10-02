@@ -2,12 +2,12 @@
     <div class="w-full relative">
         <!-- Tombol -->
         <button
-            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-3xl p-3 hover:scale-110 transition"
+            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-4xl p-3 hover:scale-110 transition"
             @mouseenter="pause" @mouseleave="resume" @click="prev">
             ‹
         </button>
         <button
-            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-3xl p-3 hover:scale-110 transition"
+            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-4xl p-3 hover:scale-110 transition"
             @mouseenter="pause" @mouseleave="resume" @click="next">
             ›
         </button>
@@ -19,7 +19,7 @@
                 <!-- clone array untuk infinite loop -->
                 <!-- di dalam v-for -->
                 <div v-for="(logo, i) in displayLogos" :key="i"
-                    class="flex-shrink-0 flex items-center justify-center p-2" :class="colClass">
+                    class="flex-shrink-0 flex items-center justify-center p-3" :class="colClass">
                     <a :href="logo.link" target="_blank"
                         class="w-full h-full flex items-center justify-center rounded-xl p-8 bg-white dark:bg-gray-800 shadow transition-transform duration-300 hover:scale-105">
                         <img :src="logo.src"

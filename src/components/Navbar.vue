@@ -130,8 +130,8 @@ function toggleTheme() {
 
           <button @click="toggleTheme"
             class="border-s border-gray-400 ps-6 text-gray-700 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
-            <i v-if="isDark" class="fas fa-moon w-5 h-5"></i>
-            <i v-else class="fas fa-sun w-5 h-5"></i>
+            <i v-if="isDark" class="fas fa-sun w-5 h-5"></i>
+            <i v-else class="fas fa-moon w-5 h-5"></i>
           </button>
         </div>
 
@@ -139,8 +139,8 @@ function toggleTheme() {
         <div class="flex items-center md:hidden">
           <button @click="toggleTheme"
             class="px-4 text-gray-700 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
-            <i v-if="isDark" class="fas fa-moon w-5 h-5"></i>
-            <i v-else class="fas fa-sun w-5 h-5"></i>
+            <i v-if="isDark" class="fas fa-sun w-5 h-5"></i>
+            <i v-else class="fas fa-moon w-5 h-5"></i>
           </button>
           <button @click="isOpen = !isOpen"
             class="p-2 rounded text-gray-700 dark:text-gray-100 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-600">
