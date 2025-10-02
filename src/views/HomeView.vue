@@ -1,6 +1,8 @@
 <script setup>
 import Map from "../components/Map.vue";
 import Faq from "../components/Faq.vue";
+import Carousel from "../components/Carousel.vue";
+import Sponsors from "../components/Sponsors.vue";
 import ambulance from "/src/assets/images/ambulance.jpg";
 import ambulance01 from "/src/assets/images/ambulance01.jpg";
 import backgroundImage from "/src/assets/images/01.jpg";
@@ -18,58 +20,55 @@ import appstore from "/src/assets/icons/appstore.png";
 
 <template>
 
-  <section class="flex justify-center items-center py-16 bg-green-50 dark:bg-gray-900">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="order-1 md:order-2 w-full flex justify-center items-center">
-        <div class="flex justify-center items-center">
-          <div class="aspect-[4/3] p-2">
-            <img :src="backgroundImage" alt="" class="w-full h-full object-cover object-right rounded-2xl"></img>
-          </div>
-        </div>
-      </div>
-      <div class="order-2 md:order-1 w-full flex justify-center md:justify-start items-center">
-        <div class="text-center md:text-start mt-8 md:mt-0">
-          <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-emerald-800 dark:text-white">RSU PERMATA HATI</h1>
-          <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold italic text-green-700 dark:text-gray-100 mt-3">"Care
-            with Love"</h3>
-          <p class="text-justify md:pe-4 lg:pe-12 mt-3">
-            Semua elemen pelayanan RSU Permata Hati baik dari konsultan, dokter
-            spesialis, dokter umum, perawat dan bidan serta tim paramedis selalu
-            berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas
-            & kepuasan pelayanan yang anda peroleh.
-          </p>
-          <div class="w-full flex justify-center md:justify-start gap-3">
-            <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
-              class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-3 mt-4 transition-colors duration-200">
-              Buat Janji
-            </a>
-            <router-link to="/about"
-              class="inline-block border border-emerald-700 hover:bg-emerald-600 focus:outline-none text-emerald-700 hover:text-white dark:text-white font-bold rounded px-6 md:px-8 py-3 mt-4 transition-colors duration-200">
-              Tentang Kami
-            </router-link>
-          </div>
+  <section class="flex justify-center items-center pt-4 md:pt-16 pb-16 bg-green-50 dark:bg-gray-900">
+    <div class="max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mt-8 md:mt-0">
+        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-emerald-800 dark:text-white">RSU PERMATA HATI</h1>
+        <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold italic text-green-700 dark:text-gray-100 mt-4">"Care
+          with Love"</h3>
+        <p class="text-justify sm:text-center md:pe-4 lg:pe-12 mt-4">
+          Semua elemen pelayanan RSU Permata Hati baik dari konsultan, dokter
+          spesialis, dokter umum, perawat dan bidan serta tim paramedis selalu
+          berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas
+          & kepuasan pelayanan yang anda peroleh.
+        </p>
+        <div class="w-full flex justify-center gap-3 mt-5">
+          <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
+            class="inline-block bg-emerald-700 hover:bg-emerald-600 focus:outline-none text-white font-bold rounded px-6 md:px-8 py-2 transition-colors duration-200">
+            Buat Janji
+          </a>
+          <router-link to="/about"
+            class="inline-block border border-emerald-700 hover:bg-emerald-600 focus:outline-none text-emerald-700 hover:text-white dark:text-white font-bold rounded px-6 md:px-8 py-2 transition-colors duration-200">
+            Tentang Kami
+          </router-link>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="bg-green-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <Carousel />
+    </div>
+  </section>
+
   <section class="bg-green-50 dark:bg-gray-900 pb-16">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-8">
-      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 text-center">
+      <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 text-center">
         <h4 class="text-xl font-bold text-emerald-700 dark:text-emerald-400">Jam Operasional</h4>
         <p class="mt-2 text-gray-700 dark:text-gray-300">
           Senin – Sabtu: 08.00 – 20.00<br>
           UGD: 24 Jam
         </p>
       </div>
-      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 text-center">
+      <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 text-center">
         <h4 class="text-xl font-bold text-emerald-700 dark:text-emerald-400">Kontak</h4>
         <p class="mt-2 text-gray-700 dark:text-gray-300">
           Telp: (0366) 24777<br>
           Whatsapp: 082236668828
         </p>
       </div>
-      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 text-center">
+      <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 text-center">
         <h4 class="text-xl font-bold text-emerald-700 dark:text-emerald-400">Lokasi</h4>
         <p class="mt-2 text-gray-700 dark:text-gray-300">
           Jl. Kecubung No. 22, Semarapura, Klungkung<br>
@@ -79,6 +78,17 @@ import appstore from "/src/assets/icons/appstore.png";
           </a>
         </p>
       </div>
+    </div>
+  </section>
+
+  <section class="bg-green-50 dark:bg-gray-900 pt-2 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-8">
+        RSU Permata Hati bekerjasama dengan:
+      </h3>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Sponsors />
     </div>
   </section>
 
@@ -366,7 +376,7 @@ import appstore from "/src/assets/icons/appstore.png";
                 praktis melalui aplikasi Mobile JKN, sehingga proses administrasi menjadi lebih cepat, efisien, dan
                 nyaman.
               </p>
-              <div class="flex flex-wrap gap-3">
+              <div class="flex gap-3">
                 <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id" target="_blank"
                   rel="noopener noreferrer">
                   <img :src="playstore" alt="" class="w-full">
