@@ -121,7 +121,7 @@ const toggleTheme = () => {
 
 // Scroll handler
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 10;
+  isScrolled.value = window.scrollY > 100;
 };
 
 // Keyboard navigation
@@ -150,10 +150,10 @@ onUnmounted(() => {
 
 <template>
   <nav 
-    class="sticky top-0 z-50 bg-white/75 dark:bg-neutral-900/95 backdrop-blur-lg border-b transition-all duration-300"
+    class="sticky w-full top-0 z-50 bg-white dark:bg-neutral-900 backdrop-blur-lg border-b transition-all duration-300"
     :class="{
-      'border-neutral-200/50 dark:border-neutral-800/50 shadow-sm': !isScrolled,
-      'border-neutral-300 dark:border-neutral-700 shadow-lg bg-white/98 dark:bg-neutral-900/98': isScrolled
+      'border-neutral-200/50 dark:border-neutral-800/50 bg-white dark:bg-neutral-900': !isScrolled,
+      'border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/90': isScrolled
     }"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -169,12 +169,12 @@ onUnmounted(() => {
             <img 
               :src="logolight" 
               alt="RSU Permata Hati" 
-              class="h-8 w-auto block dark:hidden transition-opacity duration-300"
+              class="h-10 w-auto block dark:hidden transition-opacity duration-300"
             />
             <img 
               :src="logodark" 
               alt="RSU Permata Hati" 
-              class="h-8 w-auto hidden dark:block transition-opacity duration-300"
+              class="h-10 w-auto hidden dark:block transition-opacity duration-300"
             />
           </router-link>
         </div>
@@ -256,13 +256,14 @@ onUnmounted(() => {
           </div>
 
           <!-- Theme Toggle Desktop -->
+          <span class="px-4 text-neutral-700 dark:text-neutral-200">|</span>
           <button 
             @click="toggleTheme"
-            class="ml-4 p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+            class="p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
             :title="currentThemeLabel"
             :aria-label="currentThemeLabel"
           >
-            <i :class="currentThemeIcon + ' w-5 h-5 transition-transform duration-300 hover:rotate-45'"></i>
+            <i :class="currentThemeIcon + ' w-5 h-5 transition-transform duration-300'"></i>
           </button>
         </div>
 

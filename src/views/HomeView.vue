@@ -111,14 +111,14 @@ const rooms = [
 
 <template>
   <!-- Hero Section dengan Carousel sebagai Background -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Carousel Background -->
+  <section class="relative h-screen md:h-full py-20 flex items-center justify-center overflow-hidden">
+    <!-- Background -->
     <div class="absolute inset-0 z-0">
-      <Carousel />
+      <img :src="backgroundImage" alt="img" class="w-full h-full object-cover object-right">
     </div>
     
     <!-- Overlay Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-green-800/60 dark:from-neutral-900/90 dark:to-neutral-800/80 z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-emerald-800/90 to-green-700/70 dark:from-black/90 dark:to-black/70 z-10 backdrop-blur"></div>
     
     <!-- Hero Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
@@ -130,33 +130,32 @@ const rooms = [
             <span class="text-white font-semibold text-sm">Rumah Sakit Terpercaya di Klungkung</span>
           </div>
           
-          <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight drop-shadow-2xl">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-2xl">
             RSU PERMATA HATI
           </h1>
           
           <div class="relative inline-block">
-            <h3 class="text-3xl md:text-5xl lg:text-6xl font-bold italic text-emerald-200 relative z-10 drop-shadow-lg">
+            <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold italic text-green-400 relative z-10 drop-shadow-lg">
               "Care with Love"
             </h3>
-            <div class="absolute -bottom-3 left-0 w-full h-2 bg-emerald-400/60 rounded-full blur-sm"></div>
           </div>
         </div>
         
-        <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
+        <p class="text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
           Semua elemen pelayanan RSU Permata Hati baik dari konsultan, dokter spesialis, dokter umum, perawat dan bidan serta tim paramedis selalu berkomitmen memberikan pelayanan terbaik dari hati untuk menjamin kualitas & kepuasan pelayanan yang anda peroleh.
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+        <div class="flex flex-wrap gap-6 justify-center items-center pt-8">
           <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
-            class="group relative bg-white hover:bg-emerald-50 text-emerald-700 font-bold rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg min-w-[200px] text-center text-lg">
+            class="group relative bg-white hover:bg-emerald-50 text-emerald-700 font-bold rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg min-w-[250px] text-center text-lg">
             <span class="relative z-10 flex items-center justify-center">
               <i class="fas fa-calendar-check mr-3"></i>
-              Buat Janji Online
+              Buat Janji
             </span>
           </a>
           
           <router-link to="/about"
-            class="group relative border-2 border-white text-white hover:bg-white hover:text-emerald-700 font-bold rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 min-w-[200px] text-center text-lg">
+            class="group relative border-2 border-white text-white hover:bg-white hover:text-emerald-700 font-medium rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 min-w-[250px] text-center text-lg">
             <span class="relative z-10 flex items-center justify-center">
               <i class="fas fa-info-circle mr-3"></i>
               Tentang Kami
@@ -165,7 +164,7 @@ const rooms = [
         </div>
         
         <!-- Scroll Indicator -->
-        <div class="pt-12">
+        <div class="py-12">
           <div class="animate-bounce">
             <i class="fas fa-chevron-down text-white text-2xl opacity-70"></i>
           </div>
@@ -236,6 +235,18 @@ const rooms = [
   <!-- Services Section -->
   <section class="py-20 bg-white dark:bg-neutral-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-4 mb-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-emerald-700 dark:text-white leading-tight">
+              Layanan Unggulan<br>
+              <span class="text-green-600 dark:text-emerald-400">RSU Permata Hati</span>
+            </h2>
+            <div class="w-24 h-2 bg-emerald-500 rounded-full"></div>
+            <p class="text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            RSU Permata Hati hadir untuk memberikan pelayanan kesehatan yang aman, mudah diakses, terjangkau, dan profesional. Kami terus berkomitmen menghadirkan sistem modern serta layanan yang memudahkan pasien dan keluarga dalam setiap proses perawatan.
+          </p>
+          </div>
+          
+          
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative">
           <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
@@ -246,17 +257,7 @@ const rooms = [
         </div>
         
         <div class="space-y-8">
-          <div class="space-y-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-emerald-700 dark:text-white leading-tight">
-              Layanan Unggulan<br>
-              <span class="text-green-600 dark:text-emerald-400">RSU Permata Hati</span>
-            </h2>
-            <div class="w-24 h-2 bg-emerald-500 rounded-full"></div>
-          </div>
           
-          <p class="text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed">
-            RSU Permata Hati hadir untuk memberikan pelayanan kesehatan yang aman, mudah diakses, terjangkau, dan profesional. Kami terus berkomitmen menghadirkan sistem modern serta layanan yang memudahkan pasien dan keluarga dalam setiap proses perawatan.
-          </p>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div v-for="(feature, index) in services" :key="index" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-neutral-800 dark:to-neutral-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-emerald-100 dark:border-neutral-700">
@@ -279,20 +280,18 @@ const rooms = [
   <!-- Why Choose Us Section -->
   <section class="py-20 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="order-2 lg:order-1 space-y-8">
-          <div class="space-y-4">
+      <div class="space-y-4 mb-10">
             <h2 class="text-4xl md:text-5xl font-bold text-emerald-700 dark:text-white leading-tight">
               Mengapa Memilih<br>
               <span class="text-green-600 dark:text-emerald-400">RSU Permata Hati?</span>
             </h2>
             <div class="w-24 h-2 bg-emerald-500 rounded-full"></div>
-          </div>
-          
-          <p class="text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            <p class="text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed">
             RSU Permata Hati berkomitmen memberikan pelayanan terbaik dengan fasilitas modern, tenaga medis berpengalaman, dan akses yang mudah.
           </p>
-          
+          </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1 space-y-8">
           <div class="space-y-6">
             <div v-for="(reason, index) in reasons" :key="index" class="group flex items-start p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg hover:shadow-xl transition-all duration-500 border border-emerald-100 dark:border-neutral-700">
               <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg mr-5">
@@ -410,7 +409,7 @@ const rooms = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="order-2 lg:order-1">
-          <div class="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl p-8 shadow-2xl border border-emerald-100 dark:border-neutral-700">
+          <div class="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800 rounded-full border-emerald-100 dark:border-neutral-700">
             <img :src="jkn" alt="Mobile JKN" class="w-full h-auto transform hover:scale-105 transition-transform duration-500">
           </div>
         </div>
@@ -431,7 +430,7 @@ const rooms = [
           <div class="flex flex-col sm:flex-row gap-6 pt-4">
             <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id" target="_blank"
               class="group flex items-center justify-center bg-black hover:bg-gray-900 text-white rounded-2xl px-8 py-5 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl flex-1">
-              <img :src="playstore" alt="Google Play" class="h-10 mr-4">
+              <i class="fab fa-google-play text-3xl mr-4"></i>
               <div class="text-left">
                 <div class="text-sm opacity-90">Download on</div>
                 <div class="font-bold text-lg">Google Play</div>
@@ -440,7 +439,7 @@ const rooms = [
             
             <a href="https://apps.apple.com/id/app/mobile-jkn/id1237601115" target="_blank"
               class="group flex items-center justify-center bg-black hover:bg-gray-900 text-white rounded-2xl px-8 py-5 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl flex-1">
-              <img :src="appstore" alt="App Store" class="h-10 mr-4">
+              <i class="fab fa-apple text-3xl mr-4"></i>
               <div class="text-left">
                 <div class="text-sm opacity-90">Download on</div>
                 <div class="font-bold text-lg">App Store</div>
