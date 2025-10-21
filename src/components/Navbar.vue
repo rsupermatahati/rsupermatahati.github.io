@@ -159,7 +159,7 @@ onUnmounted(() => {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
-        <div class="flex items-center flex-shrink-0">
+        <div class="flex items-center shrink-0">
           <router-link 
             to="/" 
             class="flex items-center transition-all duration-300 hover:scale-105 active:scale-95"
@@ -214,7 +214,7 @@ onUnmounted(() => {
             >
               <span>{{ menu.label }}</span>
               <svg 
-                class="w-4 h-4 transition-transform duration-200 flex-shrink-0"
+                class="w-4 h-4 transition-transform duration-200 shrink-0"
                 :class="{ 'rotate-180': openMenu === index }"
                 fill="currentColor" 
                 viewBox="0 0 20 20"
@@ -349,7 +349,7 @@ onUnmounted(() => {
               >
                 <span>{{ menu.label }}</span>
                 <svg 
-                  class="w-4 h-4 transition-transform duration-200 flex-shrink-0"
+                  class="w-4 h-4 transition-transform duration-200 shrink-0"
                   :class="{ 'rotate-180': openMobileMenu === index }"
                   fill="currentColor" 
                   viewBox="0 0 20 20"

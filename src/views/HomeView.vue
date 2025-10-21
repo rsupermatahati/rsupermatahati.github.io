@@ -111,14 +111,14 @@ const rooms = [
 
 <template>
   <!-- Hero Section dengan Carousel sebagai Background -->
-  <section class="relative h-screen md:h-full py-20 flex items-center justify-center overflow-hidden">
+  <section class="relative min-h-screen md:min-h-full py-16 md:py-20 flex items-center justify-center overflow-hidden">
     <!-- Background -->
     <div class="absolute inset-0 z-0">
       <img :src="backgroundImage" alt="img" class="w-full h-full object-cover object-right">
     </div>
     
     <!-- Overlay Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-r from-emerald-800/90 to-green-700/70 dark:from-black/90 dark:to-black/70 z-10 backdrop-blur"></div>
+    <div class="absolute inset-0 bg-linear-to-r from-emerald-800/90 to-green-700/70 dark:from-black/90 dark:to-black/70 z-10 backdrop-blur"></div>
     
     <!-- Hero Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
@@ -178,7 +178,7 @@ const rooms = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="group bg-white dark:bg-neutral-800 rounded-3xl p-8 text-center shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-emerald-100 dark:border-neutral-700">
-          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+          <div class="w-20 h-20 bg-linear-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
             <i class="fas fa-clock text-2xl text-white"></i>
           </div>
           <h4 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Jam Operasional</h4>
@@ -189,7 +189,7 @@ const rooms = [
         </div>
         
         <div class="group bg-white dark:bg-neutral-800 rounded-3xl p-8 text-center shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-emerald-100 dark:border-neutral-700">
-          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+          <div class="w-20 h-20 bg-linear-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
             <i class="fas fa-phone-alt text-2xl text-white"></i>
           </div>
           <h4 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Kontak Darurat</h4>
@@ -200,7 +200,7 @@ const rooms = [
         </div>
         
         <div class="group bg-white dark:bg-neutral-800 rounded-3xl p-8 text-center shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-emerald-100 dark:border-neutral-700">
-          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+          <div class="w-20 h-20 bg-linear-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
             <i class="fas fa-map-marker-alt text-2xl text-white"></i>
           </div>
           <h4 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Lokasi</h4>
@@ -217,7 +217,7 @@ const rooms = [
   </section>
 
   <!-- Sponsors Section -->
-  <section class="py-20 bg-gradient-to-b from-emerald-50 to-white dark:from-neutral-800 dark:to-neutral-900 mt-20">
+  <section class="py-20 bg-linear-to-b from-emerald-50 to-white dark:from-neutral-800 dark:to-neutral-900 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h3 class="text-3xl md:text-4xl font-bold text-emerald-700 dark:text-emerald-400 mb-6">
@@ -249,7 +249,7 @@ const rooms = [
           
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative">
-          <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+          <div class="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl">
             <img :src="ambulance" alt="Pelayanan Ambulance RSU Permata Hati" class="w-full h-full object-cover object-right transition-transform duration-700 hover:scale-105">
           </div>
           <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
@@ -260,9 +260,9 @@ const rooms = [
           
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div v-for="(feature, index) in services" :key="index" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-neutral-800 dark:to-neutral-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-emerald-100 dark:border-neutral-700">
+            <div v-for="(feature, index) in services" :key="index" class="group bg-linear-to-br from-white to-emerald-50 dark:from-neutral-800 dark:to-neutral-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-emerald-100 dark:border-neutral-700">
               <div class="flex items-start space-x-4">
-                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div class="shrink-0 w-14 h-14 bg-linear-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <i :class="feature.icon + ' text-white text-lg'"></i>
                 </div>
                 <div>
@@ -278,7 +278,7 @@ const rooms = [
   </section>
 
   <!-- Why Choose Us Section -->
-  <section class="py-20 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
+  <section class="py-20 bg-linear-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="space-y-4 mb-10">
             <h2 class="text-4xl md:text-5xl font-bold text-emerald-700 dark:text-white leading-tight">
@@ -294,7 +294,7 @@ const rooms = [
         <div class="order-2 lg:order-1 space-y-8">
           <div class="space-y-6">
             <div v-for="(reason, index) in reasons" :key="index" class="group flex items-start p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg hover:shadow-xl transition-all duration-500 border border-emerald-100 dark:border-neutral-700">
-              <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg mr-5">
+              <div class="shrink-0 w-14 h-14 bg-linear-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg mr-5">
                 <i :class="reason.icon + ' text-white text-lg'"></i>
               </div>
               <div class="flex-1">
@@ -306,7 +306,7 @@ const rooms = [
         </div>
         
         <div class="order-1 lg:order-2 relative">
-          <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+          <div class="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl">
             <img :src="ambulance01" alt="Fasilitas RSU Permata Hati" class="w-full h-full object-cover object-right transition-transform duration-700 hover:scale-105">
           </div>
           <div class="absolute -top-8 -left-8 w-32 h-32 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
@@ -317,7 +317,7 @@ const rooms = [
   </section>
 
   <!-- Quote Section -->
-  <section class="relative py-28 bg-gradient-to-r from-emerald-800 to-green-700 dark:from-neutral-800 dark:to-neutral-700 overflow-hidden">
+  <section class="relative py-28 bg-linear-to-r from-emerald-800 to-green-700 dark:from-neutral-800 dark:to-neutral-700 overflow-hidden">
     <div class="absolute inset-0 bg-black/30"></div>
     <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%20fill-rule%3D%22evenodd%22%3E%3Ccircle%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E')]"></div>
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -343,7 +343,7 @@ const rooms = [
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div v-for="(doctor, index) in doctors" :key="index" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 overflow-hidden border border-emerald-100 dark:border-neutral-700">
+        <div v-for="(doctor, index) in doctors" :key="index" class="group bg-linear-to-br from-white to-emerald-50 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 overflow-hidden border border-emerald-100 dark:border-neutral-700">
           <div class="aspect-square overflow-hidden">
             <img :src="doctor.image" :alt="doctor.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
           </div>
@@ -356,7 +356,7 @@ const rooms = [
       
       <div class="text-center mt-16">
         <router-link to="/outpatient-care"
-          class="group inline-flex items-center bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold rounded-2xl px-10 py-4 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl text-lg">
+          class="group inline-flex items-center bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold rounded-2xl px-10 py-4 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl text-lg">
           <span>Lihat Semua Dokter</span>
           <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
         </router-link>
@@ -365,7 +365,7 @@ const rooms = [
   </section>
 
   <!-- Rooms Section -->
-  <section class="py-20 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
+  <section class="py-20 bg-linear-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-5xl font-bold text-emerald-700 dark:text-white mb-6">
@@ -378,14 +378,14 @@ const rooms = [
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div v-for="(room, index) in rooms" :key="index" class="group bg-gradient-to-br from-white to-emerald-50 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 overflow-hidden border border-emerald-100 dark:border-neutral-700">
-          <div class="aspect-[4/3] overflow-hidden">
+        <div v-for="(room, index) in rooms" :key="index" class="group bg-linear-to-br from-white to-emerald-50 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 overflow-hidden border border-emerald-100 dark:border-neutral-700">
+          <div class="aspect-4/3 overflow-hidden">
             <img :src="room.image" :alt="room.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
           </div>
           <div class="p-6">
             <div class="flex justify-between items-start mb-4">
               <h3 class="font-bold text-emerald-700 dark:text-white text-xl">{{ room.name }}</h3>
-              <span class="bg-gradient-to-r from-emerald-500 to-green-500 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+              <span class="bg-linear-to-r from-emerald-500 to-green-500 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
                 {{ room.type }}
               </span>
             </div>
@@ -396,7 +396,7 @@ const rooms = [
       
       <div class="text-center mt-16">
         <router-link to="/inpatient-care"
-          class="group inline-flex items-center bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold rounded-2xl px-10 py-4 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl text-lg">
+          class="group inline-flex items-center bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold rounded-2xl px-10 py-4 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl text-lg">
           <span>Lihat Semua Kamar</span>
           <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
         </router-link>
@@ -409,7 +409,7 @@ const rooms = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="order-2 lg:order-1">
-          <div class="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800 rounded-full border-emerald-100 dark:border-neutral-700">
+          <div class="bg-linear-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800 rounded-full border-emerald-100 dark:border-neutral-700">
             <img :src="jkn" alt="Mobile JKN" class="w-full h-auto transform hover:scale-105 transition-transform duration-500">
           </div>
         </div>
@@ -452,7 +452,7 @@ const rooms = [
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-20 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
+  <section class="py-20 bg-linear-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
     <Faq />
   </section>
 
