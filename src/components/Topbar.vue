@@ -17,7 +17,7 @@ const socialLinks = {
 
 <template>
     <div
-        class="bg-emerald-700 text-sm text-gray-200 overflow-x-auto whitespace-nowrap hide-scrollbar">
+        class="bg-emerald-700 text-sm text-neutral-200 overflow-x-auto whitespace-nowrap hide-scrollbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center min-w-max py-2 space-x-6">
             <!-- Kontak -->
             <div class="flex space-x-6">

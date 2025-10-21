@@ -56,26 +56,26 @@ onMounted(() => {
           d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
         </path>
       </svg>
-      <p class="text-gray-600 dark:text-gray-300">Memuat data ketersediaan bed...</p>
+      <p class="text-neutral-600 dark:text-neutral-300">Memuat data ketersediaan bed...</p>
     </div>
 
     <div v-else-if="beds.length" class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700">
-        <thead class="bg-gray-100 dark:bg-gray-800">
+      <table class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-700 border border-neutral-200 dark:border-neutral-700">
+        <thead class="bg-neutral-100 dark:bg-neutral-800">
           <tr>
-            <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">Bangsal</th>
-            <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">Kelas</th>
-            <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">Kosong</th>
-            <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">Terisi</th>
-            <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">Kapasitas</th>
+            <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">Bangsal</th>
+            <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">Kelas</th>
+            <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">Kosong</th>
+            <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">Terisi</th>
+            <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">Kapasitas</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
           <tr v-for="(item, idx) in beds" :key="idx">
-            <td class="px-4 py-2 text-gray-800 dark:text-gray-100 font-semibold">
+            <td class="px-4 py-2 text-neutral-800 dark:text-neutral-100 font-semibold">
               {{ item.nama }}
             </td>
-            <td class="px-4 py-2 text-gray-800 dark:text-gray-100">
+            <td class="px-4 py-2 text-neutral-800 dark:text-neutral-100">
               {{ item.data?.[0]?.kelas }}
             </td>
             <td class="px-4 py-2 text-green-600 font-bold">
@@ -84,7 +84,7 @@ onMounted(() => {
             <td class="px-4 py-2 text-red-600 font-bold">
               {{ item.data?.[0]?.bed_terisi }}
             </td>
-            <td class="px-4 py-2 text-gray-800 dark:text-gray-100">
+            <td class="px-4 py-2 text-neutral-800 dark:text-neutral-100">
               {{ item.data?.[0]?.bed_kapasitas }}
             </td>
           </tr>
@@ -92,7 +92,7 @@ onMounted(() => {
       </table>
     </div>
 
-    <p v-else class="text-gray-500 dark:text-gray-400">
+    <p v-else class="text-neutral-500 dark:text-neutral-400">
       Data ketersediaan bed tidak tersedia.
     </p>
   </div>

@@ -85,23 +85,23 @@ onMounted(() => {
     <div class="grid grid-cols-12 gap-8">
       <div class="col-span-12 lg:col-span-8">
         <div v-if="isLoading" class="animate-pulse mb-8 space-y-2">
-          <div class="h-8 bg-gray-300 rounded w-1/3"></div>
-          <div class="h-6 bg-gray-300 rounded w-2/3"></div>
+          <div class="h-8 bg-neutral-300 rounded w-1/3"></div>
+          <div class="h-6 bg-neutral-300 rounded w-2/3"></div>
         </div>
         <div v-else class="mb-8">
           <h1 class="text-3xl font-bold mb-2">{{ servicePromise.title }}</h1>
           <h2 class="text-lg">{{ servicePromise.subtitle }}</h2>
         </div>
         <div v-if="isLoading" class="space-y-4 animate-pulse">
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-full"></div>
-          <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-full"></div>
+          <div class="h-4 bg-neutral-300 rounded w-3/4"></div>
         </div>
         <div v-else>
           <div class="space-y-12">
@@ -119,7 +119,7 @@ onMounted(() => {
       </div>
       <div class="col-span-12 lg:col-span-4">
         <div v-if="isLoading" class="animate-pulse space-y-4">
-          <div class="h-96 bg-gray-300 rounded w-full"></div>
+          <div class="h-96 bg-neutral-300 rounded w-full"></div>
         </div>
         <div v-else>
           <FbEmbed />

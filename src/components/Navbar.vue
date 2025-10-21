@@ -1,8 +1,13 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import logolight from '/src/assets/icons/logo.png';
 import logodark from '/src/assets/icons/dark.png';
 
+const route = useRoute();
+const router = useRouter();
+
+// Navigation data
 const menus = [
   {
     label: "Profil",
@@ -36,10 +41,23 @@ const menus = [
   },
 ];
 
-const isOpen = ref(false); // menu mobile
-const openMenu = ref(null); // dropdown desktop
-const openMobileMenu = ref(null); // dropdown mobile
+// Reactive state
+const isOpen = ref(false);
+const openMenu = ref(null);
+const openMobileMenu = ref(null);
+const isDark = ref(false);
+const isScrolled = ref(false);
 
+// Computed properties
+const currentThemeIcon = computed(() => {
+  return isDark.value ? 'fas fa-sun' : 'fas fa-moon';
+});
+
+const currentThemeLabel = computed(() => {
+  return isDark.value ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+});
+
+// Methods
 const toggleMenu = (index) => {
   openMenu.value = openMenu.value === index ? null : index;
 };
@@ -49,31 +67,47 @@ const toggleMobileMenu = (index) => {
 };
 
 const closeAllMenus = (event) => {
-  if (window.innerWidth >= 768 && !event.target.closest(".relative")) {
-    openMenu.value = null;
+  if (window.innerWidth >= 768) {
+    const isClickInsideNav = event.target.closest(".nav-dropdown") || event.target.closest(".nav-menu-trigger");
+    if (!isClickInsideNav) {
+      openMenu.value = null;
+    }
   }
 };
 
-onMounted(() => {
-  document.addEventListener("click", closeAllMenus);
-});
+const closeMobileMenu = () => {
+  isOpen.value = false;
+  openMobileMenu.value = null;
+};
 
-onUnmounted(() => {
-  document.removeEventListener("click", closeAllMenus);
-});
+const navigateTo = (path) => {
+  closeMobileMenu();
+  router.push(path);
+};
 
-// Theme state
-const isDark = ref(false);
-onMounted(() => {
+const isActiveRoute = (menuPath) => {
+  return route.path === menuPath;
+};
+
+const isChildActive = (children) => {
+  return children?.some(child => route.path === child.path);
+};
+
+// Theme management
+const initTheme = () => {
   const savedTheme = localStorage.getItem("theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   if (savedTheme === "dark" || (savedTheme === null && prefersDark)) {
     document.documentElement.classList.add("dark");
     isDark.value = true;
+  } else {
+    document.documentElement.classList.remove("dark");
+    isDark.value = false;
   }
-});
-function toggleTheme() {
+};
+
+const toggleTheme = () => {
   if (document.documentElement.classList.contains("dark")) {
     document.documentElement.classList.remove("dark");
     localStorage.setItem("theme", "light");
@@ -83,44 +117,137 @@ function toggleTheme() {
     localStorage.setItem("theme", "dark");
     isDark.value = true;
   }
-}
+};
+
+// Scroll handler
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 10;
+};
+
+// Keyboard navigation
+const handleKeydown = (event) => {
+  if (event.key === 'Escape') {
+    isOpen.value = false;
+    openMenu.value = null;
+    openMobileMenu.value = null;
+  }
+};
+
+// Lifecycle
+onMounted(() => {
+  document.addEventListener("click", closeAllMenus);
+  window.addEventListener("scroll", handleScroll);
+  document.addEventListener("keydown", handleKeydown);
+  initTheme();
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", closeAllMenus);
+  window.removeEventListener("scroll", handleScroll);
+  document.removeEventListener("keydown", handleKeydown);
+});
 </script>
 
 <template>
-  <nav class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-b-gray-100 dark:border-b-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center overflow-hidden">
-          <router-link to="/" class="flex items-center">
-            <!-- Logo Light -->
-            <img :src="logolight" alt="Logo Light" class="h-10 block dark:hidden" />
-            <!-- Logo Dark -->
-            <img :src="logodark" alt="Logo Dark" class="h-10 hidden dark:block" />
+  <nav 
+    class="sticky top-0 z-50 bg-white/75 dark:bg-neutral-900/95 backdrop-blur-lg border-b transition-all duration-300"
+    :class="{
+      'border-neutral-200/50 dark:border-neutral-800/50 shadow-sm': !isScrolled,
+      'border-neutral-300 dark:border-neutral-700 shadow-lg bg-white/98 dark:bg-neutral-900/98': isScrolled
+    }"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center flex-shrink-0">
+          <router-link 
+            to="/" 
+            class="flex items-center transition-all duration-300 hover:scale-105 active:scale-95"
+            @click="closeMobileMenu"
+            aria-label="RSU Permata Hati Home"
+          >
+            <img 
+              :src="logolight" 
+              alt="RSU Permata Hati" 
+              class="h-8 w-auto block dark:hidden transition-opacity duration-300"
+            />
+            <img 
+              :src="logodark" 
+              alt="RSU Permata Hati" 
+              class="h-8 w-auto hidden dark:block transition-opacity duration-300"
+            />
           </router-link>
         </div>
 
-        <!-- Desktop -->
-        <div class="hidden md:flex md:space-x-8 items-center">
-          <div v-for="(menu, index) in menus" :key="menu.label" class="relative">
-            <router-link v-if="!menu.children" :to="menu.path"
-              class="text-gray-900 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out font-medium">
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex md:items-center md:space-x-1">
+          <div 
+            v-for="(menu, index) in menus" 
+            :key="menu.label" 
+            class="nav-dropdown relative"
+          >
+            <!-- Menu without children -->
+            <router-link 
+              v-if="!menu.children" 
+              :to="menu.path"
+              class="nav-menu-item px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+              :class="{
+                'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm': isActiveRoute(menu.path),
+                'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(menu.path)
+              }"
+              @click="openMenu = null"
+            >
               {{ menu.label }}
             </router-link>
 
-            <a v-else href="#" @click.prevent="toggleMenu(index)"
-              class="text-gray-900 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out font-medium">
-              {{ menu.label }}
-            </a>
+            <!-- Menu with children -->
+            <button
+              v-else 
+              @click="toggleMenu(index)"
+              class="nav-menu-trigger px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+              :class="{
+                'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm': isChildActive(menu.children),
+                'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isChildActive(menu.children)
+              }"
+              :aria-expanded="openMenu === index"
+              :aria-controls="`desktop-menu-${index}`"
+            >
+              <span>{{ menu.label }}</span>
+              <svg 
+                class="w-4 h-4 transition-transform duration-200 flex-shrink-0"
+                :class="{ 'rotate-180': openMenu === index }"
+                fill="currentColor" 
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path 
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" 
+                />
+              </svg>
+            </button>
 
-            <!-- Dropdown desktop -->
-            <div v-if="openMenu === index && menu.children"
-              class="absolute mt-2 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg transition-all duration-300 -right-1/2">
-              <!-- :class="index === menus.length - 1 ? 'right-0' : 'left-0'" -->
+            <!-- Desktop Dropdown -->
+            <div 
+              v-if="openMenu === index && menu.children"
+              :id="`desktop-menu-${index}`"
+              class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-2xl transition-all duration-300 z-50"
+            >
               <ul class="py-2">
-                <li v-for="child in menu.children" :key="child.label" class="px-4 py-2">
-                  <router-link :to="child.path"
-                    class="block text-gray-900 dark:text-gray-100 hover:text-emerald-600 transition duration-300"
-                    @click="openMenu = null">
+                <li 
+                  v-for="child in menu.children" 
+                  :key="child.label"
+                >
+                  <router-link 
+                    :to="child.path"
+                    class="block px-4 py-3 text-sm transition-all duration-200 mx-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    :class="{
+                      'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 font-semibold': isActiveRoute(child.path),
+                      'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(child.path)
+                    }"
+                    @click="openMenu = null"
+                  >
                     {{ child.label }}
                   </router-link>
                 </li>
@@ -128,54 +255,163 @@ function toggleTheme() {
             </div>
           </div>
 
-          <button @click="toggleTheme"
-            class="border-s border-gray-400 ps-6 text-gray-700 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
-            <i v-if="isDark" class="fas fa-sun w-5 h-5"></i>
-            <i v-else class="fas fa-moon w-5 h-5"></i>
+          <!-- Theme Toggle Desktop -->
+          <button 
+            @click="toggleTheme"
+            class="ml-4 p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+            :title="currentThemeLabel"
+            :aria-label="currentThemeLabel"
+          >
+            <i :class="currentThemeIcon + ' w-5 h-5 transition-transform duration-300 hover:rotate-45'"></i>
           </button>
         </div>
 
-        <!-- Hamburger -->
-        <div class="flex items-center md:hidden">
-          <button @click="toggleTheme"
-            class="px-4 text-gray-700 dark:text-gray-100 hover:text-emerald-600 transition duration-300 ease-in-out">
-            <i v-if="isDark" class="fas fa-sun w-5 h-5"></i>
-            <i v-else class="fas fa-moon w-5 h-5"></i>
+        <!-- Mobile Controls -->
+        <div class="flex items-center md:hidden space-x-2">
+          <!-- Theme Toggle Mobile -->
+          <button 
+            @click="toggleTheme"
+            class="p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            :title="currentThemeLabel"
+            :aria-label="currentThemeLabel"
+          >
+            <i :class="currentThemeIcon + ' w-5 h-5'"></i>
           </button>
-          <button @click="isOpen = !isOpen"
-            class="p-2 rounded text-gray-700 dark:text-gray-100 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-600">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+
+          <!-- Mobile Menu Toggle -->
+          <button 
+            @click="isOpen = !isOpen"
+            class="p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            :aria-expanded="isOpen"
+            aria-label="Toggle navigation menu"
+            aria-controls="mobile-menu"
+          >
+            <svg 
+              class="h-6 w-6 transition-transform duration-200"
+              :class="{ 'rotate-90': isOpen }"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path 
+                v-if="!isOpen"
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M4 6h16M4 12h16M4 18h16" 
+              />
+              <path 
+                v-else
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M6 18L18 6M6 6l12 12" 
+              />
             </svg>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Mobile -->
-    <div v-if="isOpen" class="md:hidden px-6 py-4 space-y-3 bg-white dark:bg-gray-900">
-      <div v-for="(menu, index) in menus" :key="menu.label">
-        <div>
-          <a v-if="menu.children" href="#" @click.prevent="toggleMobileMenu(index)"
-            class="block py-2 font-medium text-gray-900 dark:text-gray-100 hover:text-emerald-600">
-            {{ menu.label }}
-          </a>
+    <!-- Mobile Menu -->
+    <transition
+      enter-active-class="transition-all duration-300 ease-out"
+      leave-active-class="transition-all duration-200 ease-in"
+      enter-from-class="opacity-0 -translate-y-4"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-4"
+    >
+      <div 
+        v-if="isOpen" 
+        id="mobile-menu"
+        class="md:hidden border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900"
+      >
+        <div class="px-4 py-3 space-y-1">
+          <div 
+            v-for="(menu, index) in menus" 
+            :key="menu.label"
+          >
+            <!-- Mobile Menu Item -->
+            <div>
+              <button
+                v-if="menu.children" 
+                @click="toggleMobileMenu(index)"
+                class="w-full flex items-center justify-between py-3 px-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                :class="{
+                  'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30': isChildActive(menu.children),
+                  'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isChildActive(menu.children)
+                }"
+                :aria-expanded="openMobileMenu === index"
+                :aria-controls="`mobile-submenu-${index}`"
+              >
+                <span>{{ menu.label }}</span>
+                <svg 
+                  class="w-4 h-4 transition-transform duration-200 flex-shrink-0"
+                  :class="{ 'rotate-180': openMobileMenu === index }"
+                  fill="currentColor" 
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path 
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd" 
+                  />
+                </svg>
+              </button>
 
-          <router-link v-else :to="menu.path"
-            class="block py-2 font-medium text-gray-900 dark:text-gray-100 hover:text-emerald-600"
-            @click="isOpen = false">
-            {{ menu.label }}
-          </router-link>
-        </div>
+              <router-link 
+                v-else 
+                :to="menu.path"
+                class="block w-full text-left py-3 px-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                :class="{
+                  'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30': isActiveRoute(menu.path),
+                  'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(menu.path)
+                }"
+                @click="closeMobileMenu"
+              >
+                {{ menu.label }}
+              </router-link>
+            </div>
 
-        <!-- Submenu mobile -->
-        <div v-if="openMobileMenu === index && menu.children" class="pl-6 space-y-4 mt-2">
-          <router-link v-for="child in menu.children" :key="child.label" :to="child.path"
-            class="block text-sm text-gray-900 dark:text-gray-100 hover:text-emerald-600" @click="isOpen = false">
-            {{ child.label }}
-          </router-link>
+            <!-- Mobile Submenu -->
+            <transition
+              enter-active-class="transition-all duration-300 ease-out"
+              leave-active-class="transition-all duration-200 ease-in"
+              enter-from-class="opacity-0 max-h-0"
+              enter-to-class="opacity-100 max-h-48"
+              leave-from-class="opacity-100 max-h-48"
+              leave-to-class="opacity-0 max-h-0"
+            >
+              <div 
+                v-if="openMobileMenu === index && menu.children" 
+                :id="`mobile-submenu-${index}`"
+                class="ml-4 mt-1 space-y-1 border-l-2 border-emerald-200 dark:border-emerald-800 overflow-hidden"
+              >
+                <router-link 
+                  v-for="child in menu.children" 
+                  :key="child.label" 
+                  :to="child.path"
+                  class="block py-2 px-3 rounded-lg text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  :class="{
+                    'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 font-semibold': isActiveRoute(child.path),
+                    'text-neutral-600 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(child.path)
+                  }"
+                  @click="closeMobileMenu"
+                >
+                  {{ child.label }}
+                </router-link>
+              </div>
+            </transition>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
+
+<style scoped>
+
+</style>

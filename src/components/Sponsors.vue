@@ -21,9 +21,9 @@
                 <div v-for="(logo, i) in displayLogos" :key="i"
                     class="flex-shrink-0 flex items-center justify-center p-3" :class="colClass">
                     <a :href="logo.link" target="_blank"
-                        class="w-full h-full flex items-center justify-center rounded-xl p-8 bg-white dark:bg-gray-800 shadow transition-transform duration-300 hover:scale-105">
+                        class="w-full h-full flex items-center justify-center rounded-xl p-8 bg-white dark:bg-neutral-800 shadow transition-transform duration-300 hover:scale-105">
                         <img :src="logo.src"
-                            class="h-36 md:h-28 lg:h-20 object-contain transition duration-300 dark:invert dark:grayscale"
+                            class="h-36 md:h-28 lg:h-20 object-contain transition duration-300 dark:invert dark:neutralscale"
                             alt="Sponsor logo" />
                     </a>
                 </div>

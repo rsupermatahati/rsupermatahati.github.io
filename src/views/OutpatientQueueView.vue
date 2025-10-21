@@ -76,7 +76,7 @@ const selectedPoliklinik = computed(() => {
         <h2 class="mb-8">{{ tanggal }}, {{ jam }}</h2>
         <div>
           <select id="poli" v-model="selected"
-            class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-emerald-700 focus:border-emerald-700 px-3 py-2">
+            class="w-full rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 focus:ring-emerald-700 focus:border-emerald-700 px-3 py-2">
             <option value="" disabled>Pilih Poliklinik</option>
             <option v-for="poli in poliklinikList" :key="poli.id" :value="poli.id">
               {{ poli.nama }}
@@ -90,12 +90,12 @@ const selectedPoliklinik = computed(() => {
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
           </svg>
-          <p class="text-gray-600 dark:text-gray-300">Memuat antrian poliklinik...</p>
+          <p class="text-neutral-600 dark:text-neutral-300">Memuat antrian poliklinik...</p>
         </div>
 
         <div v-else-if="antrian"
-          class="p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 space-y-6">
-          <h2 class="text-lg font-semibold text-center text-gray-800 dark:text-gray-100 mb-6">
+          class="p-4 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 space-y-6">
+          <h2 class="text-lg font-semibold text-center text-neutral-800 dark:text-neutral-100 mb-6">
             {{ selectedPoliklinik }}
           </h2>
 
@@ -104,35 +104,35 @@ const selectedPoliklinik = computed(() => {
               <h3 class="font-semibold p-2">
                 {{ item.dokter_nama }}
               </h3>
-              <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700">
-                <thead class="bg-gray-100 dark:bg-gray-800">
+              <table class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-700 border border-neutral-200 dark:border-neutral-700">
+                <thead class="bg-neutral-100 dark:bg-neutral-800">
                   <tr>
-                    <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                    <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">
                       Jam
                     </th>
-                    <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                    <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">
                       Total
                     </th>
-                    <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                    <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">
                       Terlayani
                     </th>
-                    <th class="px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-200">
+                    <th class="px-4 py-2 text-left font-medium text-neutral-700 dark:text-neutral-200">
                       Terakhir
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="px-4 py-2 text-gray-800 dark:text-gray-100">
+                    <td class="px-4 py-2 text-neutral-800 dark:text-neutral-100">
                       {{ item.jam_buka }} - {{ item.jam_tutup }}
                     </td>
-                    <td class="px-4 py-2 text-gray-800 dark:text-gray-100">
+                    <td class="px-4 py-2 text-neutral-800 dark:text-neutral-100">
                       {{ item.antrian_total }}
                     </td>
-                    <td class="px-4 py-2 text-gray-800 dark:text-gray-100">
+                    <td class="px-4 py-2 text-neutral-800 dark:text-neutral-100">
                       {{ item.antrian_terlayani }}
                     </td>
-                    <td class="px-4 py-2 text-gray-800 dark:text-gray-100">
+                    <td class="px-4 py-2 text-neutral-800 dark:text-neutral-100">
                       {{ item.antrian_last }}
                     </td>
                   </tr>
@@ -141,7 +141,7 @@ const selectedPoliklinik = computed(() => {
             </div>
           </div>
 
-          <p v-else class="text-sm text-gray-500 dark:text-gray-400">
+          <p v-else class="text-sm text-neutral-500 dark:text-neutral-400">
             Tidak ada data antrian untuk poliklinik ini.
           </p>
         </div>
