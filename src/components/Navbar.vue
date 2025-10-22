@@ -57,6 +57,39 @@ const currentThemeLabel = computed(() => {
   return isDark.value ? 'Switch to Light Mode' : 'Switch to Dark Mode';
 });
 
+// Computed untuk logo berdasarkan scroll state dan theme
+const currentLogo = computed(() => {
+  // Dark mode selalu pakai logo dark
+  if (isDark.value) return logodark;
+  
+  // Light mode: jika scrolled pakai logo dark, jika tidak pakai logo light
+  return isScrolled.value ? logolight : logodark;
+});
+
+const navbarClasses = computed(() => {
+  const baseClasses = "sticky w-full top-0 z-50 transition-all duration-300";
+  
+  if (!isScrolled.value) {
+    return `${baseClasses} bg-emerald-600 dark:bg-neutral-900`;
+  } else {
+    return `${baseClasses} bg-white/80 dark:bg-neutral-900/90 backdrop-blur-lg border-b border-neutral-200 dark:border-neutral-800`;
+  }
+});
+
+const textColorClasses = computed(() => {
+  if (!isScrolled.value && !isDark.value) {
+    return 'text-white'; // Light mode, not scrolled - white text
+  }
+  return 'text-neutral-700 dark:text-neutral-200'; // Default
+});
+
+const hoverTextColorClasses = computed(() => {
+  if (!isScrolled.value && !isDark.value) {
+    return 'hover:text-emerald-200'; // Light mode, not scrolled - light green hover
+  }
+  return 'hover:text-emerald-600 dark:hover:text-emerald-400'; // Default
+});
+
 // Methods
 const toggleMenu = (index) => {
   openMenu.value = openMenu.value === index ? null : index;
@@ -121,7 +154,7 @@ const toggleTheme = () => {
 
 // Scroll handler
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 100;
+  isScrolled.value = window.scrollY > 10;
 };
 
 // Keyboard navigation
@@ -149,13 +182,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav 
-    class="sticky w-full top-0 z-50 bg-white dark:bg-neutral-900 backdrop-blur-lg border-b transition-all duration-300"
-    :class="{
-      'border-neutral-200/50 dark:border-neutral-800/50 bg-white dark:bg-neutral-900': !isScrolled,
-      'border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/90': isScrolled
-    }"
-  >
+  <nav :class="navbarClasses">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
@@ -167,14 +194,9 @@ onUnmounted(() => {
             aria-label="RSU Permata Hati Home"
           >
             <img 
-              :src="logolight" 
+              :src="currentLogo" 
               alt="RSU Permata Hati" 
-              class="h-10 w-auto block dark:hidden transition-opacity duration-300"
-            />
-            <img 
-              :src="logodark" 
-              alt="RSU Permata Hati" 
-              class="h-10 w-auto hidden dark:block transition-opacity duration-300"
+              class="h-10 w-auto transition-opacity duration-300"
             />
           </router-link>
         </div>
@@ -190,11 +212,13 @@ onUnmounted(() => {
             <router-link 
               v-if="!menu.children" 
               :to="menu.path"
-              class="nav-menu-item px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
-              :class="{
-                'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm': isActiveRoute(menu.path),
-                'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(menu.path)
-              }"
+              class="nav-menu-item px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+              :class="[
+                isActiveRoute(menu.path) 
+                  ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm' 
+                  : `${textColorClasses} ${hoverTextColorClasses} hover:bg-white/20 dark:hover:bg-neutral-800`,
+                !isScrolled && !isDark ? 'hover:bg-emerald-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+              ]"
               @click="openMenu = null"
             >
               {{ menu.label }}
@@ -204,11 +228,13 @@ onUnmounted(() => {
             <button
               v-else 
               @click="toggleMenu(index)"
-              class="nav-menu-trigger px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
-              :class="{
-                'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm': isChildActive(menu.children),
-                'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isChildActive(menu.children)
-              }"
+              class="nav-menu-trigger px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+              :class="[
+                isChildActive(menu.children)
+                  ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm' 
+                  : `${textColorClasses} ${hoverTextColorClasses} hover:bg-white/20 dark:hover:bg-neutral-800`,
+                !isScrolled && !isDark ? 'hover:bg-emerald-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+              ]"
               :aria-expanded="openMenu === index"
               :aria-controls="`desktop-menu-${index}`"
             >
@@ -256,10 +282,15 @@ onUnmounted(() => {
           </div>
 
           <!-- Theme Toggle Desktop -->
-          <span class="px-4 text-neutral-700 dark:text-neutral-200">|</span>
+          <span class="px-4" :class="textColorClasses">|</span>
           <button 
             @click="toggleTheme"
-            class="p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+            class="p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+            :class="[
+              textColorClasses,
+              hoverTextColorClasses,
+              !isScrolled && !isDark ? 'hover:bg-emerald-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+            ]"
             :title="currentThemeLabel"
             :aria-label="currentThemeLabel"
           >
@@ -272,7 +303,12 @@ onUnmounted(() => {
           <!-- Theme Toggle Mobile -->
           <button 
             @click="toggleTheme"
-            class="p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            class="p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            :class="[
+              textColorClasses,
+              hoverTextColorClasses,
+              !isScrolled && !isDark ? 'hover:bg-emerald-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+            ]"
             :title="currentThemeLabel"
             :aria-label="currentThemeLabel"
           >
@@ -282,7 +318,12 @@ onUnmounted(() => {
           <!-- Mobile Menu Toggle -->
           <button 
             @click="isOpen = !isOpen"
-            class="p-2 rounded-lg text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            class="p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            :class="[
+              textColorClasses,
+              hoverTextColorClasses,
+              !isScrolled && !isDark ? 'hover:bg-emerald-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+            ]"
             :aria-expanded="isOpen"
             aria-label="Toggle navigation menu"
             aria-controls="mobile-menu"
@@ -414,5 +455,22 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease;
+}
 
+
+
+/* Backdrop blur fallback */
+@supports not (backdrop-filter: blur(12px)) {
+  .backdrop-blur-lg {
+    backdrop-filter: none;
+    background: white;
+  }
+  
+  .dark .backdrop-blur-lg {
+    background: #171717;
+  }
+}
 </style>
