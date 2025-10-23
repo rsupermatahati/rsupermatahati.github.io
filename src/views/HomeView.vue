@@ -1,7 +1,6 @@
 <script setup>
 import Map from "../components/Map.vue";
 import Faq from "../components/Faq.vue";
-import Carousel from "../components/Carousel.vue";
 import Sponsors from "../components/Sponsors.vue";
 import ambulance from "/src/assets/images/ambulance.jpg";
 import ambulance01 from "/src/assets/images/ambulance01.jpg";
@@ -14,8 +13,6 @@ import psuit from "/src/assets/rooms/president-suite.jpg";
 import suit from "/src/assets/rooms/suite.jpg";
 import emerald from "/src/assets/rooms/emerald.jpg";
 import jkn from "/src/assets/icons/jkn.png"
-import playstore from "/src/assets/icons/playstore.png";
-import appstore from "/src/assets/icons/appstore.png";
 
 const services = [
   {
@@ -129,7 +126,8 @@ const rooms = [
           <div
             class="inline-flex items-center bg-white/20 dark:bg-neutral-800/50 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
             <i class="fas fa-star text-yellow-400 mr-2"></i>
-            <span class="text-white font-medium text-sm">Pusat Pelayanan Kesehatan yang Profesional dan Unggul di Wilayah Bali Timur</span>
+            <span class="text-white font-medium text-sm">Pusat Pelayanan Kesehatan yang Profesional dan Unggul di
+              Wilayah Bali Timur</span>
           </div>
 
           <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-2xl">
@@ -261,7 +259,7 @@ const rooms = [
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative">
-          <div class="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl">
+          <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
             <img :src="ambulance" alt="Pelayanan Ambulance RSU Permata Hati"
               class="w-full h-full object-cover object-right transition-transform duration-700 hover:scale-105">
           </div>
@@ -326,7 +324,7 @@ const rooms = [
         </div>
 
         <div class="order-1 lg:order-2 relative">
-          <div class="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl">
+          <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
             <img :src="ambulance01" alt="Fasilitas RSU Permata Hati"
               class="w-full h-full object-cover object-right transition-transform duration-700 hover:scale-105">
           </div>
@@ -343,8 +341,7 @@ const rooms = [
   <section
     class="relative py-20 bg-linear-to-r from-emerald-800 to-green-700 dark:from-neutral-800 dark:to-neutral-700 overflow-hidden">
     <div class="absolute inset-0 bg-black/30"></div>
-    <div
-      class="absolute top-0 left-0 w-full h-full background-pattern">
+    <div class="absolute top-0 left-0 w-full h-full background-pattern">
     </div>
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <i class="fa-solid fa-quote-right text-7xl md:text-9xl text-white/50 mb-8"></i>

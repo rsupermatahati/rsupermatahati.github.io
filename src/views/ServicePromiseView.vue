@@ -59,6 +59,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <div class="bg-linear-to-b from-emerald-50 to-white dark:from-neutral-800 dark:to-neutral-900">
   <Hero2 />
   
   <div class="grid grid-cols-12 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -156,6 +157,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <style scoped>
