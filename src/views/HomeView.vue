@@ -118,7 +118,7 @@ const rooms = [
 
     <!-- Overlay Gradient -->
     <div
-      class="absolute inset-0 bg-linear-to-r from-emerald-700/90 to-green-600/70 dark:from-black/80 dark:to-black/60 z-10 backdrop-blur">
+      class="absolute inset-0 bg-linear-to-r from-emerald-700/90 to-green-600/70 dark:from-neutral-950/90 dark:to-neutral-950/70 z-10 backdrop-blur">
     </div>
 
     <!-- Hero Content -->
@@ -137,7 +137,7 @@ const rooms = [
           </h1>
 
           <div class="relative inline-block">
-            <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold italic text-lime-500 relative z-10 drop-shadow">
+            <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold italic text-yellow-400 relative z-10 drop-shadow">
               "Care with Love"
             </h3>
           </div>
@@ -151,7 +151,7 @@ const rooms = [
 
         <div class="flex flex-wrap gap-6 justify-center items-center pt-8">
           <a href="https://online.rsupermatahati.id" target="_blank" rel="noopener noreferrer"
-            class="group relative bg-white hover:bg-emerald-50 text-emerald-700 font-bold rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg min-w-[250px] text-center text-lg">
+            class="group relative bg-yellow-400 text-black font-bold rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg min-w-[250px] text-center text-lg">
             <span class="relative z-10 flex items-center justify-center">
               <i class="fas fa-calendar-check mr-3"></i>
               Buat Janji
@@ -159,7 +159,7 @@ const rooms = [
           </a>
 
           <router-link to="/about"
-            class="group relative border-2 border-white text-white hover:bg-white hover:text-emerald-700 font-medium rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 min-w-[250px] text-center text-lg">
+            class="group relative border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-bold rounded-2xl px-10 py-5 transition-all duration-300 transform hover:scale-105 min-w-[250px] text-center text-lg">
             <span class="relative z-10 flex items-center justify-center">
               <i class="fas fa-info-circle mr-3"></i>
               Tentang Kami
@@ -341,15 +341,15 @@ const rooms = [
 
   <!-- Quote Section -->
   <section
-    class="relative py-28 bg-linear-to-r from-emerald-800 to-green-700 dark:from-neutral-800 dark:to-neutral-700 overflow-hidden">
+    class="relative py-20 bg-linear-to-r from-emerald-800 to-green-700 dark:from-neutral-800 dark:to-neutral-700 overflow-hidden">
     <div class="absolute inset-0 bg-black/30"></div>
     <div
-      class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%20fill-rule%3D%22evenodd%22%3E%3Ccircle%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E')]">
+      class="absolute top-0 left-0 w-full h-full background-pattern">
     </div>
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <i class="fa-solid fa-quote-right text-7xl md:text-9xl text-white/10 mb-8"></i>
+      <i class="fa-solid fa-quote-right text-7xl md:text-9xl text-white/50 mb-8"></i>
       <h2
-        class="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8 max-w-5xl mx-auto drop-shadow-lg">
+        class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 max-w-5xl mx-auto drop-shadow-lg">
         "Kesehatan adalah keadaan fisik, mental dan sosial yang lengkap, dan bukan hanya tidak adanya penyakit atau
         kelemahan."
       </h2>
@@ -489,7 +489,7 @@ const rooms = [
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-20 bg-linear-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
+  <section class="bg-linear-to-br from-emerald-50 to-green-50 dark:from-neutral-900 dark:to-neutral-800">
     <Faq />
   </section>
 
@@ -512,5 +512,10 @@ html {
 /* Custom shadow for better depth */
 .shadow-3xl {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.background-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 20px 20px;
 }
 </style>

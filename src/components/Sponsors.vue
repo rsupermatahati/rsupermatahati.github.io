@@ -1,61 +1,3 @@
-<template>
-    <div class="w-full relative group">
-        <!-- Navigation Buttons with Font Awesome -->
-        <button
-            class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 rounded-full flex items-center justify-center text-emerald-700 dark:text-emerald-400 hover:scale-110 hover:bg-white dark:hover:bg-neutral-800 hover:shadow-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"
-            @mouseenter="pause" 
-            @mouseleave="resume" 
-            @click="prev"
-            aria-label="Previous sponsors">
-            <i class="fas fa-chevron-left text-lg"></i>
-        </button>
-        
-        <button
-            class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 rounded-full flex items-center justify-center text-emerald-700 dark:text-emerald-400 hover:scale-110 hover:bg-white dark:hover:bg-neutral-800 hover:shadow-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"
-            @mouseenter="pause" 
-            @mouseleave="resume" 
-            @click="next"
-            aria-label="Next sponsors">
-            <i class="fas fa-chevron-right text-lg"></i>
-        </button>
-
-        <!-- Progress Indicator -->
-        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
-            <div v-for="(logo, index) in logos" :key="index" 
-                 class="w-2 h-2 rounded-full transition-all duration-300"
-                 :class="getActiveDotClass(index)">
-            </div>
-        </div>
-
-        <!-- Carousel Track -->
-        <div class="overflow-hidden py-8">
-            <div class="flex transition-transform duration-700 ease-out"
-                :style="{ transform: `translateX(-${currentIndex * (100 / perView)}%)` }">
-                
-                <!-- Display Logos with Enhanced Styling -->
-                <div v-for="(logo, i) in displayLogos" :key="i"
-                    class="flex-shrink-0 flex items-center justify-center p-4" :class="colClass">
-                    
-                    <a :href="logo.link" target="_blank" rel="noopener noreferrer"
-                        class="w-full h-full flex items-center justify-center rounded-2xl p-6 bg-gradient-to-br from-white to-emerald-50 dark:from-neutral-800 dark:to-neutral-900 shadow-lg hover:shadow-2xl border border-emerald-100 dark:border-neutral-700 transition-all duration-500 hover:scale-105 hover:-translate-y-2 group/card">
-                        
-                        <!-- Logo Container -->
-                        <div class="relative w-full h-20 flex items-center justify-center">
-                            <img :src="logo.src"
-                                class="h-16 md:h-14 lg:h-12 xl:h-16 object-contain transition-all duration-500 group-hover/card:scale-110 filter grayscale hover:grayscale-0"
-                                :alt="logo.alt || 'Sponsor logo'" 
-                                loading="lazy" />
-                            
-                            <!-- Hover Effect Overlay -->
-                            <div class="absolute inset-0 bg-emerald-500/0 group-hover/card:bg-emerald-500/5 rounded-xl transition-all duration-500"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
@@ -243,6 +185,64 @@ onBeforeUnmount(() => {
 });
 </script>
 
+<template>
+    <div class="w-full relative group">
+        <!-- Navigation Buttons with Font Awesome -->
+        <button
+            class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 rounded-full flex items-center justify-center text-emerald-700 dark:text-emerald-400 hover:scale-110 hover:bg-white dark:hover:bg-neutral-800 hover:shadow-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"
+            @mouseenter="pause" 
+            @mouseleave="resume" 
+            @click="prev"
+            aria-label="Previous sponsors">
+            <i class="fas fa-chevron-left text-lg"></i>
+        </button>
+        
+        <button
+            class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 rounded-full flex items-center justify-center text-emerald-700 dark:text-emerald-400 hover:scale-110 hover:bg-white dark:hover:bg-neutral-800 hover:shadow-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"
+            @mouseenter="pause" 
+            @mouseleave="resume" 
+            @click="next"
+            aria-label="Next sponsors">
+            <i class="fas fa-chevron-right text-lg"></i>
+        </button>
+
+        <!-- Progress Indicator -->
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
+            <div v-for="(logo, index) in logos" :key="index" 
+                class="w-2 h-2 rounded-full transition-all duration-300"
+                :class="getActiveDotClass(index)">
+            </div>
+        </div>
+
+        <!-- Carousel Track -->
+        <div class="overflow-hidden py-8">
+            <div class="flex transition-transform duration-700 ease-out"
+                :style="{ transform: `translateX(-${currentIndex * (100 / perView)}%)` }">
+                
+                <!-- Display Logos with Enhanced Styling -->
+                <div v-for="(logo, i) in displayLogos" :key="i"
+                    class="shrink-0 flex items-center justify-center p-4" :class="colClass">
+                    
+                    <a :href="logo.link" target="_blank" rel="noopener noreferrer"
+                        class="w-full h-full flex items-center justify-center rounded-2xl p-6 bg-linear-to-br from-white to-emerald-50 dark:from-neutral-800 dark:to-neutral-900 shadow-lg hover:shadow-2xl border border-emerald-100 dark:border-neutral-700 transition-all duration-500 hover:scale-105 hover:-translate-y-2 group/card">
+                        
+                        <!-- Logo Container -->
+                        <div class="relative w-full h-20 flex items-center justify-center">
+                            <img :src="logo.src"
+                                class="h-16 md:h-14 lg:h-12 xl:h-16 object-contain transition-all duration-500 group-hover/card:scale-110 filter grayscale hover:grayscale-0"
+                                :alt="logo.alt || 'Sponsor logo'" 
+                                loading="lazy" />
+                            
+                            <!-- Hover Effect Overlay -->
+                            <div class="absolute inset-0 bg-emerald-500/0 rounded-xl transition-all duration-500"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <style scoped>
 /* Custom scrollbar hiding */
 .overflow-hidden {
@@ -285,10 +285,10 @@ onBeforeUnmount(() => {
 
 /* Dark mode image adjustments */
 .dark img {
-    filter: brightness(0.9) contrast(1.1);
+    filter: brightness(1) contrast(1) invert(1) grayscale(1);
 }
 
 .dark img:hover {
-    filter: brightness(1) contrast(1.1) grayscale(0);
+    filter: brightness(1) contrast(1) invert(1) grayscale(0);
 }
 </style>

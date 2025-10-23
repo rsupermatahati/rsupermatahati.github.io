@@ -1,130 +1,162 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import Hero2 from "../components/Hero2.vue";
+import { ref, onMounted, computed } from "vue";
+import { supabase } from '../lib/supabaseClient';
+
 import FbEmbed from "../components/FbEmbed.vue";
+import Hero2 from "../components/Hero2.vue";
 
-const servicePromise = ref(null);
+// State management
+const page = ref(null);
 const isLoading = ref(true);
+const error = ref(null);
 
-onMounted(() => {
-  setTimeout(() => {
-    servicePromise.value = {
-      title: "Janji Layanan",
-      subtitle: "Janji Layanan RSU Permata Hati",
-      sections: [
-        {
-          heading: "5S PENAMPILANKU (Senyum, Salam, Sapa, Sopan, Santun)",
-          items: [
-            {
-              name: "Senyum",
-              description:
-                "Senyum tulus yang terpancar dari wajah kita akan membuat orang lain nyaman, bagaimanapun rupa kita, lawan bicara akan ikut tersenyum melihat kita tersenyum. Maka tersenyumlah kepada siapapun yang kita temui.",
-            },
-            {
-              name: "Salam",
-              description:
-                "Salam yang diucapkan dengan ketulusan mampu mencairkan suasana kaku. Bila ada orang yang mengucapkan salam dengan lembut dan bersahabat, hati akan sejuk mendengarnya. Persaudaraan berawal dari salam, mari kita tebarkan salam.",
-            },
-            {
-              name: "Sapa",
-              description:
-                "Sapaan ramah yang kita ucapkan kepada orang lain akan membuat suasana menjadi akrab dan hangat. Biasakanlah menyapa, mulailah dengan orang yang berada didekat kita, lalu jadikan kebiasaan.",
-            },
-            {
-              name: "Sopan",
-              description:
-                "Sopan dalam penampilan, sopan ketika berbicara, sopan saat berinteraksi dengan orang lain, sopan dalam setiap prilaku kita. Sikap sopan mencerminkan kualitas pribadi kita.",
-            },
-            {
-              name: "Santun",
-              description:
-                "Santun adalah sifat yang dimiliki orang-orang istimewa, orang yang mendahulukan kepentingan orang lain daripada dirinya. Orang yang ada untuk mereka yang membutuhkan, menolong dengan senang dan ikhlas.",
-            },
-          ],
-        },
-        {
-          heading: "5R CARA KERJAKU (Ringkas, Rapi, Resik, Rawat, Rajin)",
-          items: [
-            {
-              name: "Ringkas",
-              description:
-                "Memisahkan segala sesuatu yang diperlukan dan menyingkirkan yang tidak diperlukan dari tempat kerja. Mengetahui benda mana yang tidak digunakan, mana yang disimpan, serta bagaimana cara menyimpan supaya mudah diambil saat diperlukan. Cara yang dapat dilakukan antara lain mendata berbagai jenis barang yang dimiliki, menggolongkan sesuai jenis dan kegunaannya, memberi tanda untuk barang tertentu, kemudian menempatkan barang pada tempat yang semestinya.",
-            },
-            {
-              name: "Rapi",
-              description:
-                "Menempatkan barang pada tempatnya sehingga tidak terlihat berserakan pada tempat kerja yang bisa mengganggu keindahan ataupun membahayakan diri sendiri dan orang lain. Dilakukan sebagai suatu kegiatan yang berkelanjutan.",
-            },
-            {
-              name: "Resik",
-              description:
-                "Melakukan pembersihan tempat, peralatan, termasuk pakaian kerja yang digunakan. Membuang sampah sesuai jenisnya, memastikan peralatan berfungsi baik, menciptakan lingkungan kerja yang bersih dan nyaman.",
-            },
-            {
-              name: "Rawat",
-              description:
-                "Merawat semua yang ada di lingkungan kerja agar terus berfungsi dan dapat dipakai dengan aman, termasuk peralatan baik medis maupun non medis, memakai peralatan dengan benar agar terhindar dari kesalahan dan kerusakan.",
-            },
-            {
-              name: "Rajin",
-              description:
-                "Adalah terciptanya kebiasaan pribadi karyawan untuk menjaga dan meningkatkan apa yang sudah dicapai, mematuhi jadwal dan aturan yang berlaku. Rajin adalah terkait dengan ketepatan waktu kerja, ketepatan memenuhi permintaan pasien, ketepatan mencapai target yang hendak dicapai.",
-            },
-          ],
-        },
-      ],
-    };
+// Computed properties
+const formattedDate = computed(() => {
+  if (!page.value?.updated_at) return '';
+  
+  const date = new Date(page.value.updated_at);
+  return date.toLocaleDateString('id-ID', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+});
+
+const hasThumbnail = computed(() => {
+  return page.value?.thumbnail_url && page.value.thumbnail_url.trim() !== '';
+});
+
+// Methods
+const fetchPageData = async () => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    
+    const { data, error: supabaseError } = await supabase
+      .from('pages')
+      .select('title, thumbnail_url, content, created_at, updated_at')
+      .eq('slug', 'janji-layanan')
+      .single(); // Use single() instead of data[0]
+
+    if (supabaseError) {
+      throw supabaseError;
+    }
+    
+    page.value = data;
+    
+  } catch (err) {
+    console.error('Error fetching page:', err);
+    error.value = 'Gagal memuat halaman. Silakan coba lagi.';
+  } finally {
     isLoading.value = false;
-  }, 1000);
+  }
+};
+
+// Lifecycle
+onMounted(() => {
+  fetchPageData();
 });
 </script>
 
 <template>
   <Hero2 />
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-12 gap-8">
-      <div class="col-span-12 lg:col-span-8">
-        <div v-if="isLoading" class="animate-pulse mb-8 space-y-2">
-          <div class="h-8 bg-neutral-300 rounded w-1/3"></div>
-          <div class="h-6 bg-neutral-300 rounded w-2/3"></div>
+  
+  <div class="grid grid-cols-12 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Main Content -->
+    <div class="col-span-12 lg:col-span-8">
+      <div class="bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-lg">
+        <!-- Loading State -->
+        <div v-if="isLoading" class="animate-pulse space-y-6">
+          <div class="h-8 bg-neutral-300 dark:bg-neutral-700 rounded w-1/2"></div>
+          <div class="h-4 bg-neutral-300 dark:bg-neutral-700 rounded w-1/3"></div>
+          <div class="h-64 bg-neutral-300 dark:bg-neutral-700 rounded-lg"></div>
+          <div class="space-y-3">
+            <div class="h-4 bg-neutral-300 dark:bg-neutral-700 rounded w-full"></div>
+            <div class="h-4 bg-neutral-300 dark:bg-neutral-700 rounded w-full"></div>
+            <div class="h-4 bg-neutral-300 dark:bg-neutral-700 rounded w-full"></div>
+            <div class="h-4 bg-neutral-300 dark:bg-neutral-700 rounded w-3/4"></div>
+          </div>
         </div>
-        <div v-else class="mb-8">
-          <h1 class="text-3xl font-bold mb-2">{{ servicePromise.title }}</h1>
-          <h2 class="text-lg">{{ servicePromise.subtitle }}</h2>
+
+        <!-- Error State -->
+        <div v-else-if="error" class="text-center py-8">
+          <div class="text-red-500 dark:text-red-400 text-lg mb-4">
+            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+            <p>{{ error }}</p>
+          </div>
+          <button 
+            @click="fetchPageData"
+            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Coba Lagi
+          </button>
         </div>
-        <div v-if="isLoading" class="space-y-4 animate-pulse">
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-full"></div>
-          <div class="h-4 bg-neutral-300 rounded w-3/4"></div>
-        </div>
-        <div v-else>
-          <div class="space-y-12">
-            <div v-for="(section, idx) in servicePromise.sections" :key="idx" class="space-y-6">
-              <h2 class="text-2xl font-semibold">{{ section.heading }}</h2>
-              <ul class="space-y-4">
-                <li v-for="(item, j) in section.items" :key="j">
-                  <h3 class="text-xl font-semibold">{{ item.name }}</h3>
-                  <p class="pb-2">{{ item.description }}</p>
-                </li>
-              </ul>
+
+        <!-- Success State -->
+        <div v-else-if="page" class="leading-8">
+          <!-- Header -->
+          <header class="mb-8">
+            <h1 class="text-3xl lg:text-4xl font-bold text-neutral-800 dark:text-neutral-100 mb-4">
+              {{ page.title }}
+            </h1>
+            <div class="flex items-center text-sm text-neutral-600 dark:text-neutral-400">
+              <i class="fas fa-calendar-alt mr-2"></i>
+              <span>Terakhir diperbarui: {{ formattedDate }}</span>
             </div>
+          </header>
+
+          <!-- Thumbnail -->
+          <div v-if="hasThumbnail" class="mb-8">
+            <img 
+              :src="page.thumbnail_url" 
+              :alt="page.title" 
+              class="w-full h-auto max-h-96 object-cover border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-md"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Content -->
+          <article class="prose prose-lg dark:prose-invert max-w-none">
+            <div 
+              class="text-neutral-800 dark:text-neutral-100 prose dark:prose-invert max-w-none"
+              v-html="page.content"
+            ></div>
+          </article>
+        </div>
+
+        <!-- Empty State -->
+        <div v-else class="text-center py-12">
+          <div class="text-neutral-500 dark:text-neutral-400">
+            <i class="fas fa-file-alt text-4xl mb-4"></i>
+            <p class="text-xl">Halaman tidak ditemukan</p>
+            <p class="text-sm mt-2">Konten yang Anda cari tidak tersedia</p>
           </div>
         </div>
       </div>
-      <div class="col-span-12 lg:col-span-4">
-        <div v-if="isLoading" class="animate-pulse space-y-4">
-          <div class="h-96 bg-neutral-300 rounded w-full"></div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-span-12 lg:col-span-4">
+      <!-- Placeholder for additional content -->
+      <div class="bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-lg mb-8">
+        <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100 mb-4">
+          Informasi Tambahan
+        </h3>
+        <p class="text-neutral-600 dark:text-neutral-400 text-sm">
+          Konten sidebar dapat ditambahkan di sini
+        </p>
+      </div>
+
+      <!-- Facebook Embed -->
+      <div class="sticky top-6">
+        <div v-if="isLoading" class="animate-pulse">
+          <div class="h-96 bg-neutral-300 dark:bg-neutral-700 rounded-lg w-full"></div>
         </div>
-        <div v-else>
-          <FbEmbed />
-        </div>
+        <FbEmbed v-else />
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+</style>

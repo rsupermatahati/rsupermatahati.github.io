@@ -1,4 +1,4 @@
-<!-- Hero -->
+<!-- Hero2 -->
 <script setup>
 import logo from "/src/assets/icons/logo01.png";
 import backgroundImage from "/src/assets/images/01.jpg";

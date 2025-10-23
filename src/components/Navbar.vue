@@ -67,12 +67,12 @@ const currentLogo = computed(() => {
 });
 
 const navbarClasses = computed(() => {
-  const baseClasses = "sticky w-full top-0 z-50 transition-all duration-300";
+  const baseClasses = "sticky w-full top-0 z-50 transition-all duration-500";
   
   if (!isScrolled.value) {
-    return `${baseClasses} bg-emerald-600 dark:bg-neutral-900`;
+    return `${baseClasses} bg-emerald-600 dark:bg-neutral-900 border-b border-b-white/50 dark:border-b-neutral-800`;
   } else {
-    return `${baseClasses} bg-white/80 dark:bg-neutral-900/90 backdrop-blur-lg border-b border-neutral-200 dark:border-neutral-800`;
+    return `${baseClasses} bg-white/80 dark:bg-neutral-900/90 backdrop-blur-lg border-b border-b-neutral-100 dark:border-b-neutral-800`;
   }
 });
 
@@ -189,7 +189,7 @@ onUnmounted(() => {
         <div class="flex items-center shrink-0">
           <router-link 
             to="/" 
-            class="flex items-center transition-all duration-300 hover:scale-105 active:scale-95"
+            class="flex items-center transition-all duration-300 hover:scale-105 active:scale-100"
             @click="closeMobileMenu"
             aria-label="RSU Permata Hati Home"
           >
@@ -212,7 +212,7 @@ onUnmounted(() => {
             <router-link 
               v-if="!menu.children" 
               :to="menu.path"
-              class="nav-menu-item px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+              class="nav-menu-item px-4 py-2 rounded-lg font-medium transition-all duration-200"
               :class="[
                 isActiveRoute(menu.path) 
                   ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm' 
@@ -228,7 +228,7 @@ onUnmounted(() => {
             <button
               v-else 
               @click="toggleMenu(index)"
-              class="nav-menu-trigger px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+              class="nav-menu-trigger px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-1"
               :class="[
                 isChildActive(menu.children)
                   ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 shadow-sm' 
@@ -267,7 +267,7 @@ onUnmounted(() => {
                 >
                   <router-link 
                     :to="child.path"
-                    class="block px-4 py-3 text-sm transition-all duration-200 mx-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    class="block px-4 py-3 text-sm transition-all duration-200 mx-2 rounded-lg"
                     :class="{
                       'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 font-semibold': isActiveRoute(child.path),
                       'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(child.path)
@@ -285,7 +285,7 @@ onUnmounted(() => {
           <span class="px-4" :class="textColorClasses">|</span>
           <button 
             @click="toggleTheme"
-            class="p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+            class="p-2 rounded-lg transition-all duration-200"
             :class="[
               textColorClasses,
               hoverTextColorClasses,
@@ -303,7 +303,7 @@ onUnmounted(() => {
           <!-- Theme Toggle Mobile -->
           <button 
             @click="toggleTheme"
-            class="p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            class="p-2 rounded-lg transition-all duration-200"
             :class="[
               textColorClasses,
               hoverTextColorClasses,
@@ -318,7 +318,7 @@ onUnmounted(() => {
           <!-- Mobile Menu Toggle -->
           <button 
             @click="isOpen = !isOpen"
-            class="p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            class="p-2 rounded-lg transition-all duration-200"
             :class="[
               textColorClasses,
               hoverTextColorClasses,
@@ -380,7 +380,7 @@ onUnmounted(() => {
               <button
                 v-if="menu.children" 
                 @click="toggleMobileMenu(index)"
-                class="w-full flex items-center justify-between py-3 px-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                class="w-full flex items-center justify-between py-3 px-2 rounded-lg font-medium transition-all duration-200"
                 :class="{
                   'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30': isChildActive(menu.children),
                   'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isChildActive(menu.children)
@@ -407,7 +407,7 @@ onUnmounted(() => {
               <router-link 
                 v-else 
                 :to="menu.path"
-                class="block w-full text-left py-3 px-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                class="block w-full text-left py-3 px-2 rounded-lg font-medium transition-all duration-200"
                 :class="{
                   'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30': isActiveRoute(menu.path),
                   'text-neutral-700 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(menu.path)
@@ -436,7 +436,7 @@ onUnmounted(() => {
                   v-for="child in menu.children" 
                   :key="child.label" 
                   :to="child.path"
-                  class="block py-2 px-3 rounded-lg text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  class="block py-2 px-3 rounded-lg text-sm transition-all duration-200"
                   :class="{
                     'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 font-semibold': isActiveRoute(child.path),
                     'text-neutral-600 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-neutral-100 dark:hover:bg-neutral-800': !isActiveRoute(child.path)
