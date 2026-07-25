@@ -1,0 +1,118 @@
+<nav class="navbar navbar-expand-lg m-0" aria-label="Navbar">
+    <div class="container-xxl py-1">
+        <a class="navbar-brand me-auto" href="/">
+            <img id="logolight" src="icons/logo.png" alt="logo" class="img-fluid m-0 p-0"
+                style="height: 40px;" />
+            <img id="logodark" src="icons/dark.png" alt="logo" class="img-fluid m-0 p-0 d-none"
+                style="height: 40px;" />
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasnavbar01" aria-controls="offcanvasnavbar01" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasnavbar01"
+            aria-labelledby="offcanvasnavbar01label">
+            <div class="offcanvas-header bg-body">
+                <h5 class="offcanvas-title" id="offcanvasnavbar01label">
+                    RSU Permata Hati
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasnavbar01"
+                    aria-label="Close">
+                </button>
+            </div>
+            <div class="offcanvas-body bg-body">
+                <ul class="navbar-nav fw-medium d-flex justify-content-lg-end align-items-lg-center">
+                    <li class="nav-item dropdown py-1 py-lg-0">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" data-bs-auto-close="outside">
+                            LAYANAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item py-2 open-popup"
+                                    href="https://online.rsupermatahati.id/rawatjalan/transaksi/form">
+                                    Registrasi Online Pasien Umum
+                                </a>
+                            </li>
+                            <li class="nav-item dropend">
+                                <a class="dropdown-item dropdown-toggle py-2" type="button" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false">
+                                    Registrasi Pasien BPJS MobileJKN
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id"
+                                            target="_blank" rel="noopener noreferrer">Google Play Store
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="https://apps.apple.com/id/app/mobile-jkn/id1237601115" target="_blank"
+                                            rel="noopener noreferrer">Apple App Store
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item py-2" href="{{ route('ralan.index') }}">Rawat Jalan</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('ranap.index') }}">Rawat Inap</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/layanan-24-jam') }}">UGD 24 Jam</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/penunjang-medis') }}">Penunjang Medis</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/penunjang-lainnya') }}">Penunjang Lainnya</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown py-1 py-lg-0">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            PROFIL
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/sejarah') }}">Sejarah</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/visi-misi') }}">Visi & Misi</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/nilai-dasar-layanan') }}">Nilai Dasar Layanan</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/janji-layanan') }}">Janji Layanan</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/filosofi-logo') }}">Filosofi Logo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown py-1 py-lg-0">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">INFORMASI
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item py-2" href="{{ url('/pages/hak-dan-kewajiban-pasien') }}">
+                                    Hak dan Kewajiban Pasien
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2" href="{{ url('/pages/jadwal-dokter') }}">
+                                    Jadwal Praktek Dokter
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2" href="{{ url('/pages/antrian-v2') }}">
+                                    Antrian Poliklinik
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2" href="{{ url('/pages/bor') }}">
+                                    Ketersediaan Tempat Tidur Rawat Inap
+                                </a>
+                            </li>
+                            {{-- <li><a class="dropdown-item py-2" href="{{ url('/pages/program-unggulan') }}">Program Unggulan</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url('/pages/layanan-unggulan') }}">Layanan Unggulan</a></li> --}}
+                            <li>
+                                <a class="dropdown-item py-2" href="{{ route('frontend.allArticle') }}">Artikel Menarik</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2" href="{{ route('frontend.fbpost') }}">Postingan Menarik</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item py-1 py-lg-0">
+                        <a class="nav-link" href="{{ route('frontend.faq') }}">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
