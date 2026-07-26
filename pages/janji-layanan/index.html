@@ -83,6 +83,7 @@
   <div id="theme"></div>
   <div id="contact"></div>
   <nav id="nav" class="sticky-top bg-body bg-opacity-75 shadow-sm" style="backdrop-filter: blur(10px);"></nav>
+  <header id="header"></header>
   <main id="content"></main>
   <footer id="footer"></footer>
 
@@ -107,7 +108,8 @@
         loadLayout("theme", "/components/theme.html"),
         loadLayout("contact", "/components/contact.html"),
         loadLayout("nav", "/components/nav.html"),
-        loadLayout("content", "/pages/home/content.html"),
+        loadLayout("header", "/components/header.html"),
+        loadLayout("content", "content.html"),
         loadLayout("footer", "/components/footer.html")
       ]).then(() => {
         if (typeof initTheme === 'function') {
