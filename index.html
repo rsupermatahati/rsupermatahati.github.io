@@ -88,6 +88,7 @@
 
   <script src="/js/color-modes.js"></script>
   <script src="/js/style.js"></script>
+  <script src="/js/translate.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     function loadLayout(elementId, filePath) {
@@ -115,54 +116,9 @@
         }
         AOS.init();
         initPopup();
+        translateInit();
       });
     });
-  </script>
-
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'id',
-        includedLanguages: 'en,ms,ar,ja,ko,zh-CN,zh-TW,fr,de',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-  </script>
-
-  <script type="text/javascript"
-    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <script>
-    (function () {
-      function fixSkipTranslate(el) {
-        if (!el || !el.classList?.contains("skiptranslate")) return;
-        if (el.tagName === "DIV") {
-          el.style.setProperty("position", "relative", "important");
-          el.style.setProperty("top", "auto", "important");
-          el.style.setProperty("width", "100%", "important");
-          el.style.setProperty("z-index", "auto", "important");
-        }
-        if (el.tagName === "IFRAME") {
-          el.style.setProperty("position", "absolute", "important");
-          el.style.setProperty("width", "100%", "important");
-          el.style.setProperty("z-index", "9999", "important");
-        }
-      }
-      const observer = new MutationObserver(muts => {
-        muts.forEach(m => {
-          m.addedNodes.forEach(node => {
-            if (node.nodeType !== 1) return;
-            if (node.classList?.contains("skiptranslate") || node.tagName === "IFRAME") {
-              fixSkipTranslate(node);
-            }
-            node.querySelectorAll?.('.skiptranslate, iframe.skiptranslate').forEach(fixSkipTranslate);
-          });
-        });
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-      document.querySelectorAll('.skiptranslate, iframe.skiptranslate').forEach(fixSkipTranslate);
-    })();
   </script>
 </body>
 
