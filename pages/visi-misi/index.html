@@ -84,7 +84,16 @@
   <div id="contact"></div>
   <nav id="nav" class="sticky-top bg-body shadow-sm"></nav>
   <header id="header"></header>
-  <main id="content"></main>
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-12 col-lg-8 p-0">
+        <main id="content"></main>
+      </div>
+      <div class="col-12 col-lg-4 p-0">
+        <aside id="fb"></aside>
+      </div>
+    </div>
+  </div>
   <footer id="footer"></footer>
 
   <script src="/js/color-modes.js"></script>
@@ -111,6 +120,7 @@
         loadLayout("nav", "/components/nav.html"),
         loadLayout("header", "/components/header.html"),
         loadLayout("content", "content.html"),
+        loadLayout("fb", "/components/fb.html"),
         loadLayout("footer", "/components/footer.html")
       ]).then(() => {
         if (typeof initTheme === 'function') {
