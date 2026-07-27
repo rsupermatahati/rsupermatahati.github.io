@@ -3,29 +3,16 @@ let allArticles = [];
 let currentPage = 1;
 const limitPerPage = 5;
 
-// URL Web App Google Apps Script Kamu (ditambah parameter ?sheet=artikel)
-const ARTIKEL_API_URL = "https://script.google.com/macros/s/AKfycbw2FsvJNCGudgotcdnOrmGl08OhMU8rY1-KppKnczsdgHR46Z3JqVofelr5W_md5Xr2/exec";
-
-// Helper untuk membuat ringkasan teks/excerpt dari isi artikel
-function makeExcerpt(text, length = 120) {
-  if (!text) return "";
-  // Hapus tag HTML jika ada, lalu potong kata
-  const cleanText = text.replace(/<[^>]*>?/gm, '');
-  return cleanText.length > length ? cleanText.substring(0, length) + "..." : cleanText;
-}
-
 // 1. Inisialisasi Daftar Artikel (List)
 async function initArticles() {
   const listContainer = document.getElementById('article-list');
   if (!listContainer) return; // Guard clause jika bukan di halaman list
 
   try {
-    const res = await fetch(ARTIKEL_API_URL);
+    const res = await fetch('articles.json');
     if (!res.ok) throw new Error('Gagal mengambil data artikel');
 
     allArticles = await res.json();
-    
-    // Sort artikel dari yang terbaru (berdasarkan tanggal/urutan)
     renderArticles();
     renderPagination();
   } catch (err) {
@@ -54,14 +41,14 @@ function renderArticles() {
       <div class="card h-100 border-0">
         <div class="row g-0 align-items-top">
           <div class="col-md-4">
-            <img src="${item.gambar || '/icons/og-image.jpg'}" class="img-fluid rounded h-100 w-100" alt="${item.judul}" style="aspect-ratio: 6/4; object-fit: cover; object-position: center; min-height: 180px;">
+            <img src="${item.thumbnail || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded h-100 w-100" alt="${item.title}" style="aspect-ratio: 6/4; object-fit: cover; object-position: center; min-height: 180px;">
           </div>
           <div class="col-md-8">
             <div class="card-body h-100">
-              <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${item.tanggal || ''}</small>
-              <h5 class="card-title fw-bold mt-1 mb-2">${item.judul}</h5>
-              <p class="card-text text-secondary small">${makeExcerpt(item.isi)}</p>
-              <a href="/pages/artikel-dan-berita/detail.html?id=${item.id}" class="btn btn-outline-success btn-sm mt-auto">
+              <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${item.date}</small>
+              <h5 class="card-title fw-bold mt-1 mb-2">${item.title}</h5>
+              <p class="card-text text-secondary small">${item.excerpt}</p>
+              <a href="/pages/artikel-dan-berita/detail.html?slug=${item.slug}" class="btn btn-outline-success btn-sm mt-auto">
                 Baca Selengkapnya <i class="bi bi-arrow-right ms-1"></i>
               </a>
             </div>
@@ -74,7 +61,7 @@ function renderArticles() {
 
 function renderPagination() {
   const totalPages = Math.ceil(allArticles.length / limitPerPage);
-  const navContainer = document.getElementById('pagination-nav');
+  const navContainer = document.getElementById('pagination-nav'); //[cite: 1, 3]
   if (!navContainer) return;
 
   if (totalPages <= 1) {
@@ -117,15 +104,15 @@ function changeArticlePage(page) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 2. Inisialisasi Detail Artikel dari Google Sheets
+// 2. Inisialisasi Detail Artikel per file JSON (Detail)
 async function initArticleDetail() {
   const container = document.getElementById('article-detail-container');
   if (!container) return; // Guard clause jika bukan di halaman detail
 
   const urlParams = new URLSearchParams(window.location.search);
-  const articleId = urlParams.get('id'); // Sekarang memakai parameter ?id=...
+  const slug = urlParams.get('slug');
 
-  if (!articleId) {
+  if (!slug) {
     container.innerHTML = `
       <div class="alert alert-warning" role="alert">
         Parameter artikel tidak valid. <a href="/pages/artikel-dan-berita/index.html">Kembali ke daftar artikel</a>.
@@ -134,44 +121,36 @@ async function initArticleDetail() {
   }
 
   try {
-    const res = await fetch(ARTIKEL_API_URL);
-    if (!res.ok) throw new Error('Gagal memuat artikel');
+    // Fetch file JSON spesifik sesuai slug
+    const res = await fetch(`/pages/artikel-dan-berita/articles/${slug}.json`);
+    if (!res.ok) throw new Error('File artikel tidak ditemukan');
 
-    const articles = await res.json();
-    // Cari artikel yang ID-nya cocok
-    const article = articles.find(item => String(item.id) === String(articleId));
+    const article = await res.json();
 
-    if (!article) {
-      throw new Error('Artikel tidak ditemukan');
-    }
-
-    document.title = `${article.judul} - RSU Permata Hati`;
-
-    // Ubah format teks paragraf dari Google Sheet agar rapi di HTML
-    const formattedContent = article.isi ? article.isi.replace(/\n/g, '<br>') : '';
+    document.title = `${article.title} - RSU Permata Hati`;
 
     container.innerHTML = `
       <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb small">
           <li class="breadcrumb-item"><a href="/">Beranda</a></li>
           <li class="breadcrumb-item"><a href="/pages/artikel-dan-berita/index.html">Artikel & Berita</a></li>
-          <li class="breadcrumb-item active" aria-current="page">${article.judul}</li>
+          <li class="breadcrumb-item active" aria-current="page">${article.title}</li>
         </ol>
       </nav>
 
-      <h1 class="fw-bold mb-3">${article.judul}</h1>
+      <h1 class="fw-bold mb-3">${article.title}</h1>
 
       <div class="text-muted small mb-4 pb-2 d-flex align-items-center gap-3">
-        <span><i class="bi bi-calendar3 me-1"></i>${article.tanggal || ''}</span>
-        ${article.penulis ? `<span><i class="bi bi-person me-1"></i>${article.penulis}</span>` : ''}
+        <span><i class="bi bi-calendar3 me-1"></i>${article.date}</span>
+        ${article.author ? `<span><i class="bi bi-person me-1"></i>${article.author}</span>` : ''}
       </div>
 
       <div class="mb-4 text-center">
-        <img src="${article.gambar || '/icons/og-image.jpg'}" class="img-fluid rounded shadow-sm w-100" alt="${article.judul}" style="max-height: 400px; object-fit: cover;">
+        <img src="${article.thumbnail || '/icons/og-image.jpg'}" class="img-fluid rounded shadow-sm w-100" alt="${article.title}" style="max-height: 400px; object-fit: cover;">
       </div>
 
       <div class="article-body lh-lg text-secondary">
-        ${formattedContent}
+        ${article.content}
       </div>
 
       <div class="mt-5 pt-3">
