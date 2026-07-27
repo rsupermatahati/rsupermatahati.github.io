@@ -1,4 +1,4 @@
-function initPoliklinik() {
+function initPoli() {
     // 1. Data seluruh poliklinik dan dokter dimasukkan ke dalam Array
     const daftarPoli = [
         {
