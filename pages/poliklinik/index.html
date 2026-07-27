@@ -91,6 +91,9 @@
   <script src="/js/style.js"></script>
   <script src="/js/translate.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script src="data.js"></script>
+
   <script>
     function loadLayout(elementId, filePath) {
       return fetch(filePath)
@@ -116,6 +119,7 @@
         if (typeof initTheme === 'function') {
           initTheme();
         }
+        initPoliklinik();
         AOS.init();
         initPopup();
         translateInit();

@@ -170,14 +170,6 @@ body {
     }
 }
 
-.card-img-top {
-    transition: transform 0.5s ease-in-out;
-}
-
-.card:hover .card-img-top {
-    transform: scale(1.1);
-}
-
 .sponsor {
     transition: transform 0.3s ease-in-out;
 }
