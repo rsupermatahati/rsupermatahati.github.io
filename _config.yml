@@ -1,7 +1,0 @@
-# Mengaktifkan plugin pagination bawaan GitHub Pages
-plugins:
-  - jekyll-paginate
-
-# Pengaturan Pagination
-paginate: 6                    # Jumlah artikel per halaman
-paginate_path: "/pages/artikel-dan-berita/page:num/" # Format URL pagination

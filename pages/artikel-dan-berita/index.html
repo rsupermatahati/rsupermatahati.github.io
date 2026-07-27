@@ -84,84 +84,22 @@
   <div id="contact"></div>
   <nav id="nav" class="sticky-top bg-body shadow-sm"></nav>
   <header id="header"></header>
-  <main>
-    ---
-layout: default
-title: "Artikel dan Berita"
----
-
-<div class="container my-5">
-  <h1 class="mb-4">Artikel & Berita Terbaru</h1>
-
-  <!-- 1. LOOP DAFTAR ARTIKEL (Hanya menampilkan artikel sesuai halaman aktif) -->
-  <div class="row">
-    {% for post in paginator.posts %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          {% if post.thumbnail %}
-            <img src="{{ post.thumbnail | relative_url }}" class="card-img-top" alt="{{ post.title }}">
-          {% endif %}
-          <div class="card-body">
-            <small class="text-muted">{{ post.date | date: "%d %B %Y" }}</small>
-            <h5 class="card-title mt-2">{{ post.title }}</h5>
-            <p class="card-text">{{ post.excerpt }}</p>
-          </div>
-          <div class="card-footer bg-transparent border-top-0">
-            <a href="{{ post.url | relative_url }}" class="btn btn-primary btn-sm">Baca Selengkapnya</a>
-          </div>
-        </div>
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-12 col-lg-8 p-0">
+        <main id="content"></main>
       </div>
-    {% endfor %}
+      <div class="col-12 col-lg-4 p-0">
+        <aside id="fb"></aside>
+      </div>
+    </div>
   </div>
-
-  <!-- 2. NAVIGASI PAGINATION (Prev, Angka Halaman, Next) -->
-  {% if paginator.total_pages > 1 %}
-    <nav aria-label="Navigasi Halaman" class="mt-4">
-      <ul class="pagination justify-content-center">
-        
-        <!-- Tombol Previous -->
-        {% if paginator.previous_page %}
-          <li class="page-item">
-            <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}">« Prev</a>
-          </li>
-        {% else %}
-          <li class="page-item disabled"><span class="page-link">« Prev</span></li>
-        {% endif %}
-
-        <!-- Nomor Halaman (1, 2, 3...) -->
-        {% for page in (1..paginator.total_pages) %}
-          {% if page == paginator.page %}
-            <li class="page-item active"><span class="page-link">{{ page }}</span></li>
-          {% elsif page == 1 %}
-            <li class="page-item">
-              <a class="page-link" href="{{ '/pages/artikel-dan-berita/' | relative_url }}">{{ page }}</a>
-            </li>
-          {% else %}
-            <li class="page-item">
-              <a class="page-link" href="{{ site.paginate_path | replace: ':num', page | relative_url }}">{{ page }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-
-        <!-- Tombol Next -->
-        {% if paginator.next_page %}
-          <li class="page-item">
-            <a class="page-link" href="{{ paginator.next_page_path | relative_url }}">Next »</a>
-          </li>
-        {% else %}
-          <li class="page-item disabled"><span class="page-link">Next »</span></li>
-        {% endif %}
-
-      </ul>
-    </nav>
-  {% endif %}
-</div>
-  </main>
   <footer id="footer"></footer>
 
   <script src="/js/color-modes.js"></script>
   <script src="/js/style.js"></script>
   <script src="/js/translate.js"></script>
+  <script src="articles.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     function loadLayout(elementId, filePath) {
@@ -182,15 +120,18 @@ title: "Artikel dan Berita"
         loadLayout("contact", "/components/contact.html"),
         loadLayout("nav", "/components/nav.html"),
         loadLayout("header", "/components/header.html"),
+        loadLayout("content", "content.html"),
         loadLayout("fb", "/components/fb.html"),
         loadLayout("footer", "/components/footer.html")
       ]).then(() => {
-        if (typeof initTheme === 'function') {
-          initTheme();
-        }
+        if (typeof initTheme === 'function') initTheme(); 
+        if (typeof initPopup === 'function') initPopup(); 
+        if (typeof translateInit === 'function') translateInit(); 
+
+        initArticles(); 
+        initArticleDetail(); 
+
         AOS.init();
-        initPopup();
-        translateInit();
       });
     });
   </script>

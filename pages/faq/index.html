@@ -113,12 +113,10 @@
         loadLayout("content", "content.html"),
         loadLayout("footer", "/components/footer.html")
       ]).then(() => {
-        if (typeof initTheme === 'function') {
-          initTheme();
-        }
+        if (typeof initTheme === 'function') initTheme(); 
+        if (typeof initPopup === 'function') initPopup(); 
+        if (typeof translateInit === 'function') translateInit(); 
         AOS.init();
-        initPopup();
-        translateInit();
       });
     });
   </script>
