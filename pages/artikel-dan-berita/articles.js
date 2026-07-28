@@ -163,7 +163,7 @@ async function initArticleDetail() {
         <img src="${article.gambar || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded shadow-sm w-100" alt="${article.judul}" style="max-height: 500px; object-fit: cover;">
       </div>
 
-      <div class="text-body lh-lg">
+      <div class="text-body lh-lg fs-6">
         ${formattedContent}
       </div>
 
