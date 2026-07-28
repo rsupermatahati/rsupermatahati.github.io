@@ -1,66 +1,68 @@
-// Variable Global untuk State Artikel
-let allArticles = [];
+let totalArticlesCount = 0;
 let currentPage = 1;
-const limitPerPage = 5;
+const limitPerPage = 10;
 
-// URL Web App Google Apps Script Kamu (ditambah parameter ?sheet=artikel)
 const ARTIKEL_API_URL = "https://script.google.com/macros/s/AKfycbw2FsvJNCGudgotcdnOrmGl08OhMU8rY1-KppKnczsdgHR46Z3JqVofelr5W_md5Xr2/exec";
 
-// Helper untuk membuat ringkasan teks/excerpt dari isi artikel
+function formatDateID(dateString) {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return dateString; 
+  return new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
+}
+
 function makeExcerpt(text, length = 120) {
   if (!text) return "";
-  // Hapus tag HTML jika ada, lalu potong kata
   const cleanText = text.replace(/<[^>]*>?/gm, '');
   return cleanText.length > length ? cleanText.substring(0, length) + "..." : cleanText;
 }
 
-// 1. Inisialisasi Daftar Artikel (List)
-async function initArticles() {
+// 1. Inisialisasi Daftar Artikel dengan Fetch Sesuai Halaman
+async function initArticles(page = 1) {
   const listContainer = document.getElementById('article-list');
-  if (!listContainer) return; // Guard clause jika bukan di halaman list
+  if (!listContainer) return;
+
+  currentPage = page;
+  listContainer.innerHTML = `<div class="col-12 text-center py-4"><div class="spinner-border text-success" role="status"></div></div>`;
 
   try {
-    const res = await fetch(ARTIKEL_API_URL);
+    // Request hanya mengambil artikel untuk halaman terpilih + info total
+    const res = await fetch(`${ARTIKEL_API_URL}?page=${page}&limit=${limitPerPage}`);
     if (!res.ok) throw new Error('Gagal mengambil data artikel');
 
-    allArticles = await res.json();
+    const responseData = await res.json();
     
-    // Sort artikel dari yang terbaru (berdasarkan tanggal/urutan)
-    renderArticles();
+    totalArticlesCount = responseData.total || 0;
+    const pageArticles = responseData.data || [];
+
+    renderArticles(pageArticles);
     renderPagination();
   } catch (err) {
     console.error(err);
-    listContainer.innerHTML = `
-      <div class="col-12">
-        <p class="text-danger">Gagal memuat artikel.</p>
-      </div>`;
+    listContainer.innerHTML = `<div class="col-12"><p class="text-danger">Gagal memuat artikel.</p></div>`;
   }
 }
 
-function renderArticles() {
-  const start = (currentPage - 1) * limitPerPage;
-  const end = start + limitPerPage;
-  const pageArticles = allArticles.slice(start, end);
-
+function renderArticles(articles) {
   const listContainer = document.getElementById('article-list');
 
-  if (pageArticles.length === 0) {
+  if (articles.length === 0) {
     listContainer.innerHTML = '<div class="col-12"><p class="text-muted">Belum ada artikel.</p></div>';
     return;
   }
 
-  listContainer.innerHTML = pageArticles.map(item => `
+  listContainer.innerHTML = articles.map(item => `
     <div class="col-12">
       <div class="card h-100 border-0">
         <div class="row g-0 align-items-top">
           <div class="col-md-4">
-            <img src="${item.gambar || '/icons/og-image.jpg'}" class="img-fluid rounded h-100 w-100" alt="${item.judul}" style="aspect-ratio: 6/4; object-fit: cover; object-position: center; min-height: 180px;">
+            <img src="${item.gambar || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded h-100 w-100" alt="${item.judul}" style="aspect-ratio: 6/4; object-fit: cover; object-position: center; min-height: 180px;">
           </div>
           <div class="col-md-8">
             <div class="card-body h-100">
-              <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${item.tanggal || ''}</small>
+              <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${formatDateID(item.tanggal)}</small>
               <h5 class="card-title fw-bold mt-1 mb-2">${item.judul}</h5>
-              <p class="card-text text-secondary small">${makeExcerpt(item.isi)}</p>
+              <p class="card-text text-secondary">${makeExcerpt(item.isi)}</p>
               <a href="/pages/artikel-dan-berita/detail.html?id=${item.id}" class="btn btn-outline-success btn-sm mt-auto">
                 Baca Selengkapnya <i class="bi bi-arrow-right ms-1"></i>
               </a>
@@ -73,7 +75,7 @@ function renderArticles() {
 }
 
 function renderPagination() {
-  const totalPages = Math.ceil(allArticles.length / limitPerPage);
+  const totalPages = Math.ceil(totalArticlesCount / limitPerPage);
   const navContainer = document.getElementById('pagination-nav');
   if (!navContainer) return;
 
@@ -111,43 +113,34 @@ function renderPagination() {
 }
 
 function changeArticlePage(page) {
-  currentPage = page;
-  renderArticles();
-  renderPagination();
+  initArticles(page);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 2. Inisialisasi Detail Artikel dari Google Sheets
+// 2. Detail Artikel
 async function initArticleDetail() {
   const container = document.getElementById('article-detail-container');
-  if (!container) return; // Guard clause jika bukan di halaman detail
+  if (!container) return;
 
   const urlParams = new URLSearchParams(window.location.search);
-  const articleId = urlParams.get('id'); // Sekarang memakai parameter ?id=...
+  const articleId = urlParams.get('id');
 
   if (!articleId) {
-    container.innerHTML = `
-      <div class="alert alert-warning" role="alert">
-        Parameter artikel tidak valid. <a href="/pages/artikel-dan-berita/index.html">Kembali ke daftar artikel</a>.
-      </div>`;
+    container.innerHTML = `<div class="alert alert-warning">Parameter artikel tidak valid. <a href="/pages/artikel-dan-berita/index.html">Kembali</a>.</div>`;
     return;
   }
 
   try {
-    const res = await fetch(ARTIKEL_API_URL);
+    // Ambil data artikel (bisa dinaikkan limitnya agar pencarian ID ketemu jika di sheet banyak data)
+    const res = await fetch(`${ARTIKEL_API_URL}?page=1&limit=100`);
     if (!res.ok) throw new Error('Gagal memuat artikel');
 
-    const articles = await res.json();
-    // Cari artikel yang ID-nya cocok
-    const article = articles.find(item => String(item.id) === String(articleId));
+    const responseData = await res.json();
+    const article = (responseData.data || []).find(item => String(item.id) === String(articleId));
 
-    if (!article) {
-      throw new Error('Artikel tidak ditemukan');
-    }
+    if (!article) throw new Error('Artikel tidak ditemukan');
 
     document.title = `${article.judul} - RSU Permata Hati`;
-
-    // Ubah format teks paragraf dari Google Sheet agar rapi di HTML
     const formattedContent = article.isi ? article.isi.replace(/\n/g, '<br>') : '';
 
     container.innerHTML = `
@@ -162,20 +155,20 @@ async function initArticleDetail() {
       <h1 class="fw-bold mb-3">${article.judul}</h1>
 
       <div class="text-muted small mb-4 pb-2 d-flex align-items-center gap-3">
-        <span><i class="bi bi-calendar3 me-1"></i>${article.tanggal || ''}</span>
+        <span><i class="bi bi-calendar3 me-1"></i>${formatDateID(article.tanggal)}</span>
         ${article.penulis ? `<span><i class="bi bi-person me-1"></i>${article.penulis}</span>` : ''}
       </div>
 
       <div class="mb-4 text-center">
-        <img src="${article.gambar || '/icons/og-image.jpg'}" class="img-fluid rounded shadow-sm w-100" alt="${article.judul}" style="max-height: 400px; object-fit: cover;">
+        <img src="${article.gambar || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded shadow-sm w-100" alt="${article.judul}" style="max-height: 500px; object-fit: cover;">
       </div>
 
       <div class="article-body lh-lg text-secondary">
         ${formattedContent}
       </div>
 
-      <div class="mt-5 pt-3">
-        <a href="/pages/artikel-dan-berita/index.html" class="btn btn-secondary btn-sm">
+      <div class="mt-5">
+        <a href="/pages/artikel-dan-berita/index.html" class="btn btn-outline-secondary btn-sm">
           <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Artikel
         </a>
       </div>
@@ -183,9 +176,6 @@ async function initArticleDetail() {
 
   } catch (err) {
     console.error(err);
-    container.innerHTML = `
-      <div class="alert alert-danger" role="alert">
-        Artikel yang Anda cari tidak ditemukan. <a href="/pages/artikel-dan-berita/index.html">Kembali ke daftar artikel</a>.
-      </div>`;
+    container.innerHTML = `<div class="alert alert-danger">Artikel tidak ditemukan. <a href="/pages/artikel-dan-berita/index.html">Kembali</a>.</div>`;
   }
 }
