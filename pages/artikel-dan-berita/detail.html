@@ -87,10 +87,9 @@
 
   <div class="container">
     <div class="row py-5">
-      <div class="col-12 col-lg-7 col-xl-8 p-0">
-        <!-- LANGSUNG TARUH WADAH ARTIKEL DI SINI (TANPA FETCH CONTENT.HTML) -->
+      <div class="col-12 col-xl-8 p-0">
         <main id="content" class="container">
-          <article class="pe-lg-4" id="article-detail-container">
+          <article class="pe-lg-3" id="article-detail-container">
             <div class="text-center py-5">
               <div class="spinner-border text-success" role="status">
                 <span class="visually-hidden">Memuat artikel...</span>
@@ -99,7 +98,7 @@
           </article>
         </main>
       </div>
-      <div class="col-12 col-lg-5 col-xl-4 p-0">
+      <div class="col-12 col-xl-4 p-0">
         <aside id="fb"></aside>
       </div>
     </div>
@@ -136,9 +135,9 @@
         loadLayout("fb", "/components/fb.html"),
         loadLayout("footer", "/components/footer.html")
       ]).then(() => {
-        if (typeof initTheme === 'function') initTheme(); 
-        if (typeof initPopup === 'function') initPopup(); 
-        if (typeof translateInit === 'function') translateInit(); 
+        if (typeof initTheme === 'function') initTheme();
+        if (typeof initPopup === 'function') initPopup();
+        if (typeof translateInit === 'function') translateInit();
         AOS.init();
         initArticleDetail();
       });

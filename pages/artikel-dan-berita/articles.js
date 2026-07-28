@@ -62,7 +62,7 @@ function renderArticles(articles) {
             <div class="card-body h-100">
               <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${formatDateID(item.tanggal)}</small>
               <h5 class="card-title fw-bold mt-1 mb-2">${item.judul}</h5>
-              <p class="card-text text-secondary">${makeExcerpt(item.isi)}</p>
+              <p class="card-text">${makeExcerpt(item.isi)}</p>
               <a href="/pages/artikel-dan-berita/detail.html?id=${item.id}" class="btn btn-outline-success btn-sm mt-auto">
                 Baca Selengkapnya <i class="bi bi-arrow-right ms-1"></i>
               </a>
@@ -163,7 +163,7 @@ async function initArticleDetail() {
         <img src="${article.gambar || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded shadow-sm w-100" alt="${article.judul}" style="max-height: 500px; object-fit: cover;">
       </div>
 
-      <div class="article-body lh-lg text-secondary">
+      <div class="text-body lh-lg">
         ${formattedContent}
       </div>
 
