@@ -90,6 +90,7 @@
   <script src="/js/color-modes.js"></script>
   <script src="/js/style.js"></script>
   <script src="/js/translate.js"></script>
+  <script src="faq.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     function loadLayout(elementId, filePath) {
@@ -117,6 +118,7 @@
         if (typeof initPopup === 'function') initPopup(); 
         if (typeof translateInit === 'function') translateInit(); 
         AOS.init();
+        initFAQ();
       });
     });
   </script>
