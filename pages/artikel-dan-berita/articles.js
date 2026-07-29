@@ -121,7 +121,7 @@ function renderArticles(articles) {
             <img src="${item.gambar || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded h-100 w-100" alt="${item.judul}" style="aspect-ratio: 6/4; object-fit: cover; object-position: center; min-height: 180px;">
           </div>
           <div class="col-md-8">
-            <div class="card-body h-100">
+            <div class="card-body h-100 px-0 px-md-3">
               <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${formatDateID(item.tanggal)}</small>
               <h5 class="card-title fw-bold mt-1 mb-2">${item.judul}</h5>
               <p class="card-text text-body">${makeExcerpt(item.isi)}</p>
