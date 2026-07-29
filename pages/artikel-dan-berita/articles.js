@@ -7,7 +7,7 @@ const ARTIKEL_API_URL = "https://script.google.com/macros/s/AKfycbw2FsvJNCGudgot
 function formatDateID(dateString) {
   if (!dateString) return "";
   const date = new Date(dateString);
-  if (isNaN(date.getTime())) return dateString; 
+  if (isNaN(date.getTime())) return dateString;
   return new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
 }
 
@@ -17,26 +17,46 @@ function makeExcerpt(text, length = 120) {
   return cleanText.length > length ? cleanText.substring(0, length) + "..." : cleanText;
 }
 
-// 1. Inisialisasi Daftar Artikel dengan Fetch Sesuai Halaman
+// 1. Inisialisasi Daftar Artikel dengan Caching Total Artikel
 async function initArticles(page = 1) {
   const listContainer = document.getElementById('article-list');
   if (!listContainer) return;
 
   currentPage = page;
-  listContainer.innerHTML = `<div class="col-12 text-center py-4"><div class="spinner-border text-success" role="status"></div></div>`;
+  listContainer.innerHTML = `
+  <div class="w-100 text-center d-flex flex-column justify-content-center align-items-center py-4">
+      <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="text-muted mt-3">Memuat data...</div>
+  </div>`;
+
+  // CACHE CHECK: Cek apakah total artikel sudah tersimpan di sessionStorage
+  const cachedTotal = sessionStorage.getItem('articles_total_count');
+
+  if (cachedTotal) {
+    totalArticlesCount = parseInt(cachedTotal, 10);
+    // Render pagination secara INSTAN dari memori browser tanpa menunggu API
+    renderPagination();
+  }
 
   try {
-    // Request hanya mengambil artikel untuk halaman terpilih + info total
+    // Request data artikel sesuai halaman
     const res = await fetch(`${ARTIKEL_API_URL}?page=${page}&limit=${limitPerPage}`);
     if (!res.ok) throw new Error('Gagal mengambil data artikel');
 
     const responseData = await res.json();
-    
-    totalArticlesCount = responseData.total || 0;
+
+    // Update total artikel jika belum ada di cache atau ada perubahan jumlah
+    if (responseData.total !== undefined) {
+      totalArticlesCount = responseData.total;
+      sessionStorage.setItem('articles_total_count', responseData.total);
+    }
+
     const pageArticles = responseData.data || [];
 
     renderArticles(pageArticles);
-    renderPagination();
+    renderPagination(); // Re-render pagination untuk memastikan angka tetap akurat
   } catch (err) {
     console.error(err);
     listContainer.innerHTML = `<div class="col-12"><p class="text-danger">Gagal memuat artikel.</p></div>`;
@@ -62,7 +82,7 @@ function renderArticles(articles) {
             <div class="card-body h-100">
               <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${formatDateID(item.tanggal)}</small>
               <h5 class="card-title fw-bold mt-1 mb-2">${item.judul}</h5>
-              <p class="card-text">${makeExcerpt(item.isi)}</p>
+              <p class="card-text text-body">${makeExcerpt(item.isi)}</p>
               <a href="/pages/artikel-dan-berita/detail.html?id=${item.id}" class="btn btn-outline-success btn-sm mt-auto">
                 Baca Selengkapnya <i class="bi bi-arrow-right ms-1"></i>
               </a>
