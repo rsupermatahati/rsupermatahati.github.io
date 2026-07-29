@@ -1,15 +1,67 @@
 // Variable Global FAQ
-const FAQ_API_URL = "https://script.google.com/macros/s/AKfycbw7VMX22q9cZT1NvABFj6Awk4K7tRwpHBfgexMCKxrJhkVhJn76OL-oq7LATNQi1iAB/exec"; // Masukkan URL Web App Apps Script FAQ
+const FAQ_API_URL = "https://script.google.com/macros/s/AKfycbw7VMX22q9cZT1NvABFj6Awk4K7tRwpHBfgexMCKxrJhkVhJn76OL-oq7LATNQi1iAB/exec"; 
+const FAQ_CACHE_KEY = "faq_data_cache";
+const FAQ_CACHE_TTL = 5 * 60 * 1000; // 5 Menit dalam milidetik
+
+// Helper: Ambil cache FAQ yang belum expired
+function getCachedFAQ() {
+  const cached = sessionStorage.getItem(FAQ_CACHE_KEY);
+  if (!cached) return null;
+
+  try {
+    const { timestamp, data } = JSON.parse(cached);
+    const isExpired = (Date.now() - timestamp) > FAQ_CACHE_TTL;
+
+    if (isExpired) {
+      sessionStorage.removeItem(FAQ_CACHE_KEY); // Hapus cache jika sudah lebih dari 5 menit
+      return null;
+    }
+
+    return data;
+  } catch (e) {
+    sessionStorage.removeItem(FAQ_CACHE_KEY);
+    return null;
+  }
+}
+
+// Helper: Simpan FAQ ke cache dengan timestamp
+function setCachedFAQ(data) {
+  const payload = {
+    timestamp: Date.now(),
+    data: data
+  };
+  sessionStorage.setItem(FAQ_CACHE_KEY, JSON.stringify(payload));
+}
 
 async function initFAQ() {
   const container = document.getElementById('faq-accordion');
   if (!container) return; // Guard clause jika elemen belum ada
+
+  // 1. CEK CACHE TERLEBIH DAHULU
+  const cachedData = getCachedFAQ();
+  if (cachedData) {
+    renderFAQ(cachedData); // Render langsung dari cache 5 menit
+    return;
+  }
+
+  // 2. JIKA CACHE KOSONG / EXPIRED, TAMPILKAN SPINNER LOADING
+  container.innerHTML = `
+    <div class="w-100 text-center py-4">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="text-muted mt-2 small">Memuat FAQ...</div>
+    </div>`;
 
   try {
     const res = await fetch(FAQ_API_URL);
     if (!res.ok) throw new Error('Gagal mengambil data FAQ');
 
     const faqList = await res.json();
+
+    // 3. SIMPAN DATA HASIL FETCH KE CACHE
+    setCachedFAQ(faqList);
+
     renderFAQ(faqList);
   } catch (err) {
     console.error(err);

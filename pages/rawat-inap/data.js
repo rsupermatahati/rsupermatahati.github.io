@@ -87,8 +87,3 @@ function renderRooms() {
         </div>
     `).join('');
 }
-
-// Fungsi inisialisasi kamar
-function initRooms() {
-    renderRooms();
-}

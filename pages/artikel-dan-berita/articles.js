@@ -4,6 +4,9 @@ const limitPerPage = 10;
 
 const ARTIKEL_API_URL = "https://script.google.com/macros/s/AKfycbw2FsvJNCGudgotcdnOrmGl08OhMU8rY1-KppKnczsdgHR46Z3JqVofelr5W_md5Xr2/exec";
 
+// KONFIGURASI CACHE 5 MENIT
+const ARTICLE_CACHE_TTL = 5 * 60 * 1000; // 5 Menit dalam milidetik
+
 function formatDateID(dateString) {
   if (!dateString) return "";
   const date = new Date(dateString);
@@ -17,12 +20,59 @@ function makeExcerpt(text, length = 120) {
   return cleanText.length > length ? cleanText.substring(0, length) + "..." : cleanText;
 }
 
-// 1. Inisialisasi Daftar Artikel dengan Caching Total Artikel
+// Helper: Ambil data dari Cache (Maksimal 5 Menit)
+function getCachedArticles(page) {
+  const sessionData = sessionStorage.getItem(`articles_page_${page}`);
+  if (!sessionData) return null;
+
+  try {
+    const { timestamp, data } = JSON.parse(sessionData);
+    const isExpired = (Date.now() - timestamp) > ARTICLE_CACHE_TTL;
+
+    if (isExpired) {
+      sessionStorage.removeItem(`articles_page_${page}`); // Hapus jika sudah > 5 menit
+      return null;
+    }
+
+    return data;
+  } catch (e) {
+    sessionStorage.removeItem(`articles_page_${page}`);
+    return null;
+  }
+}
+
+// Helper: Simpan data ke Cache beserta Timestamp
+function setCachedArticles(page, data) {
+  const payload = {
+    timestamp: Date.now(),
+    data: data
+  };
+  sessionStorage.setItem(`articles_page_${page}`, JSON.stringify(payload));
+}
+
+// 1. Inisialisasi Daftar Artikel dengan Cache 5 Menit
 async function initArticles(page = 1) {
   const listContainer = document.getElementById('article-list');
   if (!listContainer) return;
 
   currentPage = page;
+
+  // Cek cache total artikel
+  const cachedTotal = sessionStorage.getItem('articles_total_count');
+  if (cachedTotal) {
+    totalArticlesCount = parseInt(cachedTotal, 10);
+    renderPagination();
+  }
+
+  // Cek cache artikel per halaman (5 menit)
+  const cachedArticles = getCachedArticles(page);
+  if (cachedArticles) {
+    renderArticles(cachedArticles);
+    renderPagination();
+    return; // Langsung tampilkan tanpa fetch
+  }
+
+  // Spinner hanya tampil jika cache tidak ada / sudah kedaluwarsa
   listContainer.innerHTML = `
   <div class="w-100 text-center d-flex flex-column justify-content-center align-items-center py-4">
       <div class="spinner-border text-success" role="status">
@@ -31,23 +81,12 @@ async function initArticles(page = 1) {
       <div class="text-muted mt-3">Memuat data...</div>
   </div>`;
 
-  // CACHE CHECK: Cek apakah total artikel sudah tersimpan di sessionStorage
-  const cachedTotal = sessionStorage.getItem('articles_total_count');
-
-  if (cachedTotal) {
-    totalArticlesCount = parseInt(cachedTotal, 10);
-    // Render pagination secara INSTAN dari memori browser tanpa menunggu API
-    renderPagination();
-  }
-
   try {
-    // Request data artikel sesuai halaman
     const res = await fetch(`${ARTIKEL_API_URL}?page=${page}&limit=${limitPerPage}`);
     if (!res.ok) throw new Error('Gagal mengambil data artikel');
 
     const responseData = await res.json();
 
-    // Update total artikel jika belum ada di cache atau ada perubahan jumlah
     if (responseData.total !== undefined) {
       totalArticlesCount = responseData.total;
       sessionStorage.setItem('articles_total_count', responseData.total);
@@ -55,8 +94,11 @@ async function initArticles(page = 1) {
 
     const pageArticles = responseData.data || [];
 
+    // Simpan ke cache dengan timestamp saat ini
+    setCachedArticles(page, pageArticles);
+
     renderArticles(pageArticles);
-    renderPagination(); // Re-render pagination untuk memastikan angka tetap akurat
+    renderPagination();
   } catch (err) {
     console.error(err);
     listContainer.innerHTML = `<div class="col-12"><p class="text-danger">Gagal memuat artikel.</p></div>`;
@@ -134,7 +176,11 @@ function renderPagination() {
 
 function changeArticlePage(page) {
   initArticles(page);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  const listContainer = document.getElementById('artikel-top');
+  if (listContainer) {
+    listContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 // 2. Detail Artikel
@@ -150,13 +196,34 @@ async function initArticleDetail() {
     return;
   }
 
-  try {
-    // Ambil data artikel (bisa dinaikkan limitnya agar pencarian ID ketemu jika di sheet banyak data)
-    const res = await fetch(`${ARTIKEL_API_URL}?page=1&limit=100`);
-    if (!res.ok) throw new Error('Gagal memuat artikel');
+  let article = null;
 
-    const responseData = await res.json();
-    const article = (responseData.data || []).find(item => String(item.id) === String(articleId));
+  // 1. Cek dari cache halaman artikel yang tersimpan (yang belum expired 5 menit)
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const key = sessionStorage.key(i);
+    if (key.startsWith('articles_page_')) {
+      const cached = sessionStorage.getItem(key);
+      if (cached) {
+        try {
+          const { timestamp, data } = JSON.parse(cached);
+          if ((Date.now() - timestamp) <= ARTICLE_CACHE_TTL) {
+            article = data.find(item => String(item.id) === String(articleId));
+            if (article) break;
+          }
+        } catch (e) {}
+      }
+    }
+  }
+
+  try {
+    // 2. Jika tidak ada di cache lokal, baru fetch ke API
+    if (!article) {
+      const res = await fetch(`${ARTIKEL_API_URL}?page=1&limit=100`);
+      if (!res.ok) throw new Error('Gagal memuat artikel');
+
+      const responseData = await res.json();
+      article = (responseData.data || []).find(item => String(item.id) === String(articleId));
+    }
 
     if (!article) throw new Error('Artikel tidak ditemukan');
 

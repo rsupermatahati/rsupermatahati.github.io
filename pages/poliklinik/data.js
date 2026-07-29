@@ -16,14 +16,12 @@ async function initPoli() {
 
   if (cachedData && isCacheValid) {
     // Jika cache masih valid, langsung render tanpa fetch!
-    console.log("Memuat data poli dari Cache (Instan)...");
     renderPoli(JSON.parse(cachedData), mainContainer);
     return;
   }
 
   // 2. JIKA CACHE TIDAK ADA / EXPIRED, FETCH DARI API
   try {
-    console.log("Memuat data poli dari API Apps Script...");
     const response = await fetch(WEB_APP_URL);
     if (!response.ok) {
       throw new Error(`Gagal mengambil data: ${response.status}`);
@@ -39,11 +37,10 @@ async function initPoli() {
     renderPoli(rawData, mainContainer);
 
   } catch (error) {
-    console.error("Gagal memuat data poliklinik:", error);
+    console.error(error);
     
     // Jika fetch gagal tetapi ada cache lama, gunakan cache lama sebagai fallback
     if (cachedData) {
-      console.warn("API Error, menggunakan data cache lama.");
       renderPoli(JSON.parse(cachedData), mainContainer);
     } else {
       mainContainer.innerHTML = `<p class="text-danger text-center">Gagal memuat data poliklinik dan dokter.</p>`;
