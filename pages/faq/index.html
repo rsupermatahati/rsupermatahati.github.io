@@ -116,9 +116,9 @@
       ]).then(() => {
         if (typeof initTheme === 'function') initTheme(); 
         if (typeof initPopup === 'function') initPopup(); 
-        if (typeof translateInit === 'function') translateInit(); 
         AOS.init();
-        initFAQ();
+        if (typeof initFAQ === 'function') initFAQ(); 
+        if (typeof translateInit === 'function') translateInit(); 
       });
     });
   </script>

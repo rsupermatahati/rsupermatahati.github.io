@@ -91,6 +91,16 @@
   <script src="/js/translate.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    function initcarousel(){
+      const myCarouselElement = document.querySelector('#carousel01'); 
+      if (myCarouselElement && typeof bootstrap !== 'undefined') {
+        new bootstrap.Carousel(myCarouselElement, {
+          ride: 'carousel',
+          interval: 3000
+        });
+      }
+    }
+
     function loadLayout(elementId, filePath) {
       return fetch(filePath)
         .then(response => {
@@ -115,6 +125,7 @@
         if (typeof initPopup === 'function') initPopup(); 
         if (typeof translateInit === 'function') translateInit(); 
         AOS.init();
+        initcarousel();
       });
     });
   </script>

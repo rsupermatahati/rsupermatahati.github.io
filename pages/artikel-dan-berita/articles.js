@@ -116,7 +116,7 @@ function renderPagination() {
   // Page Numbers
   for (let i = 1; i <= totalPages; i++) {
     html += `
-      <li class="page-item ${i === currentPage ? 'active' : ''}">
+      <li class="page-item ${i === currentPage ? 'active disabled' : ''}">
         <button class="page-link" onclick="changeArticlePage(${i})">${i}</button>
       </li>
     `;
