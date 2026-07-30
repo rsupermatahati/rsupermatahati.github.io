@@ -5,7 +5,7 @@ const limitPerPage = 10;
 const ARTIKEL_API_URL = "https://script.google.com/macros/s/AKfycbw2FsvJNCGudgotcdnOrmGl08OhMU8rY1-KppKnczsdgHR46Z3JqVofelr5W_md5Xr2/exec";
 
 // KONFIGURASI CACHE 5 MENIT
-const ARTICLE_CACHE_TTL = 1 * 60 * 1000; // 5 Menit dalam milidetik
+const ARTICLE_CACHE_TTL = 5 * 60 * 1000; // 5 Menit dalam milidetik
 
 function formatDateID(dateString) {
   if (!dateString) return "";

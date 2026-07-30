@@ -7,7 +7,7 @@ async function initPoli() {
   // Konfigurasi Cache
   const CACHE_KEY = "poli_data_cache";
   const CACHE_TIME_KEY = "poli_data_timestamp";
-  const CACHE_DURATION = 1 * 60 * 1000; // Durasi cache: 5 Menit (dalam milidetik)
+  const CACHE_DURATION = 5 * 60 * 1000; // Durasi cache: 5 Menit (dalam milidetik)
 
   // 1. CEK CACHE LOKAL
   const cachedData = localStorage.getItem(CACHE_KEY);

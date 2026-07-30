@@ -1,7 +1,7 @@
 // Variable Global FAQ
 const FAQ_API_URL = "https://script.google.com/macros/s/AKfycbw7VMX22q9cZT1NvABFj6Awk4K7tRwpHBfgexMCKxrJhkVhJn76OL-oq7LATNQi1iAB/exec"; 
 const FAQ_CACHE_KEY = "faq_data_cache";
-const FAQ_CACHE_TTL = 1 * 60 * 1000; // 5 Menit dalam milidetik
+const FAQ_CACHE_TTL = 5 * 60 * 1000; // 5 Menit dalam milidetik
 
 // Helper: Ambil cache FAQ yang belum expired
 function getCachedFAQ() {
