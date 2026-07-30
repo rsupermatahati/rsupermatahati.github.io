@@ -5,7 +5,7 @@ const limitPerPage = 10;
 const ARTIKEL_API_URL = "https://script.google.com/macros/s/AKfycbw2FsvJNCGudgotcdnOrmGl08OhMU8rY1-KppKnczsdgHR46Z3JqVofelr5W_md5Xr2/exec";
 
 // KONFIGURASI CACHE 5 MENIT
-const ARTICLE_CACHE_TTL = 5 * 60 * 1000; // 5 Menit dalam milidetik
+const ARTICLE_CACHE_TTL = 1 * 60 * 1000; // 5 Menit dalam milidetik
 
 function formatDateID(dateString) {
   if (!dateString) return "";
@@ -74,12 +74,52 @@ async function initArticles(page = 1) {
 
   // Spinner hanya tampil jika cache tidak ada / sudah kedaluwarsa
   listContainer.innerHTML = `
-  <div class="w-100 text-center d-flex flex-column justify-content-center align-items-center py-4">
-      <div class="spinner-border text-success" role="status">
-          <span class="visually-hidden">Loading...</span>
+  <div class="placeholder-glow mb-3">
+      <div class="row gy-3">
+          <div class="col-12 col-md-4">
+              <div class="placeholder placeholder-lg col-12" style="height: 10rem;"></div>
+          </div>
+          <div class="col-12 col-md-8">
+              <div class="placeholder placeholder-lg col-12"></div>
+              <div class="placeholder placeholder-lg col-11"></div>
+              <div class="placeholder placeholder-lg col-10"></div>
+              <div class="placeholder placeholder-lg col-12"></div>
+              <div class="placeholder placeholder-lg col-11"></div>
+              <div class="placeholder placeholder-lg col-10"></div>
+          </div>
       </div>
-      <div class="text-muted mt-3">Memuat data...</div>
-  </div>`;
+  </div>
+  <div class="placeholder-glow mb-3">
+      <div class="row gy-3">
+          <div class="col-12 col-md-4">
+              <div class="placeholder placeholder-lg col-12" style="height: 10rem;"></div>
+          </div>
+          <div class="col-12 col-md-8">
+              <div class="placeholder placeholder-lg col-12"></div>
+              <div class="placeholder placeholder-lg col-11"></div>
+              <div class="placeholder placeholder-lg col-10"></div>
+              <div class="placeholder placeholder-lg col-12"></div>
+              <div class="placeholder placeholder-lg col-11"></div>
+              <div class="placeholder placeholder-lg col-10"></div>
+          </div>
+      </div>
+  </div>
+  <div class="placeholder-glow mb-3">
+      <div class="row gy-3">
+          <div class="col-12 col-md-4">
+              <div class="placeholder placeholder-lg col-12" style="height: 10rem;"></div>
+          </div>
+          <div class="col-12 col-md-8">
+              <div class="placeholder placeholder-lg col-12"></div>
+              <div class="placeholder placeholder-lg col-11"></div>
+              <div class="placeholder placeholder-lg col-10"></div>
+              <div class="placeholder placeholder-lg col-12"></div>
+              <div class="placeholder placeholder-lg col-11"></div>
+              <div class="placeholder placeholder-lg col-10"></div>
+          </div>
+      </div>
+  </div>
+  `;
 
   try {
     const res = await fetch(`${ARTIKEL_API_URL}?page=${page}&limit=${limitPerPage}`);
