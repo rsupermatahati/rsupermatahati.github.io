@@ -77,45 +77,45 @@ async function initArticles(page = 1) {
   <div class="placeholder-glow mb-3">
       <div class="row gy-3">
           <div class="col-12 col-md-4">
-              <div class="placeholder placeholder-lg col-12" style="height: 10rem;"></div>
+              <div class="placeholder placeholder-lg rounded col-12" style="height: 10rem;"></div>
           </div>
           <div class="col-12 col-md-8">
-              <div class="placeholder placeholder-lg col-12"></div>
-              <div class="placeholder placeholder-lg col-11"></div>
-              <div class="placeholder placeholder-lg col-10"></div>
-              <div class="placeholder placeholder-lg col-12"></div>
-              <div class="placeholder placeholder-lg col-11"></div>
-              <div class="placeholder placeholder-lg col-10"></div>
+              <div class="placeholder placeholder-lg rounded col-12"></div>
+              <div class="placeholder placeholder-lg rounded col-11"></div>
+              <div class="placeholder placeholder-lg rounded col-10"></div>
+              <div class="placeholder placeholder-lg rounded col-12"></div>
+              <div class="placeholder placeholder-lg rounded col-11"></div>
+              <div class="placeholder placeholder-lg rounded col-10"></div>
           </div>
       </div>
   </div>
   <div class="placeholder-glow mb-3">
       <div class="row gy-3">
           <div class="col-12 col-md-4">
-              <div class="placeholder placeholder-lg col-12" style="height: 10rem;"></div>
+              <div class="placeholder placeholder-lg rounded col-12" style="height: 10rem;"></div>
           </div>
           <div class="col-12 col-md-8">
-              <div class="placeholder placeholder-lg col-12"></div>
-              <div class="placeholder placeholder-lg col-11"></div>
-              <div class="placeholder placeholder-lg col-10"></div>
-              <div class="placeholder placeholder-lg col-12"></div>
-              <div class="placeholder placeholder-lg col-11"></div>
-              <div class="placeholder placeholder-lg col-10"></div>
+              <div class="placeholder placeholder-lg rounded col-12"></div>
+              <div class="placeholder placeholder-lg rounded col-11"></div>
+              <div class="placeholder placeholder-lg rounded col-10"></div>
+              <div class="placeholder placeholder-lg rounded col-12"></div>
+              <div class="placeholder placeholder-lg rounded col-11"></div>
+              <div class="placeholder placeholder-lg rounded col-10"></div>
           </div>
       </div>
   </div>
   <div class="placeholder-glow mb-3">
       <div class="row gy-3">
           <div class="col-12 col-md-4">
-              <div class="placeholder placeholder-lg col-12" style="height: 10rem;"></div>
+              <div class="placeholder placeholder-lg rounded col-12" style="height: 10rem;"></div>
           </div>
           <div class="col-12 col-md-8">
-              <div class="placeholder placeholder-lg col-12"></div>
-              <div class="placeholder placeholder-lg col-11"></div>
-              <div class="placeholder placeholder-lg col-10"></div>
-              <div class="placeholder placeholder-lg col-12"></div>
-              <div class="placeholder placeholder-lg col-11"></div>
-              <div class="placeholder placeholder-lg col-10"></div>
+              <div class="placeholder placeholder-lg rounded col-12"></div>
+              <div class="placeholder placeholder-lg rounded col-11"></div>
+              <div class="placeholder placeholder-lg rounded col-10"></div>
+              <div class="placeholder placeholder-lg rounded col-12"></div>
+              <div class="placeholder placeholder-lg rounded col-11"></div>
+              <div class="placeholder placeholder-lg rounded col-10"></div>
           </div>
       </div>
   </div>
