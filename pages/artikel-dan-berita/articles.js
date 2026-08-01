@@ -158,7 +158,7 @@ function renderArticles(articles) {
       <div class="card h-100 border-0">
         <div class="row g-0 align-items-top">
           <div class="col-md-4">
-            <img src="${item.gambar || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded h-100 w-100" alt="${item.judul}" style="aspect-ratio: 6/4; object-fit: cover; object-position: center; min-height: 180px;">
+            <img src="${item.gambar || '/assets/images/image-placeholder.svg'}" class="img-fluid rounded h-100 w-100 border" alt="${item.judul}" style="aspect-ratio: 6/4; object-fit: cover; object-position: center; min-height: 180px;">
           </div>
           <div class="col-md-8">
             <div class="card-body h-100 px-0 px-md-3">

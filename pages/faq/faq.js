@@ -102,9 +102,10 @@ function renderFAQ(data) {
             ${item.pertanyaan || ''}
           </button>
         </h2>
-        <div id="${collapseId}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="${headingId}" data-bs-parent="#faq-accordion">
+        <div id="${collapseId}" class="accordion-collapse collapse notranslate ${index === 0 ? 'show' : ''}" aria-labelledby="${headingId}" data-bs-parent="#faq-accordion">
           <div class="accordion-body text-body">
-            ${formattedJawaban}
+          <div class="translate">${formattedJawaban}</div>
+            
           </div>
         </div>
       </div>
