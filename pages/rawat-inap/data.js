@@ -3,7 +3,7 @@ const rooms = [
     {
         name: "Presiden Suite",
         capacity: "Satu kamar untuk satu pasien",
-        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, Meja Kerja LCD TV 32 inci (Saluran Local), Exclusive Nakas, Lemari Pakaian, Kursi Sofa Tamu, Work Desk, View (Kota dan Laut). Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 28.25 m2, Ventilasi tekanan negatif.",
+        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, Meja Kerja LCD TV 32 inci (Saluran lokal), Exclusive Nakas, Lemari Pakaian, Kursi Sofa Tamu, Work Desk, View (Kota dan Laut). Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 28.25 m2, Ventilasi tekanan negatif.",
         classType: "Presiden Suite",
         beds: "1 Bed",
         image: "images/presiden-suite.jpg"
@@ -11,7 +11,7 @@ const rooms = [
     {
         name: "Suite",
         capacity: "Satu kamar untuk satu pasien",
-        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, Meja Kerja LCD TV 32 inci (Saluran Local), Exclusive Nakas, Lemari Pakaian, Kursi Sofa Tamu, Work Desk, View (Kota dan Laut). Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 24.25 m2, Ventilasi tekanan negatif.",
+        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, Meja Kerja LCD TV 32 inci (Saluran lokal), Exclusive Nakas, Lemari Pakaian, Kursi Sofa Tamu, Work Desk, View (Kota dan Laut). Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 24.25 m2, Ventilasi tekanan negatif.",
         classType: "Suite",
         beds: "1 Bed",
         image: "images/suite.jpg"
@@ -19,7 +19,7 @@ const rooms = [
     {
         name: "Emerald",
         capacity: "Satu kamar untuk satu pasien",
-        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, Meja Kerja LCD TV 32 inci (Saluran Local), Exclusive Nakas, Lemari Pakaian, Kursi Sofa. Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 19.25 m2, Ventilasi tekanan negatif.",
+        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, Meja Kerja LCD TV 32 inci (Saluran lokal), Exclusive Nakas, Lemari Pakaian, Kursi Sofa. Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 19.25 m2, Ventilasi tekanan negatif.",
         classType: "VVIP",
         beds: "1 Bed",
         image: "images/emerald.jpg"
@@ -27,7 +27,7 @@ const rooms = [
     {
         name: "Berlian",
         capacity: "Satu kamar untuk satu pasien",
-        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, LCD TV 32 inci (Saluran Local), Exclusive Nakas, Lemari Pakaian, Kursi Sofa. Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 15.20 m2, Ventilasi tekanan negatif.",
+        facilities: "Bed Pasien, Bed Penunggu, Telpon, AC, LCD TV 32 inci (Saluran lokal), Exclusive Nakas, Lemari Pakaian, Kursi Sofa. Kamar Mandi : Washtafel, Shower Air Panas / Dingin, Luas kamar : 15.20 m2, Ventilasi tekanan negatif.",
         classType: "VIP",
         beds: "1 Bed",
         image: "images/berlian.jpg"
