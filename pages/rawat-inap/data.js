@@ -62,7 +62,7 @@ function renderRooms() {
                     <div class="row gy-2">
                         <div class="col-12 col-lg-4 col-xxl-3">
                             <div class="overflow-hidden bg-body-tertiary border rounded-3">
-                                <img src="${room.image}" class="card-img-top rounded-3" alt="${room.name}" style="aspect-ratio: 4/3; object-fit: cover;" onerror="this.onerror=null;this.src='/assets/images/image-placeholder.svg';">
+                                <img src="${room.image}" class="card-img-top rounded-3 viewerjs" alt="${room.name}" style="aspect-ratio: 4/3; object-fit: cover;" onerror="this.onerror=null;this.src='/assets/images/image-placeholder.svg';">
                             </div>
                         </div>
                         <div class="col-12 col-lg-8 col-xxl-9">

@@ -84,7 +84,7 @@ function renderPoli(rawData, mainContainer) {
       doctorCardsHTML += `
         <div class="col">
           <div class="card h-100 rounded-4 border-0 shadow-sm bg-body-tertiary">
-            <img src="${dokter.foto}" class="card-img-top rounded-top-4" alt="${dokter.nama}" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;">
+            <img src="${dokter.foto}" class="card-img-top rounded-top-4 viewerjs" alt="${dokter.nama}" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;">
             <div class="card-body text-center">
               <h6 class="card-title">${dokter.nama}</h6>
               <p class="card-text text-muted">${dokter.spesialis}</p>
