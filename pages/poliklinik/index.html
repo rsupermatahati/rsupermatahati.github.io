@@ -124,7 +124,7 @@
         AOS.init();
         initPoli();
 
-        const allimages = document.querySelectorAll('.viewerjs');
+        let allimages = document.querySelectorAll('.viewerjs');
         allimages.forEach(image => {
           new Viewer(image, {
             navbar: false,
