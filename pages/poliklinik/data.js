@@ -69,7 +69,7 @@ function renderPoli(rawData, mainContainer) {
       poliMap[namaPoli].dokter.push({
         nama: item.nama_dokter,
         spesialis: item.spesialis || "",
-        foto: item.foto || "/icons/og-image.jpg"
+        foto: item.foto || "/assets/images/image-placeholder.svg"
       });
     }
   });
