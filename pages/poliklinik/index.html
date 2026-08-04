@@ -123,16 +123,6 @@
         if (typeof translateInit === 'function') translateInit(); 
         AOS.init();
         initPoli();
-
-        let allimages = document.querySelectorAll('.viewerjs');
-        allimages.forEach(image => {
-          new Viewer(image, {
-            navbar: false,
-            toolbar: false,
-            title: false,
-            tooltip: false,
-          });
-        });
       });
     });
   </script>

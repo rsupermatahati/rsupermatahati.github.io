@@ -109,4 +109,14 @@ function renderPoli(rawData, mainContainer) {
 
   // Masukkan ke dalam DOM
   mainContainer.innerHTML = masterHTML;
+
+  let allimages = document.querySelectorAll('.viewerjs');
+  allimages.forEach(image => {
+    new Viewer(image, {
+      navbar: false,
+      toolbar: false,
+      title: false,
+      tooltip: false,
+    });
+  });
 }
