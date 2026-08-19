@@ -83,13 +83,14 @@
 
   <!-- Content Start -->
   <main class="container-fluid p-0 m-0">
-    <div class="w-100 m-0 p-0">
+    <div class="w-100 bg-body-secondary position-relative m-0 p-0" style="height: 25vh;">
       <img src="/assets/images/ph.jpg" alt="image" class="border-bottom"
         style="width: 100%; height: 25vh; object-fit: cover; object-position: center top;">
+      <div id="carouselbg" class="w-100 h-100 bg-black bg-opacity-50 z-1 top-0 start-0 position-absolute d-none"></div>
     </div>
 
     <div class="w-100 d-flex justify-content-center align-items-center">
-      <img src="/icons/logo-500x500.png" alt="logo" class="bg-body rounded-circle border border-4"
+      <img src="/icons/logo-500x500.png" alt="logo" class="bg-body rounded-circle border border-4 z-3"
         style="height: 20vh; margin-top: -10vh;">
     </div>
 
@@ -205,6 +206,19 @@
     </div>
   </main>
   <!-- Content End -->
+
+  <Footer>
+    <div class="container-fluid">
+      <div class="d-flex justify-content-center py-5 px-3">
+        <div class="text-body fs-6 fw-medium"><a
+            class="link-body-emphasis link-underline-opacity-0 link-underline-opacity-100-hover"
+            href="https://github.com/kuthayoga295" target="_blank" rel="noopener noreferrer"
+            title="Developed by Kuthayoga295">
+            &copy; RSU Permata Hati
+        </div>
+      </div>
+    </div>
+  </Footer>
 
   <script src="/js/color-modes.js"></script>
   <script src="/js/style.js"></script>
