@@ -1,10 +1,10 @@
 {
   "name": "Layanan Terpadu Permata Hati",
   "short_name": "RSUPH",
-  "start_url": "https://rsupermatahati.github.io/layanan-terpadu/",
+  "start_url": "/layanan-terpadu/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#198754",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "/icons/android-chrome-192x192.png",
