@@ -50,6 +50,5 @@ function initPWA() {
     installBanner.style.display = 'none';
     deferredPrompt = null;
     console.log('PWA berhasil ditambahkan ke Home Screen.');
-    alert('App berhasil ditambahkan ke Home Screen.');
   });
 }
