@@ -87,6 +87,7 @@
     .parallax {
       width: 100%;
       height: auto;
+      background-color: var(--bs-secondary-bg);
       background-image: url('/assets/images/ph.jpg');
       background-attachment: fixed;
       background-size: cover;
@@ -98,7 +99,10 @@
       position: relative;
       z-index: 1;
       padding: 0;
-      margin: 0;
+      margin-top: -2rem;
+      margin-bottom: 0;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     @media (orientation: portrait) {
@@ -124,32 +128,27 @@
 
 </head>
 
-<body class="bg-body-tertiary">
+<body class="bg-body-secondary">
   <div id="theme"></div>
 
   <!-- Content Start -->
   <div class="parallax">
     <div id="carouselbg" class="w-100 h-100 bg-black bg-opacity-50 d-none"></div>
   </div>
-
-  <main class="content w-100 bg-body-tertiary m-0 p-0">
-
+  <main class="content w-100 bg-body-secondary rounded-top-5">
     <div class="w-100 d-flex justify-content-center align-items-center">
       <img src="/icons/logo-500x500.png" alt="logo" class="bg-body-tertiary rounded-circle border"
         style="width: 10rem; margin-top: -5rem;">
     </div>
-
-    <div class="container bg-body-tertiary">
-
+    <div class="container bg-body-secondary">
       <div class="w-100 text-center px-3 mt-3">
         <span class="fs-4 fw-bold text-body">LAYANAN TERPADU</span><br>
         <span class="text-muted">RSU Permata Hati | Jl. Kecubung No.22 Semarapura | Telp. (0366)24777</span>
       </div>
-
       <div class="w-100 px-1 py-5">
         <div class="list-group rounded-4 fw-bold mb-3">
           <a href="https://wa.me/+6282236668828" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-whatsapp fs-3 text-success"></i>WhatsApp Permata
               Hati</span>
@@ -157,30 +156,30 @@
         </div>
         <div class="list-group rounded-4 fw-bold mb-3">
           <a href="https://rsupermatahati.github.io" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-globe-americas-fill fs-3 text-success"></i>Website
               RSU Permata Hati</span>
           </a>
           <a href="https://rsupermatahati.github.io/pages/ugd" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-shield-fill-plus fs-3 text-success"></i>Layanan
               Unit Gawat Darurat (UGD)</span>
           </a>
           <a href="https://rsupermatahati.github.io/pages/poliklinik" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-file-earmark-person-fill fs-3 text-success"></i>Layanan Poliklinik</span>
           </a>
           <a href="https://rsupermatahati.github.io/pages/rawat-inap" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-clipboard-plus-fill fs-3 text-success"></i>Layanan
               Rawat Inap</span>
           </a>
           <a href="https://rsupermatahati.github.io/pages/hak-dan-kewajiban-pasien" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-file-earmark-medical-fill fs-3 text-success"></i>Hak dan
               Kewajiban Pasien</span>
@@ -188,13 +187,13 @@
         </div>
         <div class="list-group rounded-4 fw-bold mb-3">
           <a href="https://online.rsupermatahati.id/dokter/jadwal" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-people-fill fs-3 text-success"></i>Jadwal Praktek
               Dokter</span>
           </a>
           <a href="https://online.rsupermatahati.id/rawatjalan/antrian" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-file-earmark-check-fill fs-3 text-success"></i>Antrian
               Poliklinik</span>
@@ -202,112 +201,37 @@
         </div>
         <div class="list-group rounded-4 fw-bold">
           <a href="https://www.appsheet.com/start/dc90eb08-1288-4cd3-925a-9a46d09d7744" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-exclamation-circle-fill fs-3 text-success"></i>Kritik &amp; Saran</span>
           </a>
           <a href="https://g.page/r/CTkO4-MhJrNnEAE/review" target="_blank"
-            class="list-group-item list-group-item-action py-3 d-flex justify-content-start align-items-center px-4">
+            class="list-group-item list-group-item-action link-body-emphasis py-3 d-flex justify-content-start align-items-center px-4">
             <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
                 class="bi bi-google fs-3 text-success"></i>Google Review</span>
           </a>
         </div>
       </div>
-
-      <!-- <div class="w-100 px-3 py-5">
-        <div class="row row-cols-1 row-cols-lg-2 g-3">
-          <div class="col">
-            <a href="https://wa.me/+6282236668828" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-whatsapp fs-3"></i>WhatsApp Permata
-                Hati</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://rsupermatahati.github.io" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-globe-americas-fill fs-3"></i>Website
-                RSU Permata Hati</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://rsupermatahati.github.io/pages/ugd" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-shield-fill-plus fs-3"></i>Layanan
-                Unit Gawat Darurat (UGD)</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://rsupermatahati.github.io/pages/poliklinik" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
-                  class="bi bi-file-earmark-person-fill fs-3"></i>Layanan Poliklinik</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://rsupermatahati.github.io/pages/rawat-inap" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-clipboard-plus-fill fs-3"></i>Layanan
-                Rawat Inap</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://online.rsupermatahati.id/dokter/jadwal" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-people-fill fs-3"></i>Jadwal Praktek
-                Dokter</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://online.rsupermatahati.id/rawatjalan/antrian" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-list-ol fs-3"></i>Antrian
-                Poliklinik</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://rsupermatahati.github.io/pages/hak-dan-kewajiban-pasien" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-list-check fs-3"></i>Hak dan
-                Kewajiban Pasien</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://www.appsheet.com/start/dc90eb08-1288-4cd3-925a-9a46d09d7744" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i
-                  class="bi bi-exclamation-circle-fill fs-3"></i>Kritik &amp; Saran</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://g.page/r/CTkO4-MhJrNnEAE/review" target="_blank"
-              class="btn btn-success w-100 rounded-pill py-2 d-flex justify-content-start align-items-center px-4">
-              <span class="d-flex justify-content-start align-items-center gap-3 text-start"><i class="bi bi-google fs-3"></i>Google Review</span>
-            </a>
-          </div>
-        </div>
-      </div> -->
-
       <div class="w-100 p-3 mb-5">
         <div class="d-flex flex-row overflow-auto justify-content-center align-items-center gap-2" data-aos="fade-up"
           data-aos-offset="1" data-aos-duration="500">
           <div class="d-flex flex-row gap-3">
-            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-secondary rounded-4 p-2"
+            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-tertiary rounded-4 p-2"
               style="line-height: 0;" href="https://www.facebook.com/rsupermatahatiklungkung" title="Facebook"
               target="_blank" rel="noopener noreferrer">
               <i class="bi bi-facebook" style="font-size: 2rem;"></i>
             </a>
-            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-secondary rounded-4 p-2"
+            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-tertiary rounded-4 p-2"
               style="line-height: 0;" href="https://www.instagram.com/rsupermatahati/" title="Instagram" target="_blank"
               rel="noopener noreferrer">
               <i class="bi bi-instagram" style="font-size: 2rem;"></i>
             </a>
-            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-secondary rounded-4 p-2"
+            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-tertiary rounded-4 p-2"
               style="line-height: 0;" href="https://www.youtube.com/@rsupermatahati8753" title="Youtube" target="_blank"
               rel="noopener noreferrer">
               <i class="bi bi-youtube" style="font-size: 2rem;"></i>
             </a>
-            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-secondary rounded-4 p-2"
+            <a class="link-success link-underline-opacity-0 link-underline-opacity-100-hover d-flex justify-content-center align-items-center text-nowrap bg-body-tertiary rounded-4 p-2"
               style="line-height: 0;" href="https://www.tiktok.com/@rsupermatahati" title="Tiktok" target="_blank"
               rel="noopener noreferrer">
               <i class="bi bi-tiktok" style="font-size: 2rem;"></i>
@@ -315,13 +239,11 @@
           </div>
         </div>
       </div>
-
       <div class="container-fluid">
         <div class="text-center text-muted small py-3">
           &copy; RSU Permata Hati
         </div>
       </div>
-
     </div>
   </main>
   <!-- Content End -->

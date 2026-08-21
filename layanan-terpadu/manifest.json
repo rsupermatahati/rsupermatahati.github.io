@@ -1,7 +1,7 @@
 {
   "name": "Layanan Terpadu Permata Hati",
   "short_name": "Layanan Terpadu",
-  "start_url": "https://rsupermatahati.github.io/layanan-terpadu/index.html",
+  "start_url": "/layanan-terpadu/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
