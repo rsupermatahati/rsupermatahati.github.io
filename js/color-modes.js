@@ -87,7 +87,7 @@ const showActiveTheme = (theme, focus = false) => {
 
   // Ganti kelas ikon pada tombol utama switcher
   if (themeIconActive) {
-    themeIconActive.className = `bi ${themeIcons[theme] || 'bi-sun-fill'} theme-icon-active me-1`
+    themeIconActive.className = `bi ${themeIcons[theme] || 'bi-sun-fill'} theme-icon-active`
   }
 
   if (focus) {
