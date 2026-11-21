@@ -1,0 +1,58 @@
+<div class="container-xxl py-5">
+    <div class="text-center mb-4">
+        <h3 class="text-success fw-bold" data-aos="fade-up" data-aos-offset="1" data-aos-duration="500">JADWAL DOKTER
+        </h3>
+        <p class="fs-6" data-aos="fade-up" data-aos-offset="1" data-aos-duration="500">
+            Jadwal Praktek Dokter Spesialis di Poliklinik RSU Permata Hati.<br>
+            <span class="badge bg-warning-subtle text-warning-emphasis py-2">Jadwal bisa berubah sewaktu-waktu tanpa pemberitahuan.</span>
+        </p>
+    </div>
+
+    <!-- Filter Pencarian, Poliklinik & Hari -->
+    <div class="row g-2 mb-3">
+        <div class="col-md-5">
+            <input type="text" id="searchInput" class="form-control" placeholder="Cari nama dokter..." />
+        </div>
+        <div class="col-md-4">
+            <select id="poliSelect" class="form-select">
+                <option value="">Semua Poliklinik</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select id="hariSelect" class="form-select">
+                <option value="">Semua Hari</option>
+                <option value="senin">Senin</option>
+                <option value="selasa">Selasa</option>
+                <option value="rabu">Rabu</option>
+                <option value="kamis">Kamis</option>
+                <option value="jumat">Jumat</option>
+                <option value="sabtu">Sabtu</option>
+                <option value="minggu">Minggu</option>
+            </select>
+        </div>
+        <div class="col-md-1 d-grid">
+            <button type="button" id="resetBtn" class="btn btn-secondary" title="Reset Filter">
+                Reset
+            </button>
+        </div>
+    </div>
+
+    <!-- Info Jumlah & Hari Ini -->
+    <div class="d-flex justify-content-between align-items-center small text-body-secondary mb-3 flex-wrap gap-2">
+        <span id="countInfo">Memuat data jadwal...</span>
+        <span id="todayInfo"></span>
+    </div>
+
+    <!-- Alert Error -->
+    <div id="errorBox" class="alert alert-danger d-none" role="alert"></div>
+
+    <!-- Bagian Tabel Dikelompokkan per Poliklinik -->
+    <div id="jadwalGroupedContainer">
+        <div class="card">
+            <div class="card-body text-center py-5 text-body-secondary">
+                <div class="spinner-border spinner-border-sm text-success me-2" role="status"></div>
+                Mengambil data jadwal dokter...
+            </div>
+        </div>
+    </div>
+</div>
