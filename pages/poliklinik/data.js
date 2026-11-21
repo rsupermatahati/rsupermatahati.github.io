@@ -106,7 +106,7 @@ function renderPoli(rawData, mainContainer) {
           <h3 class="text-success">${poli.nama}</h3>
           <h6 class="text-muted">${poli.deskripsi}</h6>
         </div>
-        <div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 py-2">
+        <div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3 py-2">
           ${doctorCardsHTML}
         </div>
       </div>
