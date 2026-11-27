@@ -83,7 +83,7 @@ function renderPoli(rawData, mainContainer) {
     poli.dokter.forEach((dokter) => {
       doctorCardsHTML += `
         <div class="col">
-          <div class="card h-100 rounded-4 border-0 shadow-sm bg-body-tertiary">
+          <div class="card h-100 rounded-4 bg-body-tertiary">
             <img src="${dokter.foto}" 
                 loading="lazy" 
                 decoding="async" 

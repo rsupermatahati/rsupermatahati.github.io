@@ -17,8 +17,7 @@ body {
 
 .carouselimg {
     width: 100%;
-    height: 100%;
-    aspect-ratio: 3/1;
+    height: 80vh;
     object-fit: cover;
     object-position: center;
 }
@@ -87,8 +86,7 @@ body {
 @media (max-width: 767px) {
     .carouselimg {
         width: 100%;
-        height: 100%;
-        aspect-ratio: 3/2;
+        height: 80vh;
         object-fit: cover;
         object-position: center;
     }
@@ -97,8 +95,7 @@ body {
 @media (min-width: 767px) and (max-width: 991px) {
     .carouselimg {
         width: 100%;
-        height: 100%;
-        aspect-ratio: 16/9;
+        height: 80vh;
         object-fit: cover;
         object-position: center;
     }
@@ -107,8 +104,7 @@ body {
 @media (min-width: 991px) and (max-width: 1199px) {
     .carouselimg {
         width: 100%;
-        height: 100%;
-        aspect-ratio: 18/9;
+        height: 80vh;
         object-fit: cover;
         object-position: center;
     }
@@ -133,8 +129,7 @@ body {
 
     .carouselimg {
         width: 100%;
-        height: 100%;
-        aspect-ratio: 1/1;
+        height: 80vh;
         object-fit: cover;
         object-position: center;
     }

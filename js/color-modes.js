@@ -32,13 +32,13 @@ const updateLogo = theme => {
   if (theme === 'dark') {
     logolight?.classList.add('d-none')
     logodark?.classList.remove('d-none')
-    carouselbg?.classList.add('d-block')
-    carouselbg?.classList.remove('d-none')
+    carouselbg?.classList.add('bg-black')
+    carouselbg?.classList.remove('bg-light')
   } else {
     logolight?.classList.remove('d-none')
     logodark?.classList.add('d-none')
-    carouselbg?.classList.add('d-none')
-    carouselbg?.classList.remove('d-block')
+    carouselbg?.classList.add('bg-light')
+    carouselbg?.classList.remove('bg-black')
   }
 }
 
