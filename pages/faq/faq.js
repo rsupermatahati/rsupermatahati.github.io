@@ -61,6 +61,16 @@ async function initFAQ() {
         <span class="placeholder placeholder-lg rounded col-11"></span>
         <span class="placeholder placeholder-lg rounded col-10"></span>
     </div>
+    <div class="placeholder-glow mb-3">
+        <span class="placeholder placeholder-lg rounded col-12"></span>
+        <span class="placeholder placeholder-lg rounded col-11"></span>
+        <span class="placeholder placeholder-lg rounded col-10"></span>
+    </div>
+    <div class="placeholder-glow mb-3">
+        <span class="placeholder placeholder-lg rounded col-12"></span>
+        <span class="placeholder placeholder-lg rounded col-11"></span>
+        <span class="placeholder placeholder-lg rounded col-10"></span>
+    </div>
   `;
 
   try {
